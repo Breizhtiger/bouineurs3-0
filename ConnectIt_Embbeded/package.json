@@ -1,0 +1,19 @@
+{
+  "name": "connectitclient",
+  "version": "1.0.0",
+  "description": "client of connect it project",
+  "main": "collect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anthony dasse, florian leloup",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.2",
+    "grunt": "^0.4.5",
+    "requirejs": "^2.1.20",
+    "sqlite3": "^3.1.0",
+    "underscore": "^1.8.3",
+    "winston": "^1.1.1"
+  }
+}
