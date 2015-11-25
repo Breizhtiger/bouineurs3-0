@@ -1,15 +1,21 @@
 var mongoose = require('mongoose');
+var toolsFactory = require('./Tools/tools.js');
+var testBdd = {};
+var pictureFactory = {};
+exports.testBdd = testBdd;
+exports.pictureFactory = pictureFactory;
+
 mongoose.connect('mongodb://172.17.0.2/connectIt');
 
 //connection to database
 var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function (callback) {
-    console.log("je suis ok");
+      log.info("Database connection : OK")
     });
 
 
-//creation of schema
+//creation of schemas
 var schema = new mongoose.Schema({
   name:    String
 });
@@ -31,30 +37,12 @@ var users = mongoose.model('users',schema);
 var locations = mongoose.model('locations',locationSchema);
 var pictures = mongoose.model('pictures',pictureShotSchema);
 
-var testBdd = {};
-var pictureFactory = {};
-exports.testBdd = testBdd;
-exports.pictureFactory = pictureFactory;
+
 
 pictureFactory.insertPicture = function(date,path){
  var create = new pictures({datetime: date,localPath: path ,status: 'created'});
    create.save(function (err) {
     if (err) { throw err; }
-    console.log('Photo ajouté avec succès !');
-  });
-};
-
-testBdd.insertTest = function(stringTest){
- var test = new users({name : stringTest});
-   test.save(function (err) {
-    if (err) { throw err; }
-    console.log('Commentaire ajouté avec succès !');
-  });
-};
-
-testBdd.getAllFromTest = function(){
-  users.find({},function(err,data){
-    if (err) { throw err; }
-    console.log('data ', data);
+    log.log('Pictures '+path+' inserted on database');
   });
 };

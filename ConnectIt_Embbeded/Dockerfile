@@ -11,5 +11,13 @@ COPY . /src
 # Install app dependencies
 RUN cd /src; npm install
 
-EXPOSE  8080
+#RUN yum -y update; yum clean all
+#RUN yum -y install epel-release; yum clean all
+#RUN yum -y install mongodb-server; yum clean all
+RUN mkdir -p /data/db
+
+EXPOSE  27017
+#CMD ["/usr/bin/mongod","&"]
+#RUN /usr/bin/mongod &
 CMD ["node", "/src/collect.js"]
+#ENTRYPOINT ["/usr/bin/mongod"]

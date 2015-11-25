@@ -12,3 +12,7 @@ Construction du container :
 
 Lancement de l'application :
 1 * sudo docker run connectit-embbeded
+
+
+
+docker run -d -P connectit-embbeded --link mongo mongo_instance_002

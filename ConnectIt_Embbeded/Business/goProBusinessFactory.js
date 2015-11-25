@@ -25,7 +25,6 @@ goproBusiness.startNewCollect = function(ip, password, callback){
     function snap() {
     	return camera.startCapture()
     	.then(function() {
-
     		return sleep(10000)
     	})
     	.then(function() {

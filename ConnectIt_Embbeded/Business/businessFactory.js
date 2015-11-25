@@ -1,15 +1,18 @@
 var collectBusiness = {};
+var applicationBusiness = {};
 var when = require('when');
+var toolsFactory = require('./Tools/tools.js');
 var dataFactory = require('../DataAccess/DataAccessFactory.js');
 var collectGoProBusiness = require('./goProBusinessFactory.js').goproBusiness;
+var log = toolsFactory.loggerFactory.collectLogger;
 exports.collectBusiness = collectBusiness;
+exports.applicationBusiness = applicationBusiness;
 
-collectBusiness.insertTest = function(stringName){
-  dataFactory.testBdd.insertTest(stringName);
-};
+/**
+* Enables to test database connectivityl
+*/
+applicationBusiness.databaseIsAlive = function(){
 
-collectBusiness.getAllTest = function(){
-  dataFactory.testBdd.getAllFromTest();
 };
 
 /**
@@ -23,17 +26,19 @@ collectBusiness.startCollect = function(){
 * Loop to collect data
 */
 function StartCollectLoop(){
+    log.info("Collect Loop starts")
     StartCollectGoPro()
     .then(function(){ console.log('Get Localisation'); return true; })
     .then(function(){ console.log('Get Temp'); return true; })
-    .then(function(){ setTimeout(StartCollectLoop, 10000);});
+    .then(function(){ log.info("End of collect sequences");setTimeout(StartCollectLoop, 10000);});
 };
 
 function StartCollectGoPro(){
   try{
+    log.info("Go Pro Collect Starts")
     return collectGoProBusiness.startNewCollect('10.5.5.9', 'Bouineur3.0',SavePictureOnBddCallBack);
   }catch(exception){
-    console.alert('GoPro Errors',exception);
+    log.alert('GoPro Collect Errors',exception);
     return true;
   }
 };
@@ -43,5 +48,9 @@ function StartCollectGoPro(){
 * @param picturePath : local picture path to save
 */
 function SavePictureOnBddCallBack(picturePath){
-    dataFactory.pictureFactory.insertPicture(Date.now(),picturePath);
+   try{
+     dataFactory.pictureFactory.insertPicture(Date.now(),picturePath);
+   }catch(exception){
+     log.alert('Error during picture database inserting',exception)
+   }
 };

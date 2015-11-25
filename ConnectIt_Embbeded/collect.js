@@ -8,6 +8,8 @@ var collectBusiness = require('./Business/businessFactory.js').collectBusiness;
 var log = toolsFactory.loggerFactory.collectLogger;
 
 log.info("Application Collect Start");
-collectBusiness.getAllTest();
-collectBusiness.insertTest("coucou "+ new Date());
-collectBusiness.getAllTest();
+try{
+  collectBusiness.startCollect();
+}catch(exception){
+  log.alert('Error during collect : ',collect);
+}
