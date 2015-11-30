@@ -1,7 +1,7 @@
 {
-  "name": "connectitclient",
+  "name": "connectitweb",
   "version": "1.0.0",
-  "description": "client of connect it project",
+  "description": "web part of connect it project",
   "main": "collect.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,17 +9,14 @@
   "author": "anthony dasse, florian leloup",
   "license": "ISC",
   "dependencies": {
-    "events": "^1.1.0",
+    "express": "^4.13.3",
     "fs": "0.0.2",
-    "gopro": "0.0.3",
     "grunt": "^0.4.5",
     "mongodb": "^2.0.47",
     "mongoose": "^4.2.3",
-    "path": "^0.12.7",
+    "multer": "^1.1.0",
     "requirejs": "^2.1.20",
-    "serialport": "^2.0.5",
     "underscore": "^1.8.3",
-    "when": "^3.7.4",
     "winston": "^1.1.1"
   }
 }

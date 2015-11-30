@@ -1,11 +1,14 @@
 var mongoose = require('mongoose');
-var toolsFactory = require('./Tools/tools.js');
+var toolsFactory = require('../Tools/tools.js');
+var log = toolsFactory.loggerFactory.collectLogger;
 var testBdd = {};
 var pictureFactory = {};
+var locationFactory = {};
 exports.testBdd = testBdd;
 exports.pictureFactory = pictureFactory;
+exports.locationFactory = locationFactory;
 
-mongoose.connect('mongodb://172.17.0.2/connectIt');
+mongoose.connect('mongodb://127.0.0.1/connectIt');
 
 //connection to database
 var db = mongoose.connection;
@@ -23,7 +26,10 @@ var schema = new mongoose.Schema({
 var locationSchema = new mongoose.Schema({
   datetime: { type: Date, default: Date.now() },
   longitude: Number,
-  latitude: Number
+  latitude: Number,
+  altitude : Number,
+  speed : Number,
+  status: String
 });
 
 var pictureShotSchema = new mongoose.Schema({
@@ -44,5 +50,13 @@ pictureFactory.insertPicture = function(date,path){
    create.save(function (err) {
     if (err) { throw err; }
     log.log('Pictures '+path+' inserted on database');
+  });
+};
+
+locationFactory.insertData = function(date, data){
+ var create = new locations({datetime: date,  longitude: data.longitude,  latitude: data.latitude,  altitude : data.altitude, speed : data.speed, ,status: 'created'});
+   create.save(function (err) {
+    if (err) { throw err; }
+    log.log('Location inserted on database');
   });
 };
