@@ -1,29 +1,17 @@
-var express = require('express');
-var fs = require('fs');
-var app = express();
+var io = require('socket.io');
+  var socket = io.connect('http://127.0.0.1:5001');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+  socket.on('connect', function(){
+    var delivery = new Delivery(socket);
 
-app.post('/picture', function (req, res) {
-  console.log("-> ",req.body);
-  res.send('Hello World!');
-});
+    delivery.on('receive.start',function(fileUID){
+      console.log('receiving a file!');
+    });
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
-
-/*
-
-curl \
-  -F "userid=1" \
-  -F "date=date" \
-  -F "image=@/home/anthony/test.png" \
-  localhost:3000/picture
-
-*/
+    delivery.on('receive.success',function(file){
+      if (file.isImage()) {
+        console.log("file ",file);
+        console.log("url", file.dataURL());
+      };
+    });
+  });
