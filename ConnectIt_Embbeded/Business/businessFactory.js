@@ -101,7 +101,16 @@ function SavePictureOnBddCallBack(picturePath){
 
 function SaveLocationOnBdd(){
   try{
-      dataFactory.locationFactory.insertData(currentDate,objLocation);
+
+    if(objLocation.lat_ref == 'S'){
+      objLocation.latitude = -1 * objLocation.latitude;
+    }
+
+    if(objLocation.long_ref == 'W'){
+      objLocation.longitude = -1 *  objLocation.longitude;
+    }
+
+    dataFactory.locationFactory.insertData(currentDate,objLocation);
   }catch(exception){
     log.alert('Error during location database inserting',exception)
   }

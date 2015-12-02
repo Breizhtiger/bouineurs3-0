@@ -54,7 +54,7 @@ pictureFactory.insertPicture = function(date,path){
 };
 
 locationFactory.insertData = function(date, data){
- var create = new locations({datetime: date,  longitude: data.longitude,  latitude: data.latitude,  altitude : data.altitude, speed : data.speed, ,status: 'created'});
+ var create = new locations({datetime: date,  longitude: data.longitude,  latitude: data.latitude,  altitude : data.altitude, speed : data.speed ,status: 'created'});
    create.save(function (err) {
     if (err) { throw err; }
     log.log('Location inserted on database');
