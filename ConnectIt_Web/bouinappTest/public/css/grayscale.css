@@ -278,7 +278,9 @@ a:focus {
 }
 
 .encart-sociaux {
-	float: right;
+	position: fixed;
+	bottom:20px;
+	right: 20px;
 }
 
 li.sociaux{
