@@ -277,27 +277,36 @@ a:focus {
     -moz-animation-timing-function: linear;
 }
 
+.encart-sociaux {
+	float: right;
+}
+
 li.sociaux{
 	list-style: none;
 	
 }
 a.e-sociaux {
 	height: 75px;
-	width: 80px;
+	width: 73px;
 	display: block;	
 }
 
 a.logo4L {
 	background-image: url(../img/logo4L.png);
+	background-repeat: no-repeat;
+	transition: none;
 }
 a.logoFb {
 	background-image: url(../img/logoFb.png);
+	transition: none;
 }
 a.logoInsta {
 	background-image: url(../img/logoInsta.png);
+	transition: none;
 }
 a.logoTwit{
 	background-image: url(../img/logoTwit.png);
+	transition: none;
 }
 
 a.e-sociaux:hover{ 
@@ -307,7 +316,7 @@ a.e-sociaux:hover{
 .sociaux {
 	display:inline-block;
 	height: 75px;
-	width: 80px;
+	width: 73px;
 }
 
 @-webkit-keyframes pulse {    
