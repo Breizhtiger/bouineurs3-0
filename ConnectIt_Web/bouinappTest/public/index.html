@@ -29,6 +29,17 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#nav-project a').on('click', function (e) {
+                e.preventDefault();
+                var page = $(this).attr('href');
+                $('#content-project').load(page);
+            });
+        });
+    </script>
+	
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -45,14 +56,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="navbar-header">
+          <!--  <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-              <!--  <a class="navbar-brand page-scroll" href="#page-top">
+    			<a class="navbar-brand page-scroll" href="#page-top">
                     <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
-                </a> -->
-            </div>
+                </a> 
+            </div> -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -65,7 +76,7 @@
                         <a class="page-scroll" href="#home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">Le Projet</a>
+                        <a class="page-scroll" href="#projet">Le Projet</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#download">On Live&iexcl;</a>
@@ -94,12 +105,12 @@
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<li data-target="carousel" data-slide-to="0" class="active"></li>
-								<li data-target="carousel" data-slide-to="1"></li>
-								<li data-target="carousel" data-slide-to="2"></li>
+								<li data-target="carousel" data-slide-to="1"></li></a>
+								<li data-target="carousel" data-slide-to="2"></li></a>
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner"> 
-								<div class="item active">
+								<div id="carousel1" class="item active">
 									<a href="#"><img src="http://placehold.it/750x385/000000"></a>
 										<div class="container">
 											<div class="carousel-caption">
@@ -108,7 +119,7 @@
 											</div>
 										</div>
 								</div>
-								<div class="item">
+								<div id="carousel2" class="item">
 									<a href="#"><img src="http://placehold.it/750x385/fff666"></a>
 										<div class="container">
 											<div class="carousel-caption">
@@ -117,7 +128,7 @@
 											</div>
 										</div>
 								</div>
-								<div class="item">
+								<div id="carousel3" class="item">
 									<a href="#"><img src="http://placehold.it/750x385/242424"></a>
 										<div class="container">
 											<div class="carousel-caption">
@@ -136,7 +147,7 @@
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
                         </div>
-						<a href="#about" class="btn btn-circle page-scroll">
+						<a href="#projet" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>					
@@ -144,22 +155,28 @@
             </div>			
         </div>
 		<div id="encart-sociaux" class="encart-sociaux">
-						<li class="sociaux"><a class="e-sociaux logo4L" href="#"></a></li>	
-						<li class="sociaux"><a class="e-sociaux logoFb" href="#"></a></li>		
-						<li class="sociaux"><a class="e-sociaux logoInsta" href="#"></a></li>		
-						<li class="sociaux"><a class="e-sociaux logoTwit" href="#"></a></li>		
-					</div>
+			<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>	
+			<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>		
+			<li class="sociaux"><a class="e-sociaux logoInsta" href="#"></a></li>		
+			<li class="sociaux"><a class="e-sociaux logoTwit" href="#"></a></li>		
+		</div>
     </header>
 
-    <!-- About Section -->
-	 <section id="about" class="about container content-section text-center">
+    <!-- Projet Section -->
+	 <section id="projet" class="projet container content-section text-center">
             <div class="container">
-                <div class="row">
-                   <div class="col-lg-8 col-lg-offset-2">
-						<h2>A propos des Bouineurs</h2>
-						<p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-						<p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-						<p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+				<div class="row">
+					<div id="nav-project" class="nav-project">
+						<ul>
+							<li><a href="page1.html">Page 1</a></li>
+							<li><a href="page2.html">Page 2</a></li>
+							<li><a href="page3.html">Page 3</a></li>
+							<li><a href="page4.html">Page 4</a></li>
+							<li><a href="page5.html">Page 5</a></li>
+						</ul>
+					</div>
+					<div id="content-project" class="content-project">
+						Welcome! Use the menu to navigate website.
 					</div>
                 </div>
             </div>
@@ -222,7 +239,7 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
+	<!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

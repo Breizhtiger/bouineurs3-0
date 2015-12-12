@@ -45,7 +45,7 @@ p {
 }
 
 a {
-    color: #42dca3;
+    color: #01DF01; 
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -54,7 +54,7 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #1d9b6c;
+    color: #fff;
 }
 
 .bande1{
@@ -117,8 +117,7 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #fff;
-	
+    color: #15e037;	
 }
 
 .navbar-custom .nav li a {
@@ -127,33 +126,30 @@ a:focus {
     transition: background .3s ease-in-out;
 	padding: 7px 0;	
 	border-bottom: 3px solid #FFFFFF ; 
-	
+    color: #fff;		
 }
 
 .navbar-custom .nav li a:hover {
     outline: 0;
-    color: rgba(255,255,255,.8);
+   /* color: rgba(255,255,255,.8);*/
     background-color: transparent;	
-	color: #fff;	
+/*	color: #fff;	*/
 	border-bottom: none;
 }
 
 .navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:active {
+.navbar-custom .nav li a:active {	
+	color: #15e037;	
     outline: 0;
     background-color: transparent;	
 	border-bottom: none;
 }
 
-.navbar-custom .nav li.active {
-    outline: 0;	
-	border-bottom: none;
-	color: #15e037;	
-}
 .navbar-custom .nav li {
     outline: 0;
 	margin-right: 40px;
 }
+
 .navbar-custom .nav li.active a {
 	color: #15e037;	
 	border-bottom: none;	
@@ -226,7 +222,7 @@ a:focus {
     }
 }
 
-.about {
+.projet {
 	height: 100%;
 	width: 100%;
 	background: url(../img/about-bg.jpg) no-repeat bottom center scroll;
@@ -278,7 +274,7 @@ a:focus {
 }
 
 .encart-sociaux {
-	position: fixed;
+	position: absolute;
 	bottom:20px;
 	right: 20px;
 }
@@ -353,6 +349,24 @@ a.e-sociaux:hover{
         -moz-transform: scale(1);
         transform: scale(1);
     }
+}
+
+.nav-project {
+	position: absolute;
+	left: 150px;
+	text-transform: uppercase;		
+    font-size: 30px;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #fff;
+}
+
+.nav-project li{
+	list-style-type: none;
+}
+
+.content-project {
+	position: absolute;
+	margin: 0 50px;
 }
 
 .content-section {
