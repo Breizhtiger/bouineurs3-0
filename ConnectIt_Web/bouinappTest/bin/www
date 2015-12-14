@@ -9,12 +9,13 @@ var debug = require('debug')('bouinapp:server');
 var http = require('http');
 var fs = require('fs');
 var ss = require('socket.io-stream');
+
 var path = require('path');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3015');
+var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**

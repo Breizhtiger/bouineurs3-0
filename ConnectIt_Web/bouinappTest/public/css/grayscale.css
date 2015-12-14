@@ -8,7 +8,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #01DF01;
+    color: #28D12B;
     background-color: #5858FA;
 }
 
@@ -45,11 +45,11 @@ p {
 }
 
 a {
-    color: #01DF01; 
+    color: #28D12B; 
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-}
+}s
 
 a:hover,
 a:focus {
@@ -60,28 +60,29 @@ a:focus {
 .bande1{
 	position: fixed; 
 	z-index: 4;
-	left: 100px; 
-	width: 30px;
+	left: 55px; 
+	width: 25px;
 	height: 100%;
-	background:#01DF01;
+	background:#28D12B;
 }
 .bande2{
 	position: fixed; 
 	z-index: 4;
-	left: 150px; 
-	width: 20px;
+	left: 100px; 
+	width: 18px;
 	height: 100%;
-	background:#01DF01;
+	background:#28D12B;
 }	
 .logobouineur{
 	position: fixed; 
 	z-index: 4;
-	left: 50px; 
+	left: 30px; 
 	top: 50px;
-	height: 177px;
-	width: 177px;
+	height: 110px;
+	width: 110px;
 	background-image:url(../img/logorond.png);
 	background-repeat:	no-repeat;
+	background-size: 110px 110px;
 }
 
 .light {
@@ -225,12 +226,14 @@ a:focus {
 .projet {
 	height: 100%;
 	width: 100%;
-	background: url(../img/about-bg.jpg) no-repeat bottom center scroll;
-    background-color: #000;
+	background: #00007D;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+	overflow-x: hidden;
+	padding-left:150px;
+	color:#fff;
 }
 
 .btn-circle {
@@ -352,26 +355,32 @@ a.e-sociaux:hover{
 }
 
 .container-project {
-    background: rgba(255,255,255,.2);
-/*	margin-left: 150px;*/
-	padding: 10px 10px 10px 0;
 }
 
 .nav-project {
-	float: left;
-	padding: 0 20px 20px 0;
 	text-transform: uppercase;		
     font-size: 30px;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	color: #fff;
+	background: none;
+}
+
+.nav-project ul{
+	margin:0;
+	padding: 0;
+	text-align: left;
 }
 
 .nav-project li{
 	list-style-type: none;
 }
 
+.nav-project li > a{
+	color:#fff;
+	
+}
 .content-project {
-	margin: 0 50px;
+		background: rgba(255,255,255,.2);
 }
 
 .content-section {
