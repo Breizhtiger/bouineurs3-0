@@ -20,4 +20,11 @@ router.get('/positions', function(req, res, next) {
   ]);
 });
 
+/* GET users listing. */
+router.get('/messages', function(req, res, next) {
+  //ici ton code qui récupère de la bdd
+  var message = 'un truc venant de la BDD, l heure (en timestamp): '+Date.now();
+  res.send(message);
+});
+
 module.exports = router;

@@ -40,13 +40,13 @@
         });
     </script>
 	<script type="text/javascript" src="js/recupMongo.js"></script>
-	
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-	<div class="bande1">		
-	</div>	
-	<div class="bande2">		
+	<div class="bande1">
+	</div>
+	<div class="bande2">
 	</div>
 	<div class="logobouineur">
 	</div>
@@ -61,7 +61,7 @@
                 </button>
     			<a class="navbar-brand page-scroll" href="#page-top">
                     <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
-                </a> 
+                </a>
             </div> -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -98,7 +98,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Bouineurs 3.0</h1>
                        <!-- <p class="intro-text">4L Trophee<br>Created by Lutine</p> -->
-						
+
 						<!-- Carousel -->
 						<div id="carousel" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
@@ -108,13 +108,13 @@
 								<li data-target="#carousel" data-slide-to="2"></li></a>
 							</ol>
 							<!-- Wrapper for slides -->
-							<div class="carousel-inner"> 
+							<div class="carousel-inner">
 								<div id="carousel1" class="item active">
 									<a href="#"><img src="http://placehold.it/750x385/000000"></a>
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>Purple</h1>
-												<p>Hum, nice.</p>
+												<p id="fromWS"></p>
 											</div>
 										</div>
 								</div>
@@ -137,7 +137,7 @@
 										</div>
 								</div>
 							</div>
-							
+
 							<!-- Controls -->
 								<a class="left carousel-control" href="#carousel" data-slide="prev">
 									<span class="glyphicon glyphicon-chevron-left"></span>
@@ -149,15 +149,15 @@
 						<a href="#projet" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
-                    </div>					
+                    </div>
                 </div>
-            </div>			
+            </div>
         </div>
 		<div id="encart-sociaux" class="encart-sociaux">
-			<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>	
-			<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>		
-			<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>		
-			<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>		
+			<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>
+			<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
+			<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
+			<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>
 		</div>
     </header>
 
@@ -180,7 +180,7 @@
 				 </div>
 			</div>
 		 </section>
-		
+
 	<!-- <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -200,7 +200,7 @@
                    <h2>On Live !</h2>
 						<div id="recupMongo">
 							retour mongo : <%= comms[0].pseudo%>
-						</div>						
+						</div>
                     </div>
             </div>
         </div>
@@ -253,7 +253,11 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
-
+    <script>
+      $.get( "http://localhost:8080/users/messages", function( data ) {
+          $("p#fromWS").append(data);
+      });
+    </script>
 </body>
 
 </html>
