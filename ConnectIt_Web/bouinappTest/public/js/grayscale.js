@@ -34,6 +34,7 @@ $('.navbar-collapse ul li a').click(function() {
 google.maps.event.addDomListener(window, 'load', init);
 
 function init() {
+
   var myLatLng = {lat: -25.363, lng: 131.044};
 
   // Create a map object and specify the DOM element for display.
@@ -43,6 +44,15 @@ function init() {
     zoom: 4
   });
 
+  $.get( "http://localhost:8080/users/positions", function( data ) {
+      for(var i=0;i < data.length;i++){
+        var marker = new google.maps.Marker({
+          map: map,
+          position: data[i],
+          title: 'Hello World indice :'+i
+        });
+      }
+    });
   // Create a marker and set its position.
   var marker = new google.maps.Marker({
     map: map,
@@ -63,7 +73,7 @@ function init() {
 //        scrollwheel: false,
 //        draggable: false,
 //
-//        // How you would like to style the map. 
+//        // How you would like to style the map.
 //        // This is where you would paste any style found on Snazzy Maps.
 //        styles: [{
 //            "featureType": "water",
@@ -175,7 +185,7 @@ function init() {
 //        }]
 //    };
 //
-//    // Get the HTML DOM element that will contain your map 
+//    // Get the HTML DOM element that will contain your map
 //    // We are using a div with id="map" seen below in the <body>
 //    var mapElement = document.getElementById('map');
 //
