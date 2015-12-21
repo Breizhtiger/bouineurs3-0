@@ -39,7 +39,7 @@
             });
         });
     </script>
-	<script type="text/javascript" src="js/recupMongo.js"></script>
+	
 
 </head>
 
@@ -110,7 +110,7 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div id="carousel1" class="item active">
-									<a href="#"><img src="http://placehold.it/750x385/000000"></a>
+									<a href="#"><img src="fromWS"></a>
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>Purple</h1>
@@ -199,7 +199,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                    <h2>On Live !</h2>
 						<div id="recupMongo">
-							retour mongo : <%= comms[0].pseudo%>
+							<p id="fromWS"></p>
 						</div>
                     </div>
             </div>
@@ -254,7 +254,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
     <script>
-      $.get( "http://localhost:8080/users/messages", function( data ) {
+      $.get( "http://localhost:8080/users/images", function( data ) {
           $("p#fromWS").append(data);
       });
     </script>
