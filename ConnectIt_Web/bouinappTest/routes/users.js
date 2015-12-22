@@ -74,7 +74,7 @@ router.get('/images', function(req, res, next) {
   var query = imagePropertiesModel.find(null); 
 	query.exec(function (err, images) {
 		if (err) { throw err; }
-		res.send(images[0].path + images[0].name);
+		res.send(images[0].name);
 	});
 });
 
