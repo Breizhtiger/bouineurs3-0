@@ -49,14 +49,26 @@ pictureFactory.insertPicture = function(date,path){
  var create = new pictures({datetime: date,localPath: path ,status: 'created'});
    create.save(function (err) {
     if (err) { throw err; }
-    log.log('Pictures '+path+' inserted on database');
+    log.info('Pictures '+path+' inserted on database');
   });
+};
+
+pictureFactory.getPictureToSend = function(callback){
+  pictures.find({status: 'created'}).sort('datetime').limit(1).exec(callback);
+};
+
+
+locationFactory.getOneLocationByFilter = function(filter,callback){
+    locations.find(filter).sort('datetime').limit(1).exec(callback);
+};
+locationFactory.updateStatusLocation = function(data,newStatus){
+  //todo
 };
 
 locationFactory.insertData = function(date, data){
  var create = new locations({datetime: date,  longitude: data.longitude,  latitude: data.latitude,  altitude : data.altitude, speed : data.speed ,status: 'created'});
    create.save(function (err) {
     if (err) { throw err; }
-    log.log('Location inserted on database');
+    log.info('Location inserted on database');
   });
 };
