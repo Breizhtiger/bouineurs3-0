@@ -24,8 +24,6 @@ loggerFactory.collectLogger = new (winston.Logger)({
       new (winston.transports.File)({ filename: 'collect_logs.log' })
     ]
   });
-
-
 /*LoggerFactory*/
 loggerFactory.provisioningLogger = new (winston.Logger)({
       transports: [
@@ -33,6 +31,15 @@ loggerFactory.provisioningLogger = new (winston.Logger)({
         new (winston.transports.File)({ filename: 'provisioning_logs.log' })
       ]
 });
+
+/*LoggerFactory*/
+loggerFactory.dashboardLogger = new (winston.Logger)({
+      transports: [
+        new (winston.transports.Console)(),
+        new (winston.transports.File)({ filename: 'dashboard_logs.log' })
+      ]
+});
+
 
 socketFactory.pictureExist = function fileExists(filePath){
   try{
