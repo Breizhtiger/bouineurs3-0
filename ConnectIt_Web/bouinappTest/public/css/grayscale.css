@@ -152,6 +152,7 @@ a:focus {
 	padding: 7px 0 15px 0;	
     color: #fff;	
 	font-weight: bold;
+	font-style: italic;
 	border-bottom: 15px solid transparent ;
 }
 
@@ -418,12 +419,23 @@ a:focus {
 
 }
 .btn-menu-projet:hover {
-		background: #ffffff;
+	cursor:  pointer;
+	background: #ffffff;
 	color: #2c578e;
 }
-.btn-menu-projet.active a {
-	background: #red;
+
+.menu-projet li {
+	list-style-type: none;
+}
+
+.current {
+	display: block;
+	background: #fff;
 	color: #2c578e;
+}
+
+.contenu {
+	display: none;
 }
 
 .content-project {

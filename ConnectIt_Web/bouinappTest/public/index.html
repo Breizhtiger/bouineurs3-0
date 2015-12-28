@@ -37,12 +37,6 @@
 			});
         });
     </script>
-	<script>
-		$('.titre').click(function(){
-		  $('.contenu').hide();
-		  $(".contenu[title='+this.title+']").show();
-		});
-	</script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -205,15 +199,15 @@
 						  La voiture
 						</button> -->
 						
-						<button type="button" title="quatreL" class="titre btn-menu-projet" data-toggle="collapse" data-target="#quatreL">
-						  Le 4L Trophy
-						</button>
-						<button type="button" title="equipage" class="titre btn-menu-projet" data-toggle="collapse" data-target="#equipage">
-						  L'équipage
-						</button>		
-						<button type="button" title="voiture" class="titre btn-menu-projet" data-toggle="collapse" data-target="#voiture">
-						  La voiture
-						</button>
+						<li id="current-onload" type="button" title="quatreL" class="titre btn-menu-projet"><!-- data-toggle="collapse" data-target="#quatreL">-->
+						  <span class="">Le 4L Trophy</span>
+						</li>
+						<li type="button" title="equipage" class="titre btn-menu-projet"><!-- data-toggle="collapse" data-target="#equipage">-->
+						  <span class="">L'équipage</span>
+						</li>		
+						<li type="button" title="voiture" class="titre btn-menu-projet"><!-- data-toggle="collapse" data-target="#voiture">-->
+						  <span class="">La voiture</span>
+						</li>
 					</div> 
 					<div class="content-project box col-xs-9 col-sm-9 col-md-9 col-lg-9">
 						<div id="quatreL" title="quatreL" class="contenu collapse in">
@@ -335,6 +329,19 @@
 		$("img#fromWS2").attr("src",data[2]);
       });
     </script>
+	<script>
+		$(document).ready(function(){			
+			$(".contenu").hide();
+			$(".contenu[title='quatreL']").show();			
+			$("#current-onload").toggleClass('current');
+		});
+		$(".titre").click(function(){
+			$(".contenu").hide();
+			$(".contenu[title="+this.title+"]").show();
+			$('*').removeClass("current");
+			$(this).toggleClass("current");
+		});
+	</script>
 </body>
 
 </html>
