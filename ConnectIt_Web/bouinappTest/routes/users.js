@@ -68,13 +68,25 @@ var imagePropertiesShema = new mongoose.Schema({
 var imagePropertiesModel = mongoose.model('image', imagePropertiesShema);
  
  
+// router.get('/images', function(req, res, next) {
+  // //ici ton code qui récupère de la bdd
+ // // var message = 'un truc venant de la BDD, l heure (en timestamp): '+Date.now();
+  // var query = imagePropertiesModel.find(null); 
+	// query.exec(function (err, images) {
+		// if (err) { throw err; }
+		// res.send(images[5].name);
+	// });
+// });
+
 router.get('/images', function(req, res, next) {
   //ici ton code qui récupère de la bdd
  // var message = 'un truc venant de la BDD, l heure (en timestamp): '+Date.now();
-  var query = imagePropertiesModel.find(null); 
+  var query = imagePropertiesModel.find(null).limit(3).sort({date: -1}); 
 	query.exec(function (err, images) {
 		if (err) { throw err; }
-		res.send(images[0].name);
+		var photos = [];
+		photos.push(images[0].name,images[1].name,images[2].name);
+		res.send(photos);
 	});
 });
 

@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
-
+	
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -31,41 +31,73 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>
-        $(function () {
-            $('#nav-project a').on('click', function (e) {
-                e.preventDefault();
-                var page = $(this).attr('href');
-                $('#content-project').load(page);
-            });
+		$(function () {
+		   $(document).ready(function(){
+                $('#content-project').load('letrophy.html');
+			});
         });
     </script>
-	
-
+	<script>
+		$('.titre').click(function(){
+		  $('.contenu').hide();
+		  $(".contenu[title='+this.title+']").show();
+		});
+	</script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-	<div class="bande1">
+	<div class="bande1 hidden-xs">
 	</div>
-	<div class="bande2">
+	<div class="bande2 hidden-xs">
 	</div>
-	<div class="logobouineur">
+	<div class="logobouineur hidden-xs">
 	</div>
 
+	<div class="blue-band-left hidden-xs col-md-2 col-mg-4">
+	</div>
+	
 
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
-          <!--  <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+            <div class="navbar-header visible-xs">
+				<div class="mini-logobouineur"></div>
+               <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
     			<a class="navbar-brand page-scroll" href="#page-top">
                     <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
-                </a>
-            </div> -->
+                </a> -->		
+            </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+			<div class="navbar visible-xs navbar-custom-phone">
+				<div class="dropdown-custom">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+							Menu
+						</a>
+						<ul class="dropdown-menu">
+							<li class="hidden">
+								<a href="#page-top"></a>
+							</li>
+							<li>
+								<a class="page-scroll" href="#home">Home</a>
+							</li>
+							<li>
+								<a class="page-scroll" href="#projet" id="id-projet">Le Projet</a>
+							</li>
+							<li>
+								<a class="page-scroll" href="#download">On Live&iexcl;</a>
+							</li>
+							<li>
+								<a class="page-scroll" href="#contact">Sponsors</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+			
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
@@ -75,7 +107,7 @@
                         <a class="page-scroll" href="#home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#projet">Le Projet</a>
+                        <a class="page-scroll" href="#projet" id="id-projet">Le Projet</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#download">On Live&iexcl;</a>
@@ -89,14 +121,14 @@
         </div>
         <!-- /.container -->
     </nav>
-
+	
     <!-- Intro Header -->
     <header id="home" class="intro">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Bouineurs 3.0</h1>
+                        <!-- <h1 class="brand-heading">Bouineurs 3.0</h1> -->
                        <!-- <p class="intro-text">4L Trophee<br>Created by Lutine</p> -->
 
 						<!-- Carousel -->
@@ -110,7 +142,8 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div id="carousel1" class="item active">
-									<a href="#"><img src="fromWS" id="fromWS"></a>
+									<a href="#"><img src="" id="fromWS"></a>									
+									<!-- <a href="#"><img src="http://placehold.it/750x385/425364"></a> -->
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>91 Styles</h1>
@@ -118,7 +151,8 @@
 										</div>
 								</div>
 								<div id="carousel2" class="item">
-									<a href="#"><img src="http://placehold.it/750x385/fff666"></a>
+									<a href="#"><img src="" id="fromWS1"></a>
+									<!-- <a href="#"><img src="http://placehold.it/750x385/fff666"></a> -->
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>White</h1>
@@ -127,7 +161,8 @@
 										</div>
 								</div>
 								<div id="carousel3" class="item">
-									<a href="#"><img src="test.png"></a>
+									<a href="#"><img src="" id="fromWS2"></a>								
+									<!-- <a href="#"><img src="http://placehold.it/750x385/968542"></a> -->
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>Le Mans Styles</h1>
@@ -145,37 +180,75 @@
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
                         </div>
-						<a href="#projet" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
+						 <!-- Bouton projet qui descend à la page d'en dessous -->
+							 <!-- <a href="#projet" class="btn btn-circle page-scroll">
+									<i class="fa fa-angle-double-down animated"></i>
+								  </a> -->
                     </div>
                 </div>
             </div>
         </div>
-		<div id="encart-sociaux" class="encart-sociaux">
-			<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>
-			<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
-			<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
-			<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>
-		</div>
     </header>
 
     <!-- Projet Section -->
 	 <section id="projet" class="projet container content-section text-center">
-			<div class="container container-project">
-				<div class="row">
-					<div id="nav-project" class="nav-project col-md-2">
-						<ul>
-							<li><a href="page1.html">Page 1</a></li>
-							<li><a href="page2.html">Page 2</a></li>
-							<li><a href="page3.html">Page 3</a></li>
-							<li><a href="page4.html">Page 4</a></li>
-							<li><a href="page5.html">Page 5</a></li>
-						</ul>
+			<div class="container container-project col-md-12">
+				<div class="row same-height">
+					<div class="menu-projet box col-xs-1 col-sm-1 col-md-3 col-lg-3">
+			<!-- 			<button type="button" class="btn-menu-projet" data-toggle="collapse" data-target="#quatreL">
+						  Le 4L Trophy
+						</button>
+						<button type="button" class="btn-menu-projet" data-toggle="collapse" data-target="#equipage">
+						  L'équipage
+						</button>		
+						<button type="button" class="btn-menu-projet" data-toggle="collapse" data-target="#voiture">
+						  La voiture
+						</button> -->
+						
+						<button type="button" title="quatreL" class="titre btn-menu-projet" data-toggle="collapse" data-target="#quatreL">
+						  Le 4L Trophy
+						</button>
+						<button type="button" title="equipage" class="titre btn-menu-projet" data-toggle="collapse" data-target="#equipage">
+						  L'équipage
+						</button>		
+						<button type="button" title="voiture" class="titre btn-menu-projet" data-toggle="collapse" data-target="#voiture">
+						  La voiture
+						</button>
+					</div> 
+					<div class="content-project box col-xs-9 col-sm-9 col-md-9 col-lg-9">
+						<div id="quatreL" title="quatreL" class="contenu collapse in">
+							<span class="description"><p>Créé en 1996 par des étudiantes de l'ESC Rennes, le 4L Trophy a su s'imposer comme l'évènement sportif et humanitaire le plus important d'Europe.
+								Tous les ans, de plus en plus d'étudiants participent à cette aventure à travers le désert marocain.</p>
+								</br>
+								<p>Le rallye raid 4L Trophy a pour objectif de venir en aide aux enfants défavorisés du Maroc via l'apport de fournitures scolaires et sportives.
+								En plus du côté humanitaire, cette aventure est également un incroyable challenge sportif. Durant 15 jours, nous allons traverser la France puis l'Espagne pour enfin rallier le Maroc où nous serons parfois livrés à nous même au beau milieu du désert. </p>
+								</br>
+								<p>Cette année encore, la 19e édition du rallye se déroulera du 18 au 28 février 2016.</p>
+							</span>
+						</div>
+						<div id="equipage" title="equipage" class="contenu collapse in">
+							<table class="description desc-Flo">
+								<tr>
+									<td width="264px"><img src="../img/id-Flo.jpg"></td>
+									<td width="100%" class="cell-Flo"><p> Florian LELOUP - 24 ans </br></br> Originaire du Mans, j'occupe actuellement un poste d'ingénieur en informatique sur Rennes. Sportif, désireux d'apprendre, la soif d'aventure est déterminante dans ce projet !</p></td>
+								</tr>
+							</table>
+							<table class="description">
+								<tr>
+									<td width="100%" class="cell-Adrien"><p>Adrien LAMBERT - 24 ans </br></br> Je suis actuellement infographiste à Paris. J'aime beaucoup la musique, le cinéma et glomalement créer d e mes mains. Le 4L Trophy est un évènement que je suis depuis longtemps. Etant originaire duMans le sport automobile et la conduite me passionnent. </p>
+								</td>
+									<td width="264px"><img src="../img/id-Ad.jpg"></td>
+								</tr>
+							</table>
+						</div>
+						<div id="voiture" title="voiture" class="contenu collapse in"> La voiture</div>
 					</div>
-					<div id="content-project" class="content-project col-md-10">
-						Welcome! Use the menu to navigate website.
-					</div>
+					<div id="encart-sociaux" class="encart-sociaux col-md-12">
+					<!--	<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>-->
+							<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
+							<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>						
+							<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
+						</div>
 				 </div>
 			</div>
 		 </section>
@@ -196,12 +269,13 @@
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-                   <h2>On Live !</h2>
-						<div id="recupMongo">
-						</div>
-                    </div>
-            </div>
-        </div>
+					<div class="section-projet">
+					   <h2>On Live !</h2>
+							
+					</div>
+				</div>
+			</div>
+        </div>		
     </section>
 
     <!-- Contact Section -->
@@ -251,10 +325,14 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
+	
     <script>
-      $.get( "http://www.bouineurs3-0.fr/users/images", function( data ) {
+      $.get( "http://localhost/users/images", function( data ) {
 		<!--  $("p#fromWS").append(data); -->
-		  $("img#fromWS").attr("src",data);
+		  <!-- $("img#fromWS").attr("src",data); -->
+		 $("img#fromWS").attr("src",data[0]);
+		$("img#fromWS1").attr("src",data[1]);
+		$("img#fromWS2").attr("src",data[2]);
       });
     </script>
 </body>

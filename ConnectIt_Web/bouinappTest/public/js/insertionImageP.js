@@ -23,9 +23,9 @@ var imagePropertiesModel = mongoose.model('images', imagePropertiesShema);
  
 
 // On crée une instance du Model
-var monImage = new imagePropertiesModel({ name : 'prout4.jpg' });
-monImage.path = '/home/pouet/';
- 
+var monImage = new imagePropertiesModel({ name : 'test.png' });
+monImage.path = 'public/images/';
+
 // On le sauvegarde dans MongoDB !
 monImage.save(function (err) {
   if (err) { throw err; }
