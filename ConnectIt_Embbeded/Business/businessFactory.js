@@ -12,8 +12,10 @@ var collectGoProBusiness = require('./goProBusinessFactory.js').goproBusiness;
 var GPS = require('./gpsBusinessFactory.js');
 var log = toolsFactory.loggerFactory.collectLogger;
 var socketTools = toolsFactory.socketFactory;
+var fsTools = toolsFactory.fsFactory;
 
-var provisioningDelay = 7000;
+
+var provisioningDelay = 20000;
 var collectDelay = 5000;
 var goProIp = '10.5.5.9';
 var goProPassword = 'Bouineur3.0';
@@ -52,10 +54,18 @@ function managePictureToSend(err,result){
     log.alert('Manage Picture To Send Errors',err);
     //return handleError(err); je laisse en commentaite pour un test
   }else{
-    log.info('Try to send photo at ',+result[0].datetime);
-    //je sauvegarde la photo actuelle
-    actualPictureToSend = result[0];
-    getLocationForPicture(result[0]);
+    if(result != null){
+      log.info('Try to send photo at ',+result.datetime);
+      //je sauvegarde la photo actuelle
+      actualPictureToSend = result;
+      getLocationForPicture(actualPictureToSend);
+    }else{
+        actualPictureToSend = null;
+        log.info("Nothing to send ...");
+        // Re start the provisioning
+        setTimeout(getPictureToSend,provisioningDelay);
+    }
+
   }
 };
 
@@ -64,6 +74,11 @@ function managePictureToSend(err,result){
 */
 function saveProvisioningKO(){
   log.info("Errors during data sending, disable entries");
+  var dateOfData = actualPictureToSend.datetime;
+  dataFactory.pictureFactory.updateStatusPictureByDatetime(dateOfData,"Errors");
+  dataFactory.locationFactory.updateStatusLocationByDatetime(dateOfData,"Errors");
+  // Re start the provisioning
+  setTimeout(getPictureToSend,provisioningDelay);
 };
 
 /*
@@ -71,6 +86,9 @@ function saveProvisioningKO(){
 */
 function saveProvisioningOK(){
     log.info("Ok, change status of entries");
+    var dateOfData = actualPictureToSend.datetime;
+    dataFactory.pictureFactory.updateStatusPictureByDatetime(dateOfData,"Send");
+    dataFactory.locationFactory.updateStatusLocationByDatetime(dateOfData,"Send");
 };
 
 /*
@@ -81,11 +99,20 @@ function manageLocationToSend(err,result){
   if(err){
     saveProvisioningKO();
   }else{
-    log.info('Location to send :',result[0]);
-    if(socketTools.pictureExist(actualPictureToSend.localPath)){
-        sendFullData(actualPictureToSend,result[0]);
+    if(result != null){
+      log.info('Location to send');
+      if(socketTools.pictureExist(actualPictureToSend.localPath)){
+          sendFullData(actualPictureToSend,result);
+      }else{
+          saveProvisioningKO();
+      }
     }else{
-        saveProvisioningKO();
+      log.info('No Location to send');
+      if(socketTools.pictureExist(actualPictureToSend.localPath)){
+          sendFullData(actualPictureToSend,null);
+      }else{
+          saveProvisioningKO();
+      }
     }
   }
 };
@@ -115,12 +142,37 @@ function sendFullData(pictureInformation, locationInformation){
     socketTools.sendFullData(pictureInformation,locationInformation);
     saveProvisioningOK();
   }catch(exception){
-    log.alert("Exception during data sending",exception)
+    log.info("Exception during data sending",exception)
   }
+  deletePictureOfFS(pictureInformation);
   // Re start the provisioning
   setTimeout(getPictureToSend,provisioningDelay);
 };
 
+/**
+* Delete the picture of the filesystem
+* ONLY if this is not the last pictures and if she is not "created"
+*/
+function deletePictureOfFS(pictureInformation){
+   dataFactory.pictureFactory.getLastPicture(function(err,result){
+     if(err){
+       console.log("Une erreur ",err)
+
+
+     }else{
+        if(result != null && result._id == pictureInformation._id){
+            //on ne supprime pas la photos car c'est la dernière
+            console.log("c'est la dernière photo, on la supprime pas . La derniere est "+result._id);
+        }else{
+          console.log("c'est pas la dernière photo, on peut la supprimer La derniere est "+result._id);
+          //pas la dernière, on peut la supprimer
+          fsTools.deletePicture(pictureInformation.localPath);
+        }
+       }
+
+   });
+
+};
 
 
 

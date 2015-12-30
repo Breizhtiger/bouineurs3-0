@@ -11,7 +11,7 @@ mongo 172.17.0.1:27017
 mongo 127.0.0.1/connectIt:27017
 use connectIt
 db.pictures.find();
-
+db.pictures.remove({"status":"created"});
 
 //create test database
 use test

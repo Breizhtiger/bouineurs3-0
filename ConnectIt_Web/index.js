@@ -1,17 +1,33 @@
-var io = require('socket.io');
-  var socket = io.connect('http://127.0.0.1:5001');
+/*var io  = require('socket.io').listen(5001),
+    dl  = require('delivery'),
+    fs  = require('fs');
 
-  socket.on('connect', function(){
-    var delivery = new Delivery(socket);
+io.sockets.on('connection', function(socket){
+  var delivery = dl.listen(socket);
+  delivery.on('receive.success',function(file){
 
-    delivery.on('receive.start',function(fileUID){
-      console.log('receiving a file!');
-    });
-
-    delivery.on('receive.success',function(file){
-      if (file.isImage()) {
-        console.log("file ",file);
-        console.log("url", file.dataURL());
+    fs.writeFile(file.name,file.buffer, function(err){
+      if(err){
+        console.log('File could not be saved.');
+      }else{
+        console.log('File saved.');
       };
     });
   });
+});
+*/
+var io = require('socket.io').listen(5555);
+var ss = require('socket.io-stream');
+var path = require('path');
+var fs = require('fs');
+
+io.of('/user').on('connection', function(socket) {
+  console.log('socket');
+  ss(socket).on('profile-image', function(stream, data) {
+    console.log(data.name);
+    var filename = path.basename(data.name);
+    stream.pipe(fs.createWriteStream(filename));
+  });
+
+
+});

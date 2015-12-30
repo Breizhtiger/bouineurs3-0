@@ -54,15 +54,43 @@ pictureFactory.insertPicture = function(date,path){
 };
 
 pictureFactory.getPictureToSend = function(callback){
-  pictures.find({status: 'created'}).sort('datetime').limit(1).exec(callback);
+  pictures.count({status: 'created'},function(err,count){
+        log.info("There are  potential pictures to send :",count);
+  });
+
+  pictures.findOne({status: 'created'}).sort('datetime').exec(callback);
 };
+
+
+pictureFactory.getLastPicture = function(callback){
+  pictures.findOne().sort({ datetime : 'desc' }).exec(callback);
+};
+
+pictureFactory.updateStatusPictureByDatetime = function(datetime,newStatus){
+    pictures.findOneAndUpdate({"datetime":datetime}, {"status":newStatus} ,function(err){
+      if(err){
+          log.alert('Errors during picture data updating : ',err);
+      }else{
+        log.info('Picture status successfully update with '+newStatus);
+      }
+    });
+};
+
 
 
 locationFactory.getOneLocationByFilter = function(filter,callback){
-    locations.find(filter).sort('datetime').limit(1).exec(callback);
+    locations.findOne(filter).sort('datetime').exec(callback);
 };
-locationFactory.updateStatusLocation = function(data,newStatus){
-  //todo
+
+
+locationFactory.updateStatusLocationByDatetime = function(datetime,newStatus){
+  locations.findOneAndUpdate({"datetime":datetime}, {"status":newStatus} ,function(err){
+    if(err){
+        log.alert('Errors during location data updating : ',err);
+    }else{
+      log.info('Location status successfully update with '+newStatus);
+    }
+  });
 };
 
 locationFactory.insertData = function(date, data){
