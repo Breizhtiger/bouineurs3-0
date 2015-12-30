@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Bouineurs Web Site">
+    <meta name="author" content="Lutine Powa">
 
     <title>Bouineurs - 4L Trophy</title>
 
@@ -81,11 +81,11 @@
 							</li>							
 							<li role="separator" class="divider"></li>
 							<li>
-								<a class="page-scroll" href="#download">On Live&iexcl;</a>
+								<a class="page-scroll" href="#onlive">On Live&iexcl;</a>
 							</li>							
 							<li role="separator" class="divider"></li>
 							<li>
-								<a class="page-scroll" href="#contact">Sponsors</a>
+								<a class="page-scroll" href="#sponsors">Sponsors</a>
 							</li>
 						</ul>
 				</div>
@@ -104,10 +104,10 @@
                         <a class="page-scroll" href="#projet" id="id-projet">Le Projet</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download">On Live&iexcl;</a>
+                        <a class="page-scroll" href="#onlive">On Live&iexcl;</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Sponsors</a>
+                        <a class="page-scroll" href="#sponsors">Sponsors</a>
                     </li>
                 </ul>
             </div>
@@ -136,8 +136,8 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div id="carousel1" class="item active">
-									<a href="#"><img src="" id="fromWS"></a>									
-									<!-- <a href="#"><img src="http://placehold.it/750x385/425364"></a> -->
+									<!--<a href="#"><img src="" id="fromWS"></a>	-->								
+									 <a href="#"><img src="http://placehold.it/2592x1944/425364"></a> 
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>91 Styles</h1>
@@ -145,8 +145,8 @@
 										</div>
 								</div>
 								<div id="carousel2" class="item">
-									<a href="#"><img src="" id="fromWS1"></a>
-									<!-- <a href="#"><img src="http://placehold.it/750x385/fff666"></a> -->
+									<!-- <a href="#"><img src="" id="fromWS1"></a> -->
+									<a href="#"><img src="http://placehold.it/2592x1944/fff666"></a>
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>White</h1>
@@ -155,8 +155,8 @@
 										</div>
 								</div>
 								<div id="carousel3" class="item">
-									<a href="#"><img src="" id="fromWS2"></a>								
-									<!-- <a href="#"><img src="http://placehold.it/750x385/968542"></a> -->
+									<!-- <a href="#"><img src="" id="fromWS2"></a>	-->							
+									<a href="#"><img src="http://placehold.it/2592x1944/968542"></a>
 										<div class="container">
 											<div class="carousel-caption">
 												<h1>Le Mans Styles</h1>
@@ -267,25 +267,22 @@
         </div>
     </section> -->
 
-    <!-- Download Section -->
-    <section id="download" class="content-section text-center">
-        <div class="download-section">
+    <!-- Onlive Section -->
+    <section id="onlive" class="content-section text-center">
+        <div class="onlive-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-					<div class="section-projet">
-					   <h2>On Live !</h2>
-							
-					</div>
+				   <h2>On Live !</h2>
 				</div>
 			</div>
         </div>		
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
+                <h2>sponsors Start Bootstrap</h2>
                 <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
                 <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
                 </p>
@@ -316,12 +313,13 @@
 
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
+	
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
@@ -329,8 +327,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
 	
-    <script>
-      $.get( "http://localhost/users/images", function( data ) {
+    <script><!-- http://localhost/users/images -->
+      $.get( "http://www.bouineurs3-0.fr/users/images", function( data ) {
 		<!--  $("p#fromWS").append(data); -->
 		  <!-- $("img#fromWS").attr("src",data); -->
 		 $("img#fromWS").attr("src",data[0]);
