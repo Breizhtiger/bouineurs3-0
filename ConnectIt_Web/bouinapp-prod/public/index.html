@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bouineurs Web Site">
+    <meta name="author" content="Lutine Powa">
+
+    <title>Bouineurs 3.0 - 4L Trophy</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+	
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<div class="bande1 hidden-xs hidden-sm">
+	</div>
+	<div class="bande2 hidden-xs hidden-sm">
+	</div>
+	<div class="logobouineur hidden-xs hidden-sm">
+	</div>
+	<div class="blue-band-left hidden-xs hidden-sm col-md-2 col-mg-4">
+	</div>
+	
+    <!-- Intro Header -->
+    <header id="home" class="intro">
+        <div class="intro-body">
+            <div class="container full-height">
+                <div class="row">
+                	<div class="col-md-12">
+                  	<h1>BOUINEURS 3.0</h1>								
+                  </div>
+                </div>
+					<div class="row" style="margin-top:10%">                		
+						<h2 class="start">Départ 4L Trophy:</h2>
+						<div class="col-md-12 col-lg-12	 col-xs-12 countDown countDownTrophy"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+	
+	<!-- jQuery -->
+    <script src="js/jquery.js"></script>
+	
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="JS/jquery.countdown.js"></script>
+   
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+	
+    <script>
+     $(function() {
+		 $('.countDownTrophy').countdown({
+			  date:  new Date("February 16, 2016 12:00:00"),
+			 	render: function(data) {
+            $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>jours</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>heures</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+          }
+		 });
+		  
+		  
+	  });
+	</script>
+</body>
+
+</html>
