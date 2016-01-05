@@ -3173,6 +3173,25 @@ fieldset[disabled] .btn-primary.focus {
   color: #337ab7;
   background-color: #fff;
 }
+.btn-pink {
+  color: #EF0000;
+  background-color: #FF7599;
+  border-color: #FB4272;
+}
+.btn-pink:focus,
+.btn-pink.focus {
+  color: #EF0000;
+  background-color: #FF7599;
+  border-color: #FB4272;
+}
+.btn-pink:hover {
+  color: #EF0000;
+  background-color: #FF7599;
+  border-color: #FB4272;
+}
+
+
+
 .btn-success {
   color: #fff;
   background-color: #5cb85c;

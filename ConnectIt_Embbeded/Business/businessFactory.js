@@ -1,9 +1,12 @@
 var collectBusiness = {};
 var provisioningBusiness = {};
 var applicationBusiness = {};
+var dashboardBusiness = {};
+
 exports.collectBusiness = collectBusiness;
 exports.applicationBusiness = applicationBusiness;
 exports.provisioningBusiness = provisioningBusiness;
+exports.dashboardBusiness = dashboardBusiness;
 
 var when = require('when');
 var toolsFactory = require('../Tools/tools.js');
@@ -16,7 +19,7 @@ var fsTools = toolsFactory.fsFactory;
 
 
 var provisioningDelay = 20000;
-var collectDelay = 5000;
+var collectDelay = 30000;
 var goProIp = '10.5.5.9';
 var goProPassword = 'Bouineur3.0';
 
@@ -30,7 +33,6 @@ var objLocation = {};
 */
 applicationBusiness.databaseIsAlive = function(){
 };
-
 
 /*
 * Start the provisioning loop
@@ -166,7 +168,7 @@ function deletePictureOfFS(pictureInformation){
         }else{
           console.log("c'est pas la dernière photo, on peut la supprimer La derniere est "+result._id);
           //pas la dernière, on peut la supprimer
-          fsTools.deletePicture(pictureInformation.localPath);
+          //fsTools.deletePicture(pictureInformation.localPath);
         }
        }
 
@@ -174,6 +176,14 @@ function deletePictureOfFS(pictureInformation){
 
 };
 
+
+dashboardBusiness.takeSimplePicture = function(){
+  currentDate = Date.now();
+  log.info("One Shot Starts : "+currentDate);
+  StartCollectGoPro()
+  .then(function(){ OneShotCollectGps();return true; });
+
+};
 
 
 /****Region :  Collect Business *******/
@@ -195,6 +205,23 @@ function StartCollectLoop(){
     .then(function(){ StartCollectGps();return true; });
 };
 
+
+ function OneShotCollectGps(){
+   log.info("Start GPS (OneShot)");
+   gps = new GPS();
+   var iGps = 0;
+
+   gps.on('location', function(data) {
+     objLocation = data;
+     //on attend 5 données différentes pour être sûr
+     if(iGps >=5){
+       return stopCollectGpsForOneShot();
+     }
+     iGps = iGps +1;
+   });
+ };
+
+
 /**
 * Start collect of GPS data
 */
@@ -213,11 +240,25 @@ function StartCollectGps(){
   });
 };
 
+
+function stopCollectGpsForOneShot(){
+  return gps.closeSerialPort(callBackStopGpsOneShot);
+};
+
 /**
 * Stop the collect (save energy .... COP21 power)
 */
 function stopCollectGps(){
   return gps.closeSerialPort(callBackStopGps);
+};
+
+/**
+*
+*/
+function callBackStopGpsOneShot(){
+  log.info("Stop Gps Collect(OneShot)");
+  SaveLocationOnBdd();
+  return true;
 };
 
 /**
