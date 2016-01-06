@@ -48,6 +48,7 @@ App.controller('boardController',['$scope','$http', function($scope,$http) {
     $http.get("/lastPicture").then(function(response){
       console.log("OK ->",response);
         $scope.picturePath = response.data.path;
+        $scope.pictureType = response.data.type;
     },
     function(response){
         console.log("KO -> ", response);
@@ -62,6 +63,16 @@ App.controller('boardController',['$scope','$http', function($scope,$http) {
           console.log("KO -> ", response);
       });
     };
+
+    $scope.HeartOnYouAction = function(){
+      $http.get("/heartOnYou").then(function(response){
+        console.log("OK ->",response);
+      },
+      function(response){
+          console.log("KO -> ", response);
+      });
+    };
+
 }]);
 
 // create the controller and inject Angular's $scope

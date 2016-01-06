@@ -31,7 +31,7 @@ app.get('/lastPicture',function(req, res){
       if(err){
         console.log("Une erreur ",err);
       }else{
-        res.send({path : result.localPath});
+        res.send({path : result.localPath, type : result.type});
       }
     });
 });
@@ -39,10 +39,15 @@ app.get('/lastPicture',function(req, res){
 
 //API:GET Return the last picture
 app.get('/takePicture',function(req, res){
-      dashboardBusiness.takeSimplePicture();
+      dashboardBusiness.takeSimplePicture(false);
       res.send("OK");
 });
 
+//API:GET Return the last picture
+app.get('/heartOnYou',function(req, res){
+      dashboardBusiness.takeSimplePicture(true);
+      res.send("OK");
+});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

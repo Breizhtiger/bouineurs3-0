@@ -35,7 +35,8 @@ var locationSchema = new mongoose.Schema({
 var pictureShotSchema = new mongoose.Schema({
   datetime: Date,
   localPath: String,
-  status: String
+  status: String,
+  type : String
 });
 
 //create a new model with the scema
@@ -46,12 +47,22 @@ var pictures = mongoose.model('pictures',pictureShotSchema);
 
 
 pictureFactory.insertPicture = function(date,path){
- var create = new pictures({datetime: date,localPath: path ,status: 'created'});
+ var create = new pictures({datetime: date,localPath: path ,status: 'created', type: 'normal'});
    create.save(function (err) {
     if (err) { throw err; }
     log.info('Pictures '+path+' inserted on database');
   });
 };
+
+pictureFactory.insertFavoritePicture = function(date,path){
+ var create = new pictures({datetime: date,localPath: path ,status: 'created', type: 'heart'});
+   create.save(function (err) {
+    if (err) { throw err; }
+    log.info('Favorite Picture '+path+' inserted on database');
+  });
+};
+
+
 
 pictureFactory.getPictureToSend = function(callback){
   pictures.count({status: 'created'},function(err,count){

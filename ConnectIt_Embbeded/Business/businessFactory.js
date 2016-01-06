@@ -177,12 +177,18 @@ function deletePictureOfFS(pictureInformation){
 };
 
 
-dashboardBusiness.takeSimplePicture = function(){
+dashboardBusiness.takeSimplePicture = function(heartOnYou){
   currentDate = Date.now();
   log.info("One Shot Starts : "+currentDate);
-  StartCollectGoPro()
-  .then(function(){ OneShotCollectGps();return true; });
-
+  collectGoProBusiness.GetNbEltOnFolder(goProIp,goProPassword,'/videos/DCIM')
+  .then(function(count){
+    if(count != null && count == 0){
+      StartCollectGoPro(heartOnYou)
+      .then(function(){ OneShotCollectGps();return true; });
+    }else{
+      console.log("GoPro using by an other process. Manuel Collect impossible");
+    }
+  });
 };
 
 
@@ -192,17 +198,39 @@ dashboardBusiness.takeSimplePicture = function(){
 * Enables to start the collect of GoPro Pictures
 */
 collectBusiness.startCollect = function(){
-  StartCollectLoop();
+  collectGoProBusiness.cleanGoPro(goProIp,goProPassword)
+  .then(function(value){
+    if(value){
+      console.log("GoPro is clean. launch the loop");
+      StartCollectLoop();
+    }else{
+      console.log("Errors during delete actions");
+    }
+  });
 };
+
+collectBusiness.getNbPictures = function(){
+  collectGoProBusiness.GetNbPictures(goProIp,goProPassword);
+};
+
 
 /*
 * Loop to collect data
 */
 function StartCollectLoop(){
     currentDate = Date.now();
-    log.info("Collect Loop starts")
-    StartCollectGoPro()
-    .then(function(){ StartCollectGps();return true; });
+    log.info("Collect Loop starts");
+    collectGoProBusiness.GetNbEltOnFolder(goProIp,goProPassword,'/videos/DCIM')
+    .then(function(count){
+      if(count != null && count == 0){
+        StartCollectGoPro(false)
+        .then(function(){ StartCollectGps();return true; });
+      }else{
+        console.log("GoPro using by an other process. Launch actions on 10 s");
+        //Ok, launch the timer
+       setTimeout(StartCollectLoop, 10000);
+      }
+    });
 };
 
 
@@ -272,10 +300,16 @@ function callBackStopGps(){
 
 
 
-function StartCollectGoPro(){
+function StartCollectGoPro(heartOnYou){
   try{
     log.info("Go Pro Collect Starts");
-    return collectGoProBusiness.startNewCollect(goProIp,goProPassword,SavePictureOnBddCallBack);
+    if(heartOnYou){
+       console.log("....<3 * Hearth on You * ");
+        return collectGoProBusiness.startNewCollect(goProIp,goProPassword,SaveFavoritePictureOnBddCallBack);
+    }else{
+        return collectGoProBusiness.startNewCollect(goProIp,goProPassword,SavePictureOnBddCallBack);
+    }
+
   }catch(exception){
     log.alert('GoPro Collect Errors',exception);
     return true;
@@ -295,6 +329,19 @@ function SavePictureOnBddCallBack(picturePath){
      log.alert('Error during picture database inserting',exception)
    }
 };
+
+/**
+* Callback to save picture instance on the database
+* @param picturePath : local picture path to save
+*/
+function SaveFavoritePictureOnBddCallBack(picturePath){
+   try{
+     dataFactory.pictureFactory.insertFavoritePicture(currentDate,picturePath);
+   }catch(exception){
+     log.alert('Error during favorite picture database inserting',exception)
+   }
+};
+
 
 function SaveLocationOnBdd(){
   try{
