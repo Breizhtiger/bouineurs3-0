@@ -9,7 +9,7 @@ body {
     height: 100%;
     font-family: "SansSerifExbFLF", Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #8FC27A;
-    background-color: rgb(83, 177, 85);
+    background-color: #2c578e; /*rgb(83, 177, 85);*/
 }
 
 html {
@@ -599,6 +599,74 @@ a.e-sociaux:hover{
     }
 }  
 
+
+#sponsors {
+	background: #2c578e;
+	width: 100%;
+	font-style: italic;
+}
+
+#sponsors p {
+	margin: 0;
+}
+
+#tableSponsor {
+	display: inline-block;
+	margin: 20px 20px;
+}
+
+#tableSponsor img{
+	width: 200px;
+	margin: 10px;
+}
+
+#tableSponsor2 {
+	display: inline-block;	
+	margin: 0 20px;
+}
+
+#tableSponsor2 img{
+	width: 140px;
+	margin: 10px;
+}
+
+.invisibleReseauxSponsor {
+	height: 43px;
+	width: 43px;
+	display: block;
+}
+
+.facebookSponsor {
+	height: 43px;
+	width: 43px;
+	background-image: url(../img/reseauxSponsors.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+.facebookSponsor:hover {
+	background-position: 0 -43px;
+}
+
+.twitterSponsor {
+	height: 43px;
+	width: 43px;
+	background-image: url(../img/reseauxSponsors.png);
+	background-position: -43px 0;
+	background-repeat: no-repeat;
+}
+
+.twitterSponsor:hover {
+	background-position: -43px -43px;
+}
+
+.reseauxInline {
+	display: inline-block;
+}
+
+.colonneSponsors {
+}
+
 .btn {
     border-radius: 0;
     text-transform: uppercase;
@@ -646,7 +714,9 @@ ul.banner-social-buttons {
 }
 
 footer {
+	background: #2c578e;
     padding: 50px 0;
+	border-top: 1px solid #fff;
 }
 
 footer p {
