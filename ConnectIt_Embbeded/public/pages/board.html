@@ -3,12 +3,13 @@
 <p>
     <div class="btn-group btn-lg btn-primary" ng-click="TakePictureAction()" role="button">
         <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
-       Take Picture
+       Take Picture (3)
    </div>
    <div class="btn-group btn-lg btn-pink" ng-click="HeartOnYouAction()" role="button">
        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-      Coeur sur toi !
+      Coeur sur toi ! (4)
   </div>
+  <shortcut></shortcut>  
 </p>
 <a href="" ng-class="{'thumbnail':pictureType == 'normal','fav-thumbnail':pictureType == 'heart'}">
   <img src="{{picturePath}}" alt"last pictures" />
