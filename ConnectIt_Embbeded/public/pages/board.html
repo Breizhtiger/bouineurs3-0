@@ -9,7 +9,11 @@
        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
       Coeur sur toi ! (4)
   </div>
-  <shortcut></shortcut>  
+  <div class="btn-group btn-lg btn-success" ng-click="LikeLastPictureAction()" role="button">
+      <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+     Like Last Picture (5)
+ </div>
+  <shortcut></shortcut>
 </p>
 <a href="" ng-class="{'thumbnail':pictureType == 'normal','fav-thumbnail':pictureType == 'heart'}">
   <img src="{{picturePath}}" alt"last pictures" />

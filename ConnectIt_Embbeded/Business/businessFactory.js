@@ -176,6 +176,11 @@ function deletePictureOfFS(pictureInformation){
 
 };
 
+dashboardBusiness.likeLastPicture = function(){
+
+
+};
+
 
 dashboardBusiness.takeSimplePicture = function(heartOnYou){
   currentDate = Date.now();

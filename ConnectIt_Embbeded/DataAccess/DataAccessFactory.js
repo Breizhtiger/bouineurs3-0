@@ -77,6 +77,24 @@ pictureFactory.getLastPicture = function(callback){
   pictures.findOne().sort({ datetime : 'desc' }).exec(callback);
 };
 
+
+pictureFactory.likeLastPicture = function(){
+    pictures.findOne().sort({ datetime : 'desc' }).exec(
+      function(err,result){
+        if(err){
+          console.log("Une erreur ",err);
+        }else{
+          pictures.findOneAndUpdate({"datetime":result.datetime}, {"type":"heart"} ,function(err){
+            if(err){
+                log.alert('Errors during picture data updating : ',err);
+            }else{
+              log.info('Picture status successfully update with '+newStatus);
+            }
+          });
+        }
+      });
+};
+
 pictureFactory.updateStatusPictureByDatetime = function(datetime,newStatus){
     pictures.findOneAndUpdate({"datetime":datetime}, {"status":newStatus} ,function(err){
       if(err){

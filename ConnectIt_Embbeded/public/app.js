@@ -80,7 +80,9 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
             //heart on you
             $scope.HeartOnYouAction();
             break;
-
+          case 53 :
+            $scope.LikeLastPictureAction();
+            break;
 
         }
 
@@ -95,6 +97,15 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
         console.log("KO -> ", response);
     });
 
+    $scope.LikeLastPictureAction = function(){
+      $http.get("/likeLastPicture").then(
+        function(response){
+            console.log("OK ->",response);
+        },
+        function(response){
+            console.log("KO -> ", response);
+        });
+    };
 
     $scope.TakePictureAction = function(){
       $http.get("/takePicture").then(function(response){

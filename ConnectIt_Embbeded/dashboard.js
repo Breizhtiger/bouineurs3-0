@@ -49,6 +49,15 @@ app.get('/heartOnYou',function(req, res){
       res.send("OK");
 });
 
+
+//API:GET Return the last picture
+app.get('/likeLastPicture',function(req, res){
+      dataFactory.pictureFactory.likeLastPicture();
+      res.send("OK");
+
+});
+
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
