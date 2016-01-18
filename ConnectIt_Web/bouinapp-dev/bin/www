@@ -9,54 +9,28 @@ var debug = require('debug')('bouinapp:server');
 var http = require('http');
 var fs = require('fs');
 var ss = require('socket.io-stream');
+var businessSocket = require('../business/businessSocket');
 
-var path = require('path');
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTP server
  */
-
 var server = http.createServer(app);
 
-
-// Chargement de socket.io
-var io = require('socket.io').listen(server);
-
-// Quand on client se connecte, on le note dans la console
-io.sockets.on('connection', function (socket) {
-    console.log('Un client est connecté ! ');
-    socket.emit('message', 'Vous êtes bien connecté !');
-    //socket de tests
-    ss(socket).on('profile-image', function(stream, data) {
-        console.log("data ->",data);
-        var filename = __dirname+'/output/'+Date.now()+'_'+ path.basename(data.name);
-        stream.pipe(fs.createWriteStream(filename));
-    });
-
-    //socket fullData
-    ss(socket).on('fullData', function(stream, data) {
-        console.log("I receive fulldata ->",data);
-        var filename = __dirname+'/output/'+Date.now()+'_'+ path.basename(data.name);
-        stream.pipe(fs.createWriteStream(filename));
-    });
-
-  socket.on('disconnect', function (socket) {
-      console.log('Un client est déconnecté !');
-  });
-});
-
-
+/**
+ * Launch inizialisation of socket
+ */
+businessSocket.init(server);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -64,7 +38,6 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
