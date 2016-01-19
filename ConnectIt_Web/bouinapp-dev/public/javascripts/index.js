@@ -43,14 +43,14 @@ function init() {
 function loadSliderImages(){
 
   var images = [];
-  var carousel-indicators = $("#carousel-indicators");
-  var carousel-inner = $("#carousel-inner");
+  var carouselindicators = $("#carouselindicators");
+  var carouselinner = $("#carouselinner");
 
   <!-- Call api images -->
   $.get( "http://localhost/api/images/highlights", function( data ) {
 
     if(data !== null || data.length === 0){
-      addOneImageToSlider(carousel-indicators, carousel-inner, title, desc, srcImage, itemNumber);
+      addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber);
       images = data;
     }
     else{
@@ -59,14 +59,15 @@ function loadSliderImages(){
        });*/
     }
 
-    $.foreach(images){
-      addOneImageToSlider(carousel-indicators, carousel-inner, title, desc, srcImage);
-    });
+    // KBT : bloc incorrecte, fait planter le scroll jquery
+    //$.foreach(images){
+    //  addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage);
+    //});
 
   });
 }
 
-function addOneImageToSlider(carousel-indicators, carousel-inner, title, desc, srcImage, itemNumber){
+function addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber){
   // Build indicator child
   var indicatorsChild = '<li data-target="#carousel" data-slide-to="' +itemNumber + '"></li>';
 
@@ -84,6 +85,6 @@ function addOneImageToSlider(carousel-indicators, carousel-inner, title, desc, s
   }
 
   // Add children to indicators and inner
-  $(carousel-indicators).addChild();
-  $(carousel-inner).addChild(innerChild);
+  $(carouselindicators).addChild();
+  $(carouselinner).addChild(innerChild);
 };

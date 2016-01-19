@@ -244,6 +244,7 @@ a:focus {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    height: 100%;
 }
 
 .intro .intro-body {
@@ -275,12 +276,12 @@ a:focus {
 		padding-left: 118px;
     }
 }
-.carousel-indicators {
+.carouselindicators {
 	width: 100%;
 	bottom: -30px;
 }
 
-.carousel-indicators li{
+.carouselindicators li{
 	list-style-type: square;
 	border: 0px;
 	width: 32%;
@@ -288,7 +289,7 @@ a:focus {
 	border-radius: 0px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
-.carousel-indicators li.active{
+.carouselindicators li.active{
 	list-style-type: square;
 	border: 0;
 	width: 32%;
