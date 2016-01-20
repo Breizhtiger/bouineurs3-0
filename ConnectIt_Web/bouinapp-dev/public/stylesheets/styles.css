@@ -611,6 +611,7 @@ a.e-sociaux:hover{
 
 #tableSponsor {
 	display: inline-block;
+	vertical-align: top;
 	margin: 20px 20px;
 }
 
@@ -619,9 +620,16 @@ a.e-sociaux:hover{
 	margin: 10px;
 }
 
+#pasDeSociaux {
+	display: block;
+	width: 220px;
+	height: 43px;
+}
+
 #tableSponsor2 {
 	display: inline-block;
-	margin: 0 20px;
+	vertical-align: top;
+	margin: 0 5px;
 }
 
 #tableSponsor2 img{
