@@ -29,62 +29,84 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+init();
+
 function init() {
 
   loadSliderImages();
-  $.get( "http://www.bouineurs3-0.fr/users/images", function( data ) {
+
+  /*$.get( "http://www.bouineurs3-0.fr/users/images", function( data ) {
     $("img#fromWS").attr("src",data[0]);
     $("img#fromWS1").attr("src",data[1]);
     $("img#fromWS2").attr("src",data[2]);
-  });
+  });*/
 
 }
 
-function loadSliderImages(){
-
+function loadSliderImages(){  
+  // Cloning currents objects
   var images = [];
-  var carouselindicators = $("#carouselindicators");
-  var carouselinner = $("#carouselinner");
+  var carouselindicators = $("#carouselindicators").clone();
+  var carouselinner = $("#carouselinner").clone();
 
-  <!-- Call api images -->
-  $.get( "http://localhost/api/images/highlights", function( data ) {
+  // Call api images
+  $.get( "http://localhost:3000/api/images/highlights", function( data ) {
+
+    $(carouselindicators).empty();
+    $(carouselinner).empty();
 
     if(data !== null || data.length === 0){
-      addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber);
-      images = data;
-    }
-    else{
-       /*$.get("http://localhost/api/images/getDefault", function (data) {
-          images = [];
-       });*/
-    }
+      indicatorWidth = (100/data.length) - 1;
 
-    // KBT : bloc incorrecte, fait planter le scroll jquery
-    //$.foreach(images){
-    //  addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage);
-    //});
+      data.forEach( function(image, index){
+        addOneImageToSlider(carouselindicators, carouselinner, image.datetime, null, image.localPath, index, indicatorWidth);
+      });
 
+      // Replace old carousel with new elements
+      $("#carouselinner").replaceWith(carouselinner);
+      $("#carouselindicators").replaceWith(carouselindicators);
+      $("#carousel0").addClass('active');
+
+      // Set current postion to first image
+      $("#carousel").carousel(0);
+
+      // Reveal and start slider
+      $('#carouselLoader').hide();
+      $('#carousel').show();
+      $('#carousel').carousel('cycle');
+    }
   });
 }
 
-function addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber){
+function addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber, indicatorWidth){
   // Build indicator child
-  var indicatorsChild = '<li data-target="#carousel" data-slide-to="' +itemNumber + '"></li>';
+  var indicatorsChild = '<li data-target="#carousel" data-slide-to="' +itemNumber + '" style="width:'+indicatorWidth+'% !important"></li>';
 
   // Build inner child
-  var innerChild = '<div id="carousel' +itemNumber+ '" class="item"><a href="#"><img src="'+srcImage+'"></a>';
+  var innerChild = '<div id="carousel' +itemNumber+ '" class="item"><a href="#"><img style="max-height:350px;" src="'+srcImage+'"></a>';
   innerChild += '<div class="container">';
   innerChild += '<div class="carousel-caption">';
 
-  if(title !== null || title !== ""){
-    innerChild += '<h1>' + title + '</h1>';
+  if(title !== null && title !== ""){
+    // Original date (unix timestamp)
+    var date = new Date(title);
+    // Date conversion
+    var day = date.getDate();
+    var month = date.getMonth()+1;
+    var year = date.getYear();
+    var hours = date.getHours();
+    var minutes = "0" + date.getMinutes();
+    var seconds = "0" + date.getSeconds();
+    var formattedTime = day + '/0' + month + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    
+    innerChild += '<h1>' + formattedTime + '</h1>';
   }
 
-  if(desc !== null || desc !== ""){
+  if(desc !== null && desc !== ""){
     innerChild += '<p>' + desc + '</^p>';
   }
 
   // Add children to indicators and inner
-  $(carouselindicators).addChild();
-  $(carouselinner).addChild(innerChild);
+  $(carouselindicators).append(indicatorsChild);
+  $(carouselinner).append(innerChild);
 };

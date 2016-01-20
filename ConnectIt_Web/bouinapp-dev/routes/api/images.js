@@ -2,13 +2,14 @@ var express = require('express');
 var businessImages = require('../../business/businessImages');
 var router = express.Router();
 
+
 /* 
 	GET all images.
 	@return all images in database
 */
-router.get('/', function(req, res, next) {	
+router.get('/', function(req, res, next) {
 	var images = businessImages.getAllImages();
-	res.send(images);
+	// TO DO
 });
 
 /*
@@ -16,8 +17,11 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
-	var images = businessImages.getHighlightsOfTheDay();
-	res.send(images);
+	var images = businessImages.getHighlightsOfTheDay(
+		function(images){
+			res.status(200).send(images);
+		}
+	);
 });
 
 /* 
@@ -27,7 +31,7 @@ router.get('/highlights', function(req, res, next) {
 */
 router.get('/daily/:day', function(req, res, next) {
 	var images = businessImages.getImagesOfTheDay(day);
-	res.send(images);
+	// TO DO
 });
 
 module.exports = router;
