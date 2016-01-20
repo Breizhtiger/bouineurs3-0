@@ -541,7 +541,6 @@ a.e-sociaux:hover{
     .content-section {
         padding-top: 90px;
 		padding-left: 118px;
-		/* height: 100%; */
     }
 }
 
@@ -549,12 +548,10 @@ a.e-sociaux:hover{
 	#projet  .content-section {
         padding-top: 60px;
 		padding-left: 0;
-		/* height: 100%; */
 	}
 	.content-section {
         padding-top: 60px;
 		padding-left: 0;
-		/* height: 100%; */
     }
 }
 
@@ -564,12 +561,13 @@ a.e-sociaux:hover{
 		width: 100%;
 		padding: 70px 0;
 		color: #fff;
-		background: url(/static/images/downloads-bg.jpg) no-repeat center center scroll;
+		background: url(/static/images/onlive.png) no-repeat center center fixed;
+	     -webkit-background-size: cover;
+		 -moz-background-size: cover;
+		 background-size: cover;
+		 -o-background-size: cover;
 		background-color: #000;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		background-size: cover;
-		-o-background-size: cover;
+
 	}
 
 	#map {
@@ -583,7 +581,7 @@ a.e-sociaux:hover{
         padding: 100px 0;
 		width: 100%;
 		color: #fff;
-		background: url(/static/images/downloads-bg.jpg) no-repeat center center scroll;
+		background: url(/static/images/onlive.png) no-repeat center center scroll;
 		background-color: #000;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
