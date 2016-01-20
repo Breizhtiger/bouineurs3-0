@@ -4,3 +4,6 @@ output
 */node_modules
 */*/node_modules
 ./nodes_modules/*
+ConnectIt_Embbeded/node_modules
+ConnectIt_Embbeded/node_modules/*
+ConnectIt_Embbeded/node_modules/*/*

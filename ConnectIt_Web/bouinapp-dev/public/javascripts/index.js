@@ -75,6 +75,10 @@ function loadSliderImages(){
       $('#carousel').show();
       $('#carousel').carousel('cycle');
     }
+  })
+  .error(function (){
+      $('#carouselLoader').hide();
+      $('#carousel').show();
   });
 }
 
