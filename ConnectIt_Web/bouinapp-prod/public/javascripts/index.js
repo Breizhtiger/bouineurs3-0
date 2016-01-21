@@ -54,6 +54,17 @@ function init() {
         });
       }
     });
+
+  $.get( "http://localhost:3000/users/positions", function( data ) {
+      for(var i=0;i < data.length;i++){
+        var marker = new google.maps.Marker({
+          map: map,
+          position: data[i],
+          title: 'Hello World indice :'+i
+        });
+      }
+    });
+
   // Create a marker and set its position.
   var marker = new google.maps.Marker({
     map: map,
