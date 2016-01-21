@@ -469,6 +469,15 @@ a:focus {
 	padding: 0 20px 0 0;
 }
 
+.chevronVoiture {
+	float: left;
+	width: 50px;
+}
+
+.contenuVoiture {
+	float: left;
+}
+
 .encart-sociaux {
 	background: #ffffff;
 		-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;

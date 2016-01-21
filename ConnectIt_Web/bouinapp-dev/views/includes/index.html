@@ -193,14 +193,27 @@
 						<div id="voiture" title="voiture" class="colonne contenu collapse in">
 							<span class="visible-xs visible-sm"><h2>La voiture</h2></span>
 							La voiture
+							
+							<a id="currentVoiture-onload" class="chevronVoiture titreVoiture-left btn-menu-projet left carousel-control">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+							
+								<div id="DescriptionVoiture1" title="DescriptionVoiture-1" class="activeVoiture contenuVoiture collapse in">Voiture 1</div>
+								<div id="DescriptionVoiture2" title="DescriptionVoiture-2" class="contenuVoiture collapse in">Voiture 2</div>
+								<div id="DescriptionVoiture3" title="DescriptionVoiture-3" class="contenuVoiture collapse in">Voiture 3</div>
+								
+							<a  class="chevronVoiture titreVoiture-right btn-menu-projet right carousel-control">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
 						</div>
-						<div id="encart-sociaux" class="encart-sociaux visible-xs visible-sm col-md-12">
-					<!--	<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>-->
-							<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
-							<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>
-							<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
+							
+							<div id="encart-sociaux" class="encart-sociaux visible-xs visible-sm col-md-12">
+						<!--	<li class="sociaux"><a class="e-sociaux logo4L" href="http://www.4ltrophy.com/"></a></li>-->
+								<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
+								<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>
+								<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
+							</div>
 						</div>
-					</div>
 				 </div>
 			</div>
 		 </section>
@@ -233,35 +246,22 @@
 					<a href="https://www.facebook.com/soprasteria/"><div class="facebookSponsor reseauxInline"></div></a>
 					<a href="https://twitter.com/SopraSteria_fr"><div class="twitterSponsor reseauxInline"></div></a>
 				</div>
-				
 				<div id="tableSponsor">
-					<a href="https://www.facebook.com/Bullit-Studio-129904773710071"><img alt="BullitStudio" src="/static/images/sponsors/bullitStudio.jpg"></a>
+					<a href="http://www.bullit-studio.fr/"><img alt="BullitStudio" src="/static/images/sponsors/bullitStudio.jpg"></a>
 					<p>Bullit Studio</p>
 					<div id="pasDeSociaux"></div>
 				</div>
-				
 				<div id="tableSponsor">
 					<a href="http://www.papeaparc.fr/"><img alt="PapéaParc" src="/static/images/sponsors/papéaParc.png"></a> 
 					<p>Papéa Parc</p>
 					<a href="https://www.facebook.com/papea.parc"><div class="facebookSponsor reseauxInline"></div></a>
 					<a href="https://twitter.com/PapeaParc"><div class="twitterSponsor reseauxInline"></div></a>
 				</div>
-				
-				
-
 				<div id="tableSponsor">
-					<tr>
-						<td><a href="http://www.commune-it.com/"><img alt="Commune IT" src="/static/images/sponsors/commune-it.png" valign="middle"></a> </td>
-					</tr>
-					<tr>
-						<td><p>Commune-it</p></td>
-					</tr>
-					<tr>
-						<td>
-							<a href="https://www.facebook.com/Commune-it-100710720049016"><div class="facebookSponsor reseauxInline"></div></a>
-							<a href="https://twitter.com/Commune_it"><div class="twitterSponsor reseauxInline"></div></a>
-						</td>
-					</tr>
+					<a href="http://www.commune-it.com/"><img alt="Commune IT" src="/static/images/sponsors/commune-it.png" valign="middle"></a>
+					<p>Commune-it</p>
+					<a href="https://www.facebook.com/Commune-it-100710720049016"><div class="facebookSponsor reseauxInline"></div></a>
+					<a href="https://twitter.com/Commune_it"><div class="twitterSponsor reseauxInline"></div></a>
 				</div>
 				<div id="tableSponsor">
 					<a href="https://www.facebook.com/librairielintrepide"><img alt="L'intrepide" src="/static/images/sponsors/LIntrepide.jpg"></a> </td>
@@ -356,7 +356,83 @@
 				$('*').removeClass("current");
 				$(this).toggleClass("current");
 			});
+			
+			//Krousel voiture
+			$(document).ready(function(){				
+					$(".contenuVoiture").hide();
+					$(".contenuVoiture.activeVoiture").show();
+					$(".titreVoiture-left").hide();
+			});
+			
+			
+			$(".titreVoiture-left").click(function(){
+				$(".contenuVoiture").hide();
+				$(".contenuVoiture.activeVoiture").attr("title");
+				var activeVoitureTitle = $(".contenuVoiture.activeVoiture").attr("title");
+				var res = activeVoitureTitle.split("-");
+				var N = res[1];
+				console.log(N);
+				var Nplus1 = parseInt(N)-1;
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').show();
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').addClass("activeVoiture");	
+				if (N == 2) {
+					$(".titreVoiture-left").hide();
+					$(".titreVoiture-right").show();
+				}
+			});
+				
+			$(".titreVoiture-right").click(function(){
+				$(".contenuVoiture").hide();
+				$(".contenuVoiture.activeVoiture").attr("title");	
+				var activeVoitureTitle = $(".contenuVoiture.activeVoiture").attr("title");
+				var res = activeVoitureTitle.split("-");
+				var N = res[1];
+				$(".contenuVoiture.activeVoiture").hide();
+				$(".contenuVoiture.activeVoiture").removeClass("activeVoiture");
+				if (N < 3) {
+					console.log("toto");
+					var Nplus1 = parseInt(N)+1;
+					$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').show();
+					$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').addClass("activeVoiture");
+					$(".titreVoiture-left").show();
+				}
+				if (N == 2) {
+					$(".titreVoiture-right").hide();
+				}
+			});	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			//	$(".contenuVoiture[title="+this.title+"].activeVoiture");
+			//	$(".contenuVoiture[title="+this.title+"]").show();
+			//	$(".contenuVoiture[title="+this.title+"]").addClass("activeVoiture");
+			//	$('*').removeClass("current");
+			//	$('*').removeClass("activeVoiture");
+			//	$(this).toggleClass("current");
+				
+				// Je sais quel element est actuellement affiché
+			//	var contenuVoitureDisplay = $(".contenuVoiture.activeVoiture");
+			//	console.log(contenuVoitureDisplay);
+				// Comme je sais quel element est affiché je vais prendre son sucesseur si je clique à droite et s'il en a un
+				// je vais prendre son predecesseur si je clique à gauche et qu'il en a un
+			//	caCestMonElement.
+			//	Ma-CLASSE-1 / - = MA, CLASSE, 1
+			//	N=3
+			//	if(N == limit ){
+			//	flecheDroite.hide();
+				
+		
 
+			
+			
 			var hauteurProjet = ($(window).height()) - ($('.navbar').height()) - 120;
 			console.log($(window).height());
 			console.log(hauteurProjet);
