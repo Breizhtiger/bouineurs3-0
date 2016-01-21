@@ -220,11 +220,12 @@
 
 	<!-- Onlive Section -->
 	<section id="onlive" class="content-section text-center">
-		<div class="onlive-section">
+		<div class="onlive-section colonneOnLive">
 			<div class="container">
 				<div class="col-lg-8 col-lg-offset-2">
 				   <h2>On Live !</h2>
-				   <div class="row" style="margin-top:10%">
+				   <div class="row" style="margin-top:10%">				   	
+						<h4>Patience, le départ c'est pas tout de suite... :)</h4>
 						<h2 class="start">Départ 4L Trophy:</h2>
 						<div class="col-md-12 col-lg-12	 col-xs-12 countDown countDownTrophy"></div>
                 	</div>
@@ -443,6 +444,8 @@
 			// var hauteurSponsors = ($(window).height()) - ($('.navbar').height()) - 120;
 			// var maxColSponsors = Math.max($('#sponsors').height(),hauteurSponsors);
 			// $('.colonneSponsors').height(maxColSponsors);
+			var hauteurOnLive = ($(window).height()) - ($('.navbar').height()) - 220;
+			$('.colonneOnLive').height(hauteurOnLive);
 		}
 	</script>
 	<script>
