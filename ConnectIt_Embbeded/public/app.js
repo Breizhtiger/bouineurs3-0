@@ -128,9 +128,29 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
 }]);
 
 // create the controller and inject Angular's $scope
-App.controller('adminController', function($scope,$location) {
+App.controller('adminController', ['$scope','$http','$location', function($scope,$http,$location) {
+
     // create a message to display in our view
     $scope.message = 'Bouineur 3.0';
+    $scope.process = [];
+    $http.get("/currentProcess").then(function(response){
+      console.log("OK truc->",response.data[0]);
+
+      $scope.process = response.data;
+    },
+    function(response){
+        console.log("KO truc-> ", response);
+    });
+
+    $scope.printUptime = function(time){
+      var current = new Date();
+       var time = new Date(time);
+       var diff = current - time;
+       var resDate = new Date(diff);
+       var res = resDate.getUTCHours()+' H, '+resDate.getUTCMinutes() +' M, '+resDate.getUTCSeconds()+ ' S';
+
+      return res;
+    };
 
     $scope.keyCode = "";
     $scope.keyPressed = function(e) {
@@ -149,11 +169,10 @@ App.controller('adminController', function($scope,$location) {
           //Go To Admin
           $location.path("/admin");
           break;
-
-
-        }
-
+      }
     };
 
 
-});
+
+
+}]);

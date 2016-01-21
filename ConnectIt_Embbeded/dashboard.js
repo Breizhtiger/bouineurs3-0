@@ -6,6 +6,7 @@
 /* Include */
 var toolsFactory = require('./Tools/tools.js');
 var path = require('path');
+var pm2 = require('pm2');
 /* Instanciation*/
 var log = toolsFactory.loggerFactory.dashboardLogger;
 var dataFactory = require('./DataAccess/DataAccessFactory.js');
@@ -57,6 +58,18 @@ app.get('/likeLastPicture',function(req, res){
 
 });
 
+app.get('/currentProcess',function(req,res){
+
+  pm2.connect(function() {
+    pm2.list(function(err, list){
+        if(err){
+          console.log(err);
+        }else{        
+          res.send(list);
+        }
+    });
+  });
+});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

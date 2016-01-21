@@ -2,9 +2,37 @@
   <shortcut></shortcut>
 
   <h1>Administration</h1>
-  <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-  <p>To see the difference between static and fixed top navbars, just scroll.</p>
-  <p>
+  <div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom Processus</th>
+          <th>Status</th>
+          <th>CPU</th>
+          <th>Uptime</th>
+          <th>Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="p in process track by $index">
+
+          <td scope="row" >{{p.name}}</td>
+          <td>{{p.pm2_env.status}}</td>
+          <td>{{p.monit.cpu}}%</td>
+          <td>{{printUptime(p.pm2_env.pm_uptime)}}</td>
+            <td>
+              <a class="btn btn-primary">Kill</a>
+              <a class="btn btn-primary">Stop</a>
+              <a class="btn btn-primary">Restart</a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+    <p>
     <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs »</a>
   </p>
 </div>

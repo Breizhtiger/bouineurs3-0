@@ -10,16 +10,25 @@ function GPS() {
   this.obj = {}
   var me = this;
 
-  var serialPort = new SerialPort("/dev/ttyUSB0", {
-    baudrate: 4800,
-    parser: serialport.parsers.readline("\n")
-  });
-
-  serialPort.on("open", function () {
-    serialPort.on('data', function(d){
-      me.parseGPSData(d)
+  try{
+    var serialPort = new SerialPort("/dev/ttyUSB0", {
+      baudrate: 4800,
+      parser: serialport.parsers.readline("\n")
     });
-  });
+
+    serialPort.on("error", function (err) {
+      console.log('test');
+      me.emit('error', err);
+    });
+    serialPort.on("open", function () {
+      serialPort.on('data', function(d){
+        me.parseGPSData(d)
+      });
+    });
+  }catch(Exception){
+
+  }
+
 
   this.closeSerialPort = function(callback){
       serialPort.close(callback);

@@ -113,13 +113,18 @@ locationFactory.getOneLocationByFilter = function(filter,callback){
 
 
 locationFactory.updateStatusLocationByDatetime = function(datetime,newStatus){
-  locations.findOneAndUpdate({"datetime":datetime}, {"status":newStatus} ,function(err){
-    if(err){
-        log.alert('Errors during location data updating : ',err);
-    }else{
-      log.info('Location status successfully update with '+newStatus);
-    }
-  });
+  if(newStatus != null && datetime != null){
+    locations.findOneAndUpdate({"datetime":datetime}, {"status":newStatus} ,function(err){
+      if(err){
+          log.alert('Errors during location data updating : ',err);
+      }else{
+        log.info('Location status successfully update with '+newStatus);
+      }
+    });
+  }else{
+    log.info('Bad parameters');
+  }
+
 };
 
 locationFactory.insertData = function(date, data){

@@ -182,6 +182,8 @@ dashboardBusiness.likeLastPicture = function(){
 };
 
 
+
+
 dashboardBusiness.takeSimplePicture = function(heartOnYou){
   currentDate = Date.now();
   log.info("One Shot Starts : "+currentDate);
@@ -203,7 +205,7 @@ dashboardBusiness.takeSimplePicture = function(heartOnYou){
 * Enables to start the collect of GoPro Pictures
 */
 collectBusiness.startCollect = function(){
-  collectGoProBusiness.cleanGoPro(goProIp,goProPassword)
+  /*collectGoProBusiness.cleanGoPro(goProIp,goProPassword)
   .then(function(value){
     if(value){
       console.log("GoPro is clean. launch the loop");
@@ -211,7 +213,9 @@ collectBusiness.startCollect = function(){
     }else{
       console.log("Errors during delete actions");
     }
-  });
+  });*/
+
+    StartCollectLoop();
 };
 
 collectBusiness.getNbPictures = function(){
@@ -260,17 +264,27 @@ function StartCollectLoop(){
 */
 function StartCollectGps(){
   log.info("Start GPS");
-  gps = new GPS();
-  var iGps = 0;
+  try{
+    gps = new GPS();
+    var iGps = 0;
 
-  gps.on('location', function(data) {
-    objLocation = data;
-    //on attend 5 données différentes pour être sûr
-    if(iGps >=5){
-      return stopCollectGps();
-    }
-    iGps = iGps +1;
-  });
+    gps.on('error',function(){
+        console.log("GPS en erreur");
+        return stopCollectGps();
+    });
+
+    gps.on('location', function(data) {
+      objLocation = data;
+      //on attend 5 données différentes pour être sûr
+      if(iGps >=5){
+        return stopCollectGps();
+      }
+      iGps = iGps +1;
+    });
+  }catch(Exception){
+
+  }
+
 };
 
 
@@ -309,7 +323,7 @@ function StartCollectGoPro(heartOnYou){
   try{
     log.info("Go Pro Collect Starts");
     if(heartOnYou){
-       console.log("....<3 * Hearth on You * ");
+       console.log("....<3 * Heart on You * ");
         return collectGoProBusiness.startNewCollect(goProIp,goProPassword,SaveFavoritePictureOnBddCallBack);
     }else{
         return collectGoProBusiness.startNewCollect(goProIp,goProPassword,SavePictureOnBddCallBack);
