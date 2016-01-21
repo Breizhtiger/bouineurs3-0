@@ -45,7 +45,7 @@ function init() {
   });
 
   //http://localhost:80/users/positions
-  $.get( "http://www.bouineurs3-0.fr/users/positions", function( data ) {
+  $.get( "http://localhost/users/positions", function( data ) {
       for(var i=0;i < data.length;i++){
         var marker = new google.maps.Marker({
           map: map,
