@@ -35,12 +35,6 @@ function init() {
 
   loadSliderImages();
 
-  /*$.get( "http://www.bouineurs3-0.fr/users/images", function( data ) {
-    $("img#fromWS").attr("src",data[0]);
-    $("img#fromWS1").attr("src",data[1]);
-    $("img#fromWS2").attr("src",data[2]);
-  });*/
-
 }
 
 function loadSliderImages(){  
@@ -55,7 +49,7 @@ function loadSliderImages(){
     $(carouselindicators).empty();
     $(carouselinner).empty();
 
-    if(data !== null || data.length === 0){
+    if(data !== null && data.length !== 0){
       indicatorWidth = (100/data.length) - 1;
 
       data.forEach( function(image, index){
@@ -70,11 +64,13 @@ function loadSliderImages(){
       // Set current postion to first image
       $("#carousel").carousel(0);
 
-      // Reveal and start slider
-      $('#carouselLoader').hide();
-      $('#carousel').show();
-      $('#carousel').carousel('cycle');
+      
     }
+    
+    // Reveal and start slider
+    $('#carouselLoader').hide();
+    $('#carousel').show();
+    $('#carousel').carousel('cycle');
   })
   .error(function (){
       $('#carouselLoader').hide();
@@ -95,12 +91,12 @@ function addOneImageToSlider(carouselindicators, carouselinner, title, desc, src
     // Original date (unix timestamp)
     var date = new Date(title);
     // Date conversion
-    var day = date.getDate();
-    var month = date.getMonth()+1;
-    var year = date.getYear();
-    var hours = date.getHours();
-    var minutes = "0" + date.getMinutes();
-    var seconds = "0" + date.getSeconds();
+    var day = date.getUTCDate();
+    var month = date.getUTCMonth()+1;
+    var year = date.getUTCFullYear();
+    var hours = date.getUTCHours();
+    var minutes = "0" + date.getUTCMinutes();
+    var seconds = "0" + date.getUTCSeconds();
     var formattedTime = day + '/0' + month + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
     
     innerChild += '<h1>' + formattedTime + '</h1>';

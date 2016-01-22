@@ -285,29 +285,27 @@ a:focus {
 .carouselindicators li{
 	list-style-type: square;
 	border: 0px;
-	width: 32%;
+	width: 24%;
 	height: 5px;
 	border-radius: 0px;
+	margin:0px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
 .carouselindicators li.active{
 	list-style-type: square;
 	border: 0;
-	width: 32%;
+	width: 24%;
 	height: 5px;
 	border-radius: 0px;
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
 .loader {
-/*position : fixed;*/
-z-index: 9999;
-background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
-/*top : 0px;
-left : 0px;*/
-height : 100%;
-width : 100%;
-cursor : wait;
+	z-index: 9999;
+	background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
+	height : 100%;
+	width : 100%;
+	cursor : wait;
 } 
 
 .btn-circle {
@@ -435,10 +433,47 @@ cursor : wait;
 	color: #2c578e;
 }
 
+.btn-menu-projet-custom {
+	position: absolute;
+	border: none;
+	font-weight: bold;
+    font-size: 30px;
+	font-style: italic;
+    font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #2c578e;
+	background: #ffffff;
+	padding:0;
+}
+
+.btn-menu-projet-custom:hover {
+	position: absolute;
+	border: none;
+	font-weight: bold;
+    font-size: 30px;
+	font-style: italic;
+    font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #fff;
+	background: #2c578e;
+	cursor: pointer;
+	padding: 0;
+}
+
+#voiture{
+	position: relative;
+}
 .menu-projet li {
 	list-style-type: none;
 }
 
+.trophy-cover{
+	width:95%;
+	margin: 0 0 15px 0;
+}
+
+.trophy-website, .trophy-website:hover{
+	font-size:1.2em;
+	color:#6E925F;
+}
 .current {
 	display: block;
 	background: #fff;
@@ -450,7 +485,7 @@ cursor : wait;
 
 .contenu {
 	display: none;
-	padding: 60px 20px;
+	padding: 30px 20px;
 }
 
 .content-project {
@@ -481,9 +516,16 @@ cursor : wait;
 	padding: 0 20px 0 0;
 }
 
-.chevronVoiture {
+.chevronVoiture.left {
 	float: left;
 	width: 50px;
+	position:absolute;
+}
+
+.chevronVoiture.right {
+	float: right;
+	width: 50px;
+	position:absolute;
 }
 
 .contenuVoiture {
@@ -866,7 +908,6 @@ body {
 }
 .countDown div {
   display: inline-block;
-  margin-left: 40px;
   font-size: 35px;
   font-weight: 100;
   line-height: 1;
