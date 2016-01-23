@@ -44,7 +44,7 @@ function loadSliderImages(){
   var carouselinner = $("#carouselinner").clone();
 
   // Call api images
-  $.get( "http://localhost:3000/api/images/highlights", function( data ) {
+  $.get( "http://www.bouineurs3-0.fr/api/images/highlights", function( data ) {
 
     $(carouselindicators).empty();
     $(carouselinner).empty();
