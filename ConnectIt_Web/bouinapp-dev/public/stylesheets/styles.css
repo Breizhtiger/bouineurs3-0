@@ -285,7 +285,7 @@ a:focus {
 .carouselindicators li{
 	list-style-type: square;
 	border: 0px;
-	width: 24%;
+	width: 15%;
 	height: 5px;
 	border-radius: 0px;
 	margin:0px;
@@ -294,7 +294,7 @@ a:focus {
 .carouselindicators li.active{
 	list-style-type: square;
 	border: 0;
-	width: 24%;
+	width: 15%;
 	height: 5px;
 	border-radius: 0px;
 	background-color: rgba(255, 255, 255, 0.9);
@@ -434,7 +434,6 @@ a:focus {
 }
 
 .btn-menu-projet-custom {
-	position: absolute;
 	border: none;
 	font-weight: bold;
     font-size: 30px;
@@ -446,7 +445,6 @@ a:focus {
 }
 
 .btn-menu-projet-custom:hover {
-	position: absolute;
 	border: none;
 	font-weight: bold;
     font-size: 30px;
@@ -463,6 +461,10 @@ a:focus {
 }
 .menu-projet li {
 	list-style-type: none;
+}
+
+.projet-voiture{
+	width:100%;
 }
 
 .trophy-cover{
@@ -517,15 +519,13 @@ a:focus {
 }
 
 .chevronVoiture.left {
-	float: left;
 	width: 50px;
-	position:absolute;
+	float:left;
 }
 
 .chevronVoiture.right {
-	float: right;
 	width: 50px;
-	position:absolute;
+	float: right;
 }
 
 .contenuVoiture {
@@ -555,7 +555,7 @@ a:focus {
 
 li.sociaux{
 	list-style: none;
-	margin: 60px 0 30px 0;
+	margin: 20px 0 30px 0;
 
 }
 
@@ -664,10 +664,13 @@ a.e-sociaux:hover{
 	background: #2c578e;
 	width: 100%;
 	font-style: italic;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #sponsors p {
+	font-size:1.4em;
 	margin: 0;
+	margin-bottom:5px;
 }
 
 #tableSponsor {
@@ -782,13 +785,48 @@ ul.banner-social-buttons {
 }
 
 footer {
-	background: #2c578e;
-    padding: 50px 0;
-	border-top: 1px solid #fff;
+    padding: 40px 0 10px 118px;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	background: #ffffff;
+	-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	-webkit-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	-o-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0, Direction=180, Strength=20);
+	color: #2c578e;
 }
 
 footer p {
     margin: 0;
+}
+
+footer .email, footer .sociaux{
+	height:80px;
+	text-align: center;
+}
+
+footer .email > span, footer .sociaux > span{
+	font-size: 1.2em;
+}
+
+.email a, .email a:hover{
+	color: #2c578e;
+}
+
+footer .email{
+	vertical-align: middle;
+	margin-bottom: 15px;
+}
+
+footer .big-arobase{
+	font-size: 3em !important;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+footer .copyright{
+	height: 40px;
+	margin-bottom:30px;
 }
 
 ::-moz-selection {
