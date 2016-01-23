@@ -1,0 +1,29 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='Bouineurs 3.0 - Equipage etudiant du 4L Trophy 2016')
+		meta(name='author', content='Bouineurs 3.0')
+		meta(name='description', content='Bouineurs 3.0, équipe étudiant du 4L Trophy 2016. Le 4L Trophy est un rally étudiant à but humanitaire se déroulant tous les ans. 15 jours et 6000km à parcourir les pistes marocaines pour délivrer aux enfants défavorisés du matériel scolaire et sportif. Un Rallye Raid Aventure en 4L réservé aux jeunes de 18 à 28 ans sur les pistes marocaines.')
+		meta(name='keywords', content='rallye étudiant, raid étudiant, rally etudiant, raid 4l, rally maroc, challenge etudiant, rally 4l, raid etudiant maroc')
+		meta(name='twitter:site', content='bouineurs3_0')
+		meta(name='twitter:creator', content='bouineurs3_0')
+		meta(name='google-site-verification', content='gucwyo6cMPPtr2TsAnQvhYJc_sjcS84HjXKZn10eeoA')
+		meta(name='language' content='fr')
+
+		title Bouineurs - 4L Trophy
+		link(href='/static/stylesheets/bootstrap.min.css', rel='stylesheet')
+		link(href='/static/stylesheets/styles.css', rel='stylesheet')
+		link(href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+		link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+
+	body(id='page-top', data-spy='scroll', data-target='.navbar-fixed-top')
+		include ../public/javascripts/apiFacebook.js
+		div(class='bande1 hidden-xs hidden-sm')
+		div(class='bande2 hidden-xs hidden-sm')
+		div(class='logobouineur hidden-xs hidden-sm')
+		div(class='blue-band-left hidden-xs hidden-sm col-md-2 col-mg-4')
+
+		block content
