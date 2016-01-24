@@ -210,12 +210,6 @@ a:focus {
         transition: background .5s ease-in-out,padding .5s ease-in-out;*/
 
     }
-
-    /*.navbar-custom.top-nav-collapse {
-        padding: 0;
-        border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #000;
-    }*/
 }
 
 .navbar-custom-phone {
@@ -532,6 +526,26 @@ a:focus {
 	float: left;
 }
 
+.voiture-label{
+	height: 50px;
+	width:170px;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.voiture-desc{
+	text-align: left;
+    font-style: normal;
+    font-size: 1em;
+}
+
+.voiture-history p{
+	text-align: justify;
+}
+
 .encart-sociaux {
 	background: #ffffff;
 		-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
@@ -785,7 +799,7 @@ ul.banner-social-buttons {
 }
 
 footer {
-    padding: 40px 0 10px 118px;
+	padding: 40px 0 10px 0px;
 	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	background: #ffffff;
 	-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
@@ -794,6 +808,12 @@ footer {
 	box-shadow: inset 0px 5px 20px 0px #c0c0c0;
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0, Direction=180, Strength=20);
 	color: #2c578e;
+}
+
+@media(min-width:992px) {
+    footer {
+    	padding: 40px 0 10px 118px;
+    }
 }
 
 footer p {

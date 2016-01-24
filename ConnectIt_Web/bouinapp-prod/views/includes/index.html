@@ -214,7 +214,7 @@
 								<span class="glyphicon glyphicon-chevron-left"></span>
 							</a>
 
-							<div id="DescriptionVoiture1" title="DescriptionVoiture-1" class="activeVoiture contenuVoiture collapse in col-md-10">
+							<div id="DescriptionVoiture1" title="DescriptionVoiture-1" class="activeVoiture contenuVoiture collapse in col-md-10 voiture-history">
 								<h3>Un peu d'histoire...</h3>
 								<p>
 									La Renault 4L produite de 1961 à 1992 est une voiture mythique du panorama automobile français. Ce fut la première application de la traction sur une voiture de tourisme de la marque Renault. Très apprécié du public et fortement exploitée pour des usages "d'entreprises" elle reste aujourd'hui la deuxième voiture française la plus vendue de tous les temps. (Annecdote: c'était l'une des seules voitures de l'époque qui permettait de conduire avec le képi sur la tête ! )<br />
@@ -227,10 +227,55 @@
 								</p>
 							</div>
 							<div id="DescriptionVoiture2" title="DescriptionVoiture-2" class="contenuVoiture collapse in col-md-10">
-								<img alt="voiture-face" class="projet-voiture hidden-xs" src="/static/images/projet/voiture1.png" />
+								<h3>Carte d'identité</h3>
+								<table>
+									<tr>
+										<td class="voiture-label">Modèle:</td>
+										<td class="voiture-desc">Renault 4 F4 Fourgon.</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Type:</td>
+										<td class="voiture-desc">Essence</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Puissance:</td>
+										<td class="voiture-desc">34cv</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Année:</td>
+										<td class="voiture-desc">1987</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">P.T.A.C:</td>
+										<td class="voiture-desc">1 800kg</td>
+									</tr>
+									<tr>
+										<td class="voiture-label" style="vertical-align:top">Spécificités:</td>
+										<td class="voiture-desc">
+											- Plaques de protections moteur et réservoir. <br />
+											- Crochets d'attelage. <br />
+											- Système de couplage deux batteries. <br />
+											- Snorkel. <br />
+											- Sièges sports baccés. <br />
+											- Système haut parleurs intégré.<br />
+											- Feux longue portée. <br />
+											- Coffre aménagé.<br />
+											- 3 roues de secours.....
+										</td>
+									</tr>
+								</table>
 							</div>
 							<div id="DescriptionVoiture3" title="DescriptionVoiture-3" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-face" class="projet-voiture hidden-xs" src="/static/images/projet/voiture1.png" />
+							</div>
+							<div id="DescriptionVoiture4" title="DescriptionVoiture-4" class="contenuVoiture collapse in col-md-10">
 								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture2.png" />
+							</div>
+							<div id="DescriptionVoiture5" title="DescriptionVoiture-5" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture3.png" />
+							</div>
+							<div id="DescriptionVoiture6" title="DescriptionVoiture-6" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture4.png" />
 							</div>
 
 							<a  class="col-md-1 chevronVoiture titreVoiture-right btn-menu-projet btn-menu-projet-custom right">
@@ -339,12 +384,13 @@
 					<div id="pasDeSociaux"></div>
 				</div>
 
-				<h2>ET VOUS !</h2>
+				<h2>VOUS !</h2>
 
 				<div style="color:#8FC27A;margin-top:10px; margin-bottom:30px;font-style:normal; font-size:1.1em">
 		             ANDRÉE - MANON - ELODY - ANASTASIA - PAUL - PAULINE - BASILE - STEVEN - KEVIN - SONIA - JULIEN - DIDIER - JEAN BAPTISTE - JÉRÔME - PATRICK - ROBIN - THOMAS - MARION - YANN - MARIE - MATHILDE - MONIKA - LUCIE - GISÈLE - FERNANDO - GUIGUI - SOHA - EMMANUELLE - ISABELLE - THIERRY - CHRISTINE - ALAIN - ANTHONY - FLORENCE - VICTOR - CHARLÈNE - ANTOINE - LUCIE - THOMAS - JEAN LUC - AMIT - FOUAD - SYLVIE - JEAN PAUL - MÉLANIE - DIDIER - FRANÇOISE - LUTINE - ROBERT - LORRAINE - BONAFOUINE - MARTINE - VINCENT - LYDIE - CHRIS - NDAMOU - CATHY - ETIENNE - CHARLENE - VINCENT
 		             NICOLAS - SYLVIE - PHILIPPE - DOMINIQUE - PATRICE - PAULE - JOEL - NANCY - JEANNINE - ANDRE 
                 </div>
+				<h2>ET TOUS LES AUTRES...</h2>
 			</div>
 		</div>
 	</section>
@@ -449,7 +495,7 @@
 				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').show();
 				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').addClass("activeVoiture");
 
-				if (N == 2) {
+				if (N == 5) {
 					$(".titreVoiture-right").hide();
 				}
 

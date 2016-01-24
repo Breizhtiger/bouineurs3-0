@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var businessImages = {};
 
-mongoose.connect('mongodb://54.93.89.27/dev', function(err) {
+mongoose.connect('mongodb://54.93.89.27/prod', function(err) {
   	if (err) { 
   		console.log("Error connecting mongo ! Error : " + err);
  	}
