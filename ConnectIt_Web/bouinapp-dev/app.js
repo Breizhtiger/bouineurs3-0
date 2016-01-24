@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var soprasteria = require('./routes/soprasteria');
 var contributor = require('./routes/contributor');
+var bouineursMagicTeam = require('./routes/bouineursMagicTeam');
 var apiImage = require('./routes/api/images');
 var apiLocation = require('./routes/api/locations');
 
@@ -28,6 +29,7 @@ app.use('/static', express.static(__dirname + '/public'));
 app.use('/', index);
 app.use('/soprasteria', soprasteria);
 app.use('/contributor', contributor);
+app.use('/bouineursMagicTeam', bouineursMagicTeam);
 app.use('/api/images', apiImage);
 app.use('/api/locations', apiLocation);
 

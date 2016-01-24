@@ -849,6 +849,10 @@ footer .copyright{
 	margin-bottom:30px;
 }
 
+.footer-hidden-link, .footer-hidden-link:hover{
+	color: #2c578e;
+}
+
 ::-moz-selection {
     text-shadow: none;
     background: #fcfcfc;
