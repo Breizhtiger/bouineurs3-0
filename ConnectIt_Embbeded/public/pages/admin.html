@@ -23,16 +23,14 @@
           <td>{{p.monit.cpu}}%</td>
           <td>{{printUptime(p.pm2_env.pm_uptime)}}</td>
             <td>
-              <a class="btn btn-primary">Kill</a>
-              <a class="btn btn-primary">Stop</a>
-              <a class="btn btn-primary">Restart</a>
+              <!--<a class="btn btn-primary" ng-click="actionsOnProcess(p.name,'KILL')">Kill</a>-->
+              <a class="btn btn-danger" ng-click="actionsOnProcess(p.name,'STOP')">Stop</a>
+              <a class="btn btn-warning" ng-click="actionsOnProcess(p.name,'RESTART')">Restart</a>
             </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-    <p>
-    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs »</a>
-  </p>
+
 </div>

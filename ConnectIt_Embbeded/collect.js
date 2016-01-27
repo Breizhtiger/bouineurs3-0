@@ -10,7 +10,7 @@ var log = toolsFactory.loggerFactory.collectLogger;
 
 
 
-log.info("Application Collect Start");
+log.info("Application Collect Start -> ",process.cwd());
 try{
   collectBusiness.startCollect();
 }catch(exception){

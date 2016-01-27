@@ -36,7 +36,7 @@ var pictureShotSchema = new mongoose.Schema({
   datetime: Date,
   localPath: String,
   status: String,
-  type : String
+  type : { type: String, default: 'normal' }
 });
 
 //create a new model with the scema

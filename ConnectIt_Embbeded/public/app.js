@@ -92,6 +92,7 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
       console.log("OK ->",response);
         $scope.picturePath = response.data.path;
         $scope.pictureType = response.data.type;
+        console.log("jxkxokzeokcoze",$scope.pictureType);
     },
     function(response){
         console.log("KO -> ", response);
@@ -142,6 +143,19 @@ App.controller('adminController', ['$scope','$http','$location', function($scope
         console.log("KO truc-> ", response);
     });
 
+
+    $scope.actionsOnProcess = function(processName,action){
+        var data = {};
+        data.processName = processName;
+        data.action = action;
+
+        $http.post('/actionsProcess', data).then(function(response){
+          console.log("OK actions->",response);
+        },
+        function(response){
+            console.log("KO actions-> ", response);
+        });
+};
     $scope.printUptime = function(time){
       var current = new Date();
        var time = new Date(time);

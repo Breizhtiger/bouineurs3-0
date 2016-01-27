@@ -12,9 +12,11 @@ var log = toolsFactory.loggerFactory.dashboardLogger;
 var dataFactory = require('./DataAccess/DataAccessFactory.js');
 var dashboardBusiness = require('./Business/businessFactory.js').dashboardBusiness;
 
-
+var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/static', express.static('public'));
 app.use('/output', express.static('output'));
 
@@ -59,17 +61,61 @@ app.get('/likeLastPicture',function(req, res){
 });
 
 app.get('/currentProcess',function(req,res){
-
   pm2.connect(function() {
     pm2.list(function(err, list){
         if(err){
           console.log(err);
-        }else{        
+        }else{
           res.send(list);
         }
     });
   });
 });
+
+app.post('/actionsProcess',function(req,res){
+
+  if(req.body != null && req.body.action != null && req.body.processName != null){
+    console.log("je recois, ",req.body.action);
+    var action = req.body.action;
+    var processName = req.body.processName;
+
+    switch(action) {
+          case 'STOP':
+              pm2.connect(function() {
+                pm2.stop(processName,function(err, proc){
+                    if(err){
+                      console.log(err);
+                    }else{
+                    }
+                });
+              });
+              break;
+          case 'RESTART':
+              pm2.connect(function() {
+                pm2.restart(processName,function(err, proc){
+                    if(err){
+                      console.log(err);
+                    }else{
+                    }
+                });
+              });
+              break;
+          case 'KILL':
+
+              break;
+    }
+
+
+
+    res.send("OK");
+
+
+  }else{
+    res.send("OUPS");
+  }
+
+});
+
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

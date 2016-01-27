@@ -8,4 +8,4 @@ pm2 start ../dashboard.js --name="dashboard"
 pm2 start ../collect.js --name="collect"
 
 #Start the dashboard
-pm2 start ../provisioning.js --name="provisioning"
+#pm2 start ../provisioning.js --name="provisioning"

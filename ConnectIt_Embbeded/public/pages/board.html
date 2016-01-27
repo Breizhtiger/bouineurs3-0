@@ -15,6 +15,6 @@
  </div>
   <shortcut></shortcut>
 </p>
-<a href="" ng-class="{'thumbnail':pictureType == 'normal','fav-thumbnail':pictureType == 'heart'}">
+<a href="" ng-class="{'thumbnail':pictureType !== 'heart','fav-thumbnail':pictureType == 'heart'}">
   <img src="{{picturePath}}" alt"last pictures" />
 </a>

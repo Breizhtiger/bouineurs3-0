@@ -70,7 +70,7 @@ goproBusiness.startNewCollect = function(ip, password, callback){
     }
 
     function getImage(fromPath, toPath) {
-      toPath = 'output/'+toPath;
+      toPath = process.cwd()+'/output/'+toPath;
     	console.log('retrieving image',fromPath, toPath)
     	return camera.get(fromPath)
     	.then(function(stream) {

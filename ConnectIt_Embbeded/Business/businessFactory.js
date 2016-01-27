@@ -13,6 +13,7 @@ var toolsFactory = require('../Tools/tools.js');
 var dataFactory = require('../DataAccess/DataAccessFactory.js');
 var collectGoProBusiness = require('./goProBusinessFactory.js').goproBusiness;
 var GPS = require('./gpsBusinessFactory.js');
+var request = require('request');
 var log = toolsFactory.loggerFactory.collectLogger;
 var socketTools = toolsFactory.socketFactory;
 var fsTools = toolsFactory.fsFactory;
@@ -205,7 +206,7 @@ dashboardBusiness.takeSimplePicture = function(heartOnYou){
 * Enables to start the collect of GoPro Pictures
 */
 collectBusiness.startCollect = function(){
-  /*collectGoProBusiness.cleanGoPro(goProIp,goProPassword)
+  collectGoProBusiness.cleanGoPro(goProIp,goProPassword)
   .then(function(value){
     if(value){
       console.log("GoPro is clean. launch the loop");
@@ -213,9 +214,7 @@ collectBusiness.startCollect = function(){
     }else{
       console.log("Errors during delete actions");
     }
-  });*/
-
-    StartCollectLoop();
+  });
 };
 
 collectBusiness.getNbPictures = function(){
@@ -229,18 +228,28 @@ collectBusiness.getNbPictures = function(){
 function StartCollectLoop(){
     currentDate = Date.now();
     log.info("Collect Loop starts");
-    collectGoProBusiness.GetNbEltOnFolder(goProIp,goProPassword,'/videos/DCIM')
-    .then(function(count){
-      if(count != null && count == 0){
-        StartCollectGoPro(false)
-        .then(function(){ StartCollectGps();return true; });
+    var requestToTest = "http://"+goProIp+":8080/videos";
+    //test de la connexion vers la gopro
+    request(requestToTest, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        //Ok gopro in the place
+        collectGoProBusiness.GetNbEltOnFolder(goProIp,goProPassword,'/videos/DCIM')
+        .then(function(count){
+          if(count != null && count == 0){
+            StartCollectGoPro(false)
+            .then(function(){ StartCollectGps();return true; });
+          }else{
+            console.log("GoPro using by an other process. Launch actions on 10 s");
+            //Ok, launch the timer
+           setTimeout(StartCollectLoop, 10000);
+          }
+        });
       }else{
-        console.log("GoPro using by an other process. Launch actions on 10 s");
-        //Ok, launch the timer
-       setTimeout(StartCollectLoop, 10000);
+          log.info("Oups no GoPro. please connect gopro error : "+error);
+          setTimeout(StartCollectLoop, 10000);
       }
     });
-};
+  };
 
 
  function OneShotCollectGps(){

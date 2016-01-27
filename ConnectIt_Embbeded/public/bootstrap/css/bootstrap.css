@@ -1119,6 +1119,8 @@ img {
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
+.fav-thumbnail > img,
+.fav-thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
@@ -5041,7 +5043,7 @@ a.badge:focus {
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
-  border: 5px solid #FF5978;
+  border: 5px solid #FFF;
   border-radius: 4px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
@@ -5062,6 +5064,38 @@ a.thumbnail.active {
   padding: 9px;
   color: #333;
 }
+
+
+
+.fav-thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 5px solid #FF5978;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+       -o-transition: border .2s ease-in-out;
+          transition: border .2s ease-in-out;
+}
+
+.fav-thumbnail > img,
+.fav-thumbnail a > img {
+  margin-right: auto;
+  margin-left: auto;
+}
+a.fav-thumbnail:hover,
+a.fav-thumbnail:focus,
+a.fav-thumbnail.active {
+  border-color: #337ab7;
+}
+.fav-thumbnail .caption {
+  padding: 9px;
+  color: #333;
+}
+
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
