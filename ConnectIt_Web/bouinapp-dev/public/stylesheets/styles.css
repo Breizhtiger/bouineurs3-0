@@ -294,7 +294,7 @@ a:focus {
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
-.loader {
+.carouselLoader {
 	z-index: 9999;
 	background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
 	height : 100%;

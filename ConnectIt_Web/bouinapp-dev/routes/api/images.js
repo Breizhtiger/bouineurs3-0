@@ -17,9 +17,15 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
+	console.log("Received !");
 	var images = businessImages.getHighlightsOfTheDay(
-		function(images){
-			res.status(200).send(images);
+		function(error, result){
+			if(error === null){
+				res.status(200).json(images);
+			}
+			else{
+				res.send(500, {message: 'Internal server error'});
+			}
 		}
 	);
 });

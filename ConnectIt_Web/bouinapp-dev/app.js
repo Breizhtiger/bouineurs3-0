@@ -35,6 +35,7 @@ app.use('/api/locations', apiLocation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log("GO THERE !!!");
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -48,7 +49,9 @@ console.log(app.get('env'));
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);    
+
+    console.log("GO THERE2 !!!");
+    res.status(err.status || 500);
     console.log("Error :\n Status: "+ err.status + "\n Stack trace : " + err.message);
     res.render('error', {
       message: err.message,

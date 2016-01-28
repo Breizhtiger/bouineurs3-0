@@ -3,12 +3,15 @@ var mongoose = require('mongoose');
 
 var businessImages = {};
 
-mongoose.connect('mongodb://54.93.89.27/dev', function(err) {
+mongoose.connect('mongodb://54.983.89.27/dev', function(err) {
   	if (err) { 
   		console.log("Error connecting mongo ! Error : " + err);
  	}
 });
 
+mongoose.connection.on('error', function(){
+		throw new Error("MongoException");
+});
 
 var pictureShotSchema = new mongoose.Schema({
   datetime: Date,
@@ -32,11 +35,20 @@ businessImages.getOne = function(){
 businessImages.getHighlightsOfTheDay = function(callback){
 	var fromDate = new Date().setHours(0,0,0);
 	var tillDate = new Date().setHours(23,59,59);
-	var query = images.find({"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()}, "type":"heart"}).limit(5);
+	var query = images.find(
+		{"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()}, "type":"heart"},
+		function(err, images){
+			if(err) return next(err);
+		}).limit(5);
+
 	var promise= query.exec();
 
-	promise.then( function(result){
-		callback(result);
+	promise.then(function(result){
+		console.log("OK !");
+		callback(null, result);
+	}, function(error){
+		console.log("KO");
+		callback(error, result);
 	});
 };
 
