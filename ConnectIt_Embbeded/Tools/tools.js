@@ -4,6 +4,7 @@ var winston = require('winston');
 var io = require('socket.io-client');
 var ss = require('socket.io-stream');
 var fs = require('fs');
+var when = require('when');
 /*Initialisation of the module*/
 var loggerFactory = {};
 var socketFactory = {};
@@ -14,6 +15,8 @@ exports.fsFactory = fsFactory;
 //var serverUrl = 'http://localhost:80';
 var serverUrl = 'http://52.59.249.149:80';
 var socket = io.connect(serverUrl);
+
+var lockSocket = false;
 
 socket.on('message', function(message) {
     console.log('Le serveur a un message pour vous : ' + message);
@@ -81,13 +84,16 @@ socketFactory.sendFullData = function(pictureInformation, locationInformation,ca
 
 
   function callbackCloseSocket(){
-  console.log('callbackCloseSocket');
+      console.log('callbackCloseSocket');
     //socket.close();
+    lockSocket = false;
+    return true;
   };
 
   var filename = pictureInformation.localPath;
   console.log("send ->"+filename);
   //var filename = '/home/anthony/test.png';
+  lockSocket = true;
   try{
     ss(socket).emit('fullData', stream, {mode: 'FullData',location :locationInformation});
     var rsStream = fs.createReadStream(filename);
