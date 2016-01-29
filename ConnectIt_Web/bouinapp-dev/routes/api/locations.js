@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 */
 router.get('/highlights', function(req, res, next) {
 	var toto = businessLocations.getOne();
-  res.send('respond with a resource : ' + toto);
+	res.send('respond with a resource : ' + toto);
 });
 
 /* 

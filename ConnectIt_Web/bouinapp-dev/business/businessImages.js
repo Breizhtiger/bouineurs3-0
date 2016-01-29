@@ -3,16 +3,6 @@ var mongoose = require('mongoose');
 
 var businessImages = {};
 
-mongoose.connect('mongodb://54.983.89.27/dev', function(err) {
-  	if (err) { 
-  		console.log("Error connecting mongo ! Error : " + err);
- 	}
-});
-
-mongoose.connection.on('error', function(){
-		throw new Error("MongoException");
-});
-
 var pictureShotSchema = new mongoose.Schema({
   datetime: Date,
   localPath: String,
@@ -20,16 +10,30 @@ var pictureShotSchema = new mongoose.Schema({
   type : String
 });
 
-
-//create a new model with the scema
+//	Create a new model with the schema
 var images = mongoose.model('images', pictureShotSchema);
 
-businessImages.getOne = function(){
-	// TO DO
+/*
+	Get all photos (path) stored in database
+	@param callback : Callback function to call after treatment
+*/	
+businessImages.getAllImages = function(callback){
+	var query = images.find({},
+		function(err, images){
+			if(err) return next(err);
+		});
+
+	var promise= query.exec();
+
+	promise.then(function(result){
+		callback(null, result);
+	}, function(error){
+		callback(error, result);
+	});
 };
 
 /*
-	GET highlight photos of the day
+	Get highlight photos of the day
 	@param callback : Callback function to call after treatment
 */	
 businessImages.getHighlightsOfTheDay = function(callback){
@@ -51,6 +55,30 @@ businessImages.getHighlightsOfTheDay = function(callback){
 		callback(error, result);
 	});
 };
+
+/*
+	Get photos of the day
+	@param day : Desired day at ISO format
+	@param callback : Callback function to call after treatment
+*/	
+businessImages.getImagesOfTheDay = function(day, callback){
+	var fromDate = day.setHours(0,0,0);
+	var tillDate = day.setHours(23,59,59);
+	var query = images.find(
+		{"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()}},
+		function(err, images){
+			if(err) return next(err);
+		});
+
+	var promise= query.exec();
+
+	promise.then(function(result){
+		callback(null, result);
+	}, function(error){
+		callback(error, result);
+	});
+};
+
 
 businessImages.insertPicture = function(date, path, status, type){
  var create = new images({"datetime": date, "localPath": path, "status": 'created', "type": type});

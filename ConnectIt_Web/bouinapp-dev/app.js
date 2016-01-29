@@ -4,11 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var database = require('./dataAccess/database');
 
 var index = require('./routes/index');
 var soprasteria = require('./routes/soprasteria');
 var contributor = require('./routes/contributor');
 var bouineursMagicTeam = require('./routes/bouineursMagicTeam');
+var onlive = require('./routes/onlive');
 var apiImage = require('./routes/api/images');
 var apiLocation = require('./routes/api/locations');
 
@@ -30,12 +32,12 @@ app.use('/', index);
 app.use('/soprasteria', soprasteria);
 app.use('/contributor', contributor);
 app.use('/bouineursMagicTeam', bouineursMagicTeam);
+app.use('/onlive', onlive);
 app.use('/api/images', apiImage);
 app.use('/api/locations', apiLocation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  console.log("GO THERE !!!");
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -49,8 +51,6 @@ console.log(app.get('env'));
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-
-    console.log("GO THERE2 !!!");
     res.status(err.status || 500);
     console.log("Error :\n Status: "+ err.status + "\n Stack trace : " + err.message);
     res.render('error', {

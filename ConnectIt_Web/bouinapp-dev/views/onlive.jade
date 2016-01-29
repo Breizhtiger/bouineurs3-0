@@ -1,0 +1,59 @@
+extends layout
+
+block content
+	nav(class='navbar navbar-custom navbar-fixed-top', role='navigation')
+		div(class='container', style='margin-right: 0;width: 100%')
+			div(class='navbar-header visible-xs')
+				div(class='mini-logobouineur')
+			//Collect the nav links, forms, and other content for toggling -->
+			div(class='navbar visible-xs visible-sm navbar-custom-phone')
+				div(class='dropdown-custom')
+					a(href='#'	,data-toggle='dropdown', class='dropdown-toggle')
+						span(class='glyphicon glyphicon-menu-hamburger',aria-hidden='true')
+						Menu
+					ul(class='dropdown-menu')
+						li(class='hidden')
+							a(href='#page-top')
+						li
+							a(class='page-scroll', href='#home') Home
+						li(role='separator',class='divider')
+						li
+							Le Projet
+							li
+								a(class='page-scroll',href='#quatreL') Le 4L Trophy
+							li
+								a(class='page-scroll',href='#equipage') L'équipage
+							li
+								a(class='page-scroll',href='#voiture') La voiture
+						li(role='separator',class='divider')
+						li
+							a(class='page-scroll', href='#onlive') On Live&iexcl;
+						li(role='separator',class='divider')
+						li
+							a(class='page-scroll', href='#sponsors') Sponsors
+			div(class='navbar-right hidden-xs hidden-sm col-md-10 col-lg-10')
+				ul(class='nav navbar-nav navbar-bar-custom')
+					// Hidden li included to remove active class from about link when scrolled up past about section
+					li(class='hidden')
+							a(href='#page-top')
+					li
+						a(class='page-scroll', href='../#home') Home
+					li(role='separator',class='divider')
+					li
+						a(class='page-scroll', href='../#projet') Le Projet
+					li(role='separator',class='divider')
+					li
+						a(class='page-scroll', href='../#onlive') On Live&iexcl;
+					li(role='separator',class='divider')
+					li
+						a(class='page-scroll', href='../#sponsors') Sponsors
+	header(id='onlive',class='intro')
+		div(class'intro-body')
+			div(class='container')
+				div(class='row')
+					div(class='col-md-10 col-md-offset-1 content')
+						h1 ON LIVE
+						h2 #{title}
+
+	// Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
