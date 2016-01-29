@@ -19,7 +19,22 @@ goproBusiness.cleanGoPro = function(ip,password){
   	console.error(e.stack || e);
     return false;
   });
-}
+};
+
+
+goproBusiness.isUp = function(ip,password){
+  console.log("Try to join the gopro ...");
+  var camera = new Camera(ip,password)
+  return camera.status()
+  .then(function() {
+  	console.log('Camera join successfully');
+    return true;
+  })
+  .otherwise(function(e) {
+  	console.error(e.stack || e);
+    return false;
+  });
+};
 
 
 goproBusiness.GetNbEltOnFolder = function(ip,password,folder){

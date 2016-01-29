@@ -7,6 +7,7 @@
 var toolsFactory = require('./Tools/tools.js');
 var path = require('path');
 var pm2 = require('pm2');
+var when = require('when');
 /* Instanciation*/
 var log = toolsFactory.loggerFactory.dashboardLogger;
 var dataFactory = require('./DataAccess/DataAccessFactory.js');
@@ -70,6 +71,12 @@ app.get('/currentProcess',function(req,res){
         }
     });
   });
+});
+
+app.get('/goProIsUp',function(req,res){
+    dashboardBusiness.goProIsUp().then(function(value){
+      res.send(value);
+    });
 });
 
 app.post('/actionsProcess',function(req,res){

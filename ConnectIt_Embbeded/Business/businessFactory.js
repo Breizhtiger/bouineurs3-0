@@ -177,9 +177,13 @@ function deletePictureOfFS(pictureInformation){
 
 };
 
-dashboardBusiness.likeLastPicture = function(){
-
-
+dashboardBusiness.goProIsUp = function(){
+    return collectGoProBusiness.isUp(goProIp,goProPassword)
+    .then(
+      function(value){
+        return value;
+      }
+    );
 };
 
 

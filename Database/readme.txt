@@ -12,6 +12,8 @@ mongo 127.0.0.1/connectIt:27017
 use connectIt
 db.pictures.find();
 db.pictures.remove({"status":"created"});
+db.pictures.update({"status":"Send"},{$set : {"status":"created"}},{multi:true});
+
 
 //create test database
 use test
