@@ -903,7 +903,7 @@ body {
     overflow: hidden;
 }
 
-.content{
+#soprasteria .content, #error .content{
     background: rgba(0,0,0, .4);
 }
 

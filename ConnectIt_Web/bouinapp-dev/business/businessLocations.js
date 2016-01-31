@@ -3,12 +3,6 @@ var mongoose = require('mongoose');
 
 var businessLocations = {};
 
-// On se connecte à la base de données
-// N'oubliez pas de lancer ~/mongodb/bin/mongod dans un terminal !
-mongoose.connect('mongodb://54.93.89.27/test', function(err) {
-  if (err) { throw err; }
-});
-
 var locationSchema = new mongoose.Schema({
   datetime: { type: Date, default: Date.now() },
   longitude: Number,

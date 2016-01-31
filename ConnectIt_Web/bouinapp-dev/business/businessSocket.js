@@ -12,22 +12,22 @@ businessSocket.init = function(server){
 	io = io.listen(server);
 	
 	// Start binding connection event
-	io.sockets.on('connection', function (socket) {
-    	console.log('Un client est connecté ! ');
-    	socket.emit('message', 'Vous êtes bien connecté !');
+	// io.sockets.on('connection', function (socket) {
+	// 	console.log('Un client est connecté ! ');
+	// 	socket.emit('message', 'Vous êtes bien connecté !');
 				
-		//socket fullData
-		ss(socket).on('fullData', function(stream, data) {
-			console.log("I receive fulldata ->",data);
-			var filename = __dirname+'/output/'+Date.now()+'_'+ path.basename(data.name);
-			stream.pipe(fs.createWriteStream(filename));
-		});
+	// 	//socket fullData
+	// 	ss(socket).on('fullData', function(stream, data) {
+	// 		console.log("I receive fulldata ->",data);
+	// 		var filename = __dirname+'/output/'+Date.now()+'_'+ path.basename(data.name);
+	// 		stream.pipe(fs.createWriteStream(filename));
+	// 	});
 
-		// Bind socket deconnection
-		socket.on('disconnect', function (socket) {
-			console.log('Un client est déconnecté !');
-		});
-	});
+	// 	// Bind socket deconnection
+	// 	socket.on('disconnect', function (socket) {
+	// 		console.log('Un client est déconnecté !');
+	// 	});
+	// });
 };
 
 module.exports = businessSocket;

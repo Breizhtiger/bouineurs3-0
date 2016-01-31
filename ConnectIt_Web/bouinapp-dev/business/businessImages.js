@@ -88,4 +88,15 @@ businessImages.insertPicture = function(date, path, status, type){
   });
 };
 
+// businessImages.savePicture = function(image){
+// 	create.save(function (err) {
+// 		if (err) { 
+// 			throw err; 
+// 		}
+// 		else{
+// 			return true;
+// 		}
+// 	});
+// };
+
 module.exports = businessImages;
