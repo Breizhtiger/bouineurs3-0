@@ -1,3 +1,4 @@
+var mongoConnect = require('./dataAccess/database.js');
 var businessImages = require('./business/businessImages.js');
 
 var date = Date.now();
@@ -7,4 +8,5 @@ var type = "heart";
 
 for(i=0;i<10;i++){
 	businessImages.insertPicture(date, path, status, type);
+	console.log("OK!");
 }

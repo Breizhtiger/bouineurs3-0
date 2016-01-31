@@ -11,8 +11,10 @@ var soprasteria = require('./routes/soprasteria');
 var contributor = require('./routes/contributor');
 var bouineursMagicTeam = require('./routes/bouineursMagicTeam');
 var onlive = require('./routes/onlive');
+var supervision = require('./routes/supervision');
 var apiImage = require('./routes/api/images');
 var apiLocation = require('./routes/api/locations');
+var apiSupervision = require('./routes/api/supervision');
 
 var app = express();
 
@@ -33,8 +35,10 @@ app.use('/soprasteria', soprasteria);
 app.use('/contributor', contributor);
 app.use('/bouineursMagicTeam', bouineursMagicTeam);
 app.use('/onlive', onlive);
+app.use('/supervision', supervision);
 app.use('/api/images', apiImage);
 app.use('/api/locations', apiLocation);
+app.use('/api/supervision', apiSupervision);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

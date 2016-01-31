@@ -82,10 +82,23 @@ businessImages.getImagesOfTheDay = function(day, callback){
 
 businessImages.insertPicture = function(date, path, status, type){
  var create = new images({"datetime": date, "localPath": path, "status": 'created', "type": type});
-   create.save(function (err) {
-    if (err) { throw err; }
-    console.log('Pictures '+path+' inserted on database');
-  });
+	create.save(function (err) {
+		if (err) { console.log("ERREUR");throw err; }
+		console.log('Pictures '+path+' inserted on database');
+	});
+};
+
+/*
+	Count all images present in database
+	@param callback : Callback function to call after treatment
+*/
+businessImages.countPictures = function(callback){
+	var query = images.count({},function(error, result){
+		if(error != null)
+			callback(null, result);
+		else
+			callback(error, result);
+	});
 };
 
 // businessImages.savePicture = function(image){
