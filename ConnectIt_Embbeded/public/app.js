@@ -49,13 +49,19 @@ App.controller('mainController', ['$scope','$http',function($scope,$http) {
     // create a message to display in our view
     $scope.message = 'Bouineurs 3.0';
     $scope.goproState = 'false';
+    $scope.picturesStatus = {};
     $http.get("/goProIsUp").then(function(response){
-       console.log("OK ->",response);
        $scope.goproState = response.data;
-        console.log("jxkxokzeokcoze",$scope.goproState);
     },
     function(response){
           $scope.goproState = 'false';
+        console.log("KO -> ", response);
+    });
+
+    $http.get("/picturesStatus").then(function(response){
+         $scope.picturesStatus = response.data;
+    },
+    function(response){        
         console.log("KO -> ", response);
     });
 }]);

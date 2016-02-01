@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "easyimage": "^2.1.0",
     "events": "^1.1.0",
     "express": "^4.13.3",
     "fs": "0.0.2",

@@ -2,9 +2,11 @@ var Camera = require('gopro').Camera;
 var when = require('when');
 var fsPath = require('path');
 var fs = require('fs');
+var easyimg = require('easyimage');
 var goproBusiness = {};
 exports.goproBusiness = goproBusiness;
-
+var resizeWidth = 800;
+var resizeHeight = 800;
 var goProPicturesFolder = '/videos/DCIM/100GOPRO';
 
 goproBusiness.cleanGoPro = function(ip,password){
@@ -101,8 +103,23 @@ goproBusiness.startNewCollect = function(ip, password, callback){
     		})
     		out.on('finish', function() {
     			console.log('done retrieving image',fromPath, toPath);
-          callback(toPath);
-    			dfd.resolve()
+          easyimg.resize({
+               src:toPath,
+               dst:toPath,
+               width:resizeWidth,
+               height:resizeHeight
+            }).then(
+            function(file) {
+              console.log('Picture resize OK');
+              callback(toPath);
+        			dfd.resolve()
+            }, function (err) {
+              console.log('Picture Resize KO',err);
+              callback(toPath);
+        			dfd.resolve()
+            }
+          );
+
     		})
     		stream.pipe(out)
     		stream.on('error', dfd.reject.bind(dfd))

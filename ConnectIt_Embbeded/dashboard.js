@@ -41,6 +41,27 @@ app.get('/lastPicture',function(req, res){
 });
 
 
+app.get('/picturesStatus',function(req, res){
+    var nbCreated = 0;
+    var nbSended = 0;
+    dataFactory.pictureFactory.countByStatus('created',function(err,result){
+      if(err){
+        console.log("Une erreur ",err);
+      }else{
+        nbCreated = result;
+        dataFactory.pictureFactory.countByStatus('Send',function(err,result){
+          if(err){
+            console.log("Une erreur ",err);
+          }else{
+            nbSended = result;
+            res.send({created : nbCreated, sended : nbSended});
+          }
+        });
+      }
+    });
+});
+
+
 //API:GET Return the last picture
 app.get('/takePicture',function(req, res){
       dashboardBusiness.takeSimplePicture(false);
@@ -108,15 +129,9 @@ app.post('/actionsProcess',function(req,res){
               });
               break;
           case 'KILL':
-
               break;
     }
-
-
-
     res.send("OK");
-
-
   }else{
     res.send("OUPS");
   }

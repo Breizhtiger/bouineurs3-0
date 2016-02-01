@@ -105,7 +105,10 @@ pictureFactory.updateStatusPictureByDatetime = function(datetime,newStatus){
     });
 };
 
-
+pictureFactory.countByStatus = function(status,callback){
+  //Send, created
+  locations.count({"status":status},callback);
+}
 
 locationFactory.getOneLocationByFilter = function(filter,callback){
     locations.findOne(filter).sort('datetime').exec(callback);
