@@ -16,7 +16,7 @@ var images = mongoose.model('images', pictureShotSchema);
 /*
 	Get all photos (path) stored in database
 	@param callback : Callback function to call after treatment
-*/	
+*/
 businessImages.getAllImages = function(callback){
 	var query = images.find({},
 		function(err, images){
@@ -35,7 +35,7 @@ businessImages.getAllImages = function(callback){
 /*
 	Get highlight photos of the day
 	@param callback : Callback function to call after treatment
-*/	
+*/
 businessImages.getHighlightsOfTheDay = function(callback){
 	var fromDate = new Date().setHours(0,0,0);
 	var tillDate = new Date().setHours(23,59,59);
@@ -60,7 +60,7 @@ businessImages.getHighlightsOfTheDay = function(callback){
 	Get photos of the day
 	@param day : Desired day at ISO format
 	@param callback : Callback function to call after treatment
-*/	
+*/
 businessImages.getImagesOfTheDay = function(day, callback){
 	var fromDate = day.setHours(0,0,0);
 	var tillDate = day.setHours(23,59,59);
@@ -80,7 +80,7 @@ businessImages.getImagesOfTheDay = function(day, callback){
 };
 
 
-businessImages.insertPicture = function(date, path, status, type){
+businessImages.insertPicture = function(date, path, type){
  var create = new images({"datetime": date, "localPath": path, "status": 'created', "type": type});
 	create.save(function (err) {
 		if (err) { console.log("ERREUR");throw err; }
@@ -103,8 +103,8 @@ businessImages.countPictures = function(callback){
 
 // businessImages.savePicture = function(image){
 // 	create.save(function (err) {
-// 		if (err) { 
-// 			throw err; 
+// 		if (err) {
+// 			throw err;
 // 		}
 // 		else{
 // 			return true;

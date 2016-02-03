@@ -105,14 +105,14 @@ function manageLocationToSend(err,result){
     if(result != null){
       log.info('Location to send');
       console.log('actualPictureToSend',actualPictureToSend.localPath);
-      if(socketTools.pictureExist(process.cwd()+'/output/'+actualPictureToSend.localPath)){
+      if(socketTools.pictureExist(actualPictureToSend.localPath)){
           sendFullData(actualPictureToSend,result);
       }else{
           saveProvisioningKO();
       }
     }else{
       log.info('No Location to send');
-      if(socketTools.pictureExist(process.cwd()+'/output/'+actualPictureToSend.localPath)){
+      if(socketTools.pictureExist(actualPictureToSend.localPath)){
           sendFullData(actualPictureToSend,null);
       }else{
           saveProvisioningKO();
