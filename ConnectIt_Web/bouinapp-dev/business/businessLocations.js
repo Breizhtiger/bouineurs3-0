@@ -15,10 +15,55 @@ var locationSchema = new mongoose.Schema({
 //create a new model with the scema
 var locations = mongoose.model('locations',locationSchema);
 
-businessLocations.getOne = function(){
-	
-  locations.findOne({status: 'created'}).sort('datetime').exec(callback);
-	return "toto";
-}
+/*
+	Get all photos (path) stored in database
+	@param callback : Callback function to call after treatment
+*/		
+businessLocations.getAllLocations = function(callback){
+	var query = locations.find({},
+		function(err, images){
+			if(err) return next(err);
+		});
+
+	var promise= query.exec();
+
+	promise.then(function(result){
+		callback(null, result);
+	}, function(error){
+		callback(error, result);
+	});
+};
+
+/*
+	Get all photos (path) stored in database
+	@param callback : Callback function to call after treatment
+*/		
+businessLocations.getLocationByDay = function(day, callback){
+	var query = locations.find({},
+		function(err, locations){
+			if(err) return next(err);
+		});
+
+	var promise= query.exec();
+
+	promise.then(function(result){
+		callback(null, result);
+	}, function(error){
+		callback(error, result);
+	});
+};
+
+businessLocations.insertLocation = function(date, longitude, latitude, altitude, speed) {
+	var create = new locations({"datetime": date, "longitude": longitude, "latitude": latitude, "altitude": altitude, "speed":speed});
+	create.save(function (err) {
+		if (err) {
+			console.log("ERREUR");
+			throw err;
+		}
+
+		console.log('Locations inserted on database');
+	});
+};
+
 
 module.exports = businessLocations;

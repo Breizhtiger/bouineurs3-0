@@ -1,5 +1,5 @@
 var express = require('express');
-var businessLocations = require('../../business/businessImages');
+var businessLocations = require('../../business/businessLocations');
 var router = express.Router();
 
 /* 
@@ -17,8 +17,16 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
-	var toto = businessLocations.getOne();
-	res.send('respond with a resource : ' + toto);
+	var locations = businessLocations.getLocationByDay( day,
+		function(error, result){
+			if(error === null){
+				res.status(200).json(result);
+			}
+			else{
+				res.send(500, {message: 'Internal server error'});
+			}
+		}
+	);
 });
 
 /* 
@@ -27,7 +35,18 @@ router.get('/highlights', function(req, res, next) {
 	@return 
 */
 router.get('/daily/:day', function(req, res, next) {
-  res.send('respond with a resource');
+	requestedDay = req.params.day;
+	
+	var locations = businessLocations.getLocationByDay(requestedDay,
+		function(error, result){
+			if(error === null){
+				res.status(200).json(result);
+			}
+			else{
+				res.send(500, {message: 'Internal server error'});
+			}
+		}
+	);
 });
 
 module.exports = router;

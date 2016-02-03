@@ -28,7 +28,7 @@ router.get('/highlights', function(req, res, next) {
 	var images = businessImages.getHighlightsOfTheDay(
 		function(error, result){
 			if(error === null){
-				res.status(200).json(images);
+				res.status(200).json(result);
 			}
 			else{
 				res.send(500, {message: 'Internal server error'});
