@@ -30,12 +30,13 @@ app.get('/', function (req, res) {
 
 //API:GET Return the last picture
 app.get('/lastPicture',function(req, res){
-
     dataFactory.pictureFactory.getLastPicture(function(err,result){
       if(err){
         console.log("Une erreur ",err);
       }else{
-        res.send({path : result.localPath, type : result.type});
+        var pathArray = result.localPath.split('/');
+        var newPath = 'output/'+pathArray[pathArray.length-1];
+        res.send({path : newPath, type : result.type});
       }
     });
 });

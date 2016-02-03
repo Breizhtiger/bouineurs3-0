@@ -12,8 +12,8 @@ var fsFactory = {};
 exports.loggerFactory = loggerFactory;
 exports.socketFactory = socketFactory;
 exports.fsFactory = fsFactory;
-//var serverUrl = 'http://localhost:80';
-var serverUrl = 'http://52.59.249.149:80';
+var serverUrl = 'http://127.0.0.1:3000';
+//var serverUrl = 'http://52.59.249.149:80';
 var socket = io.connect(serverUrl);
 
 var lockSocket = false;
@@ -62,6 +62,7 @@ socketFactory.pictureExist = function fileExists(filePath){
   try{
     return fs.statSync(filePath);
   }catch(err){
+    console.log('Error to find pictures',filePath);
     return false;
   }
 };
@@ -79,7 +80,7 @@ socketFactory.testConnection = function(){
 
 }
 
-socketFactory.sendFullData = function(pictureInformation, locationInformation,callBackFailed){
+socketFactory.sendFullData = function(pictureInformation, locationInformation,callback){
   var stream = ss.createStream();
 
 
@@ -91,17 +92,20 @@ socketFactory.sendFullData = function(pictureInformation, locationInformation,ca
   };
 
   var filename = pictureInformation.localPath;
-  console.log("send ->"+filename);
+  console.log("send ->"+process.cwd()+'/output/'+filename);
   //var filename = '/home/anthony/test.png';
   lockSocket = true;
   try{
     ss(socket).emit('fullData', stream, {mode: 'FullData',location :locationInformation});
-    var rsStream = fs.createReadStream(filename);
+    var rsStream = fs.createReadStream(process.cwd()+'/output/'+filename);
     rsStream.on('error',function(err){
       console.log("error on fulldata sending",err);
       callbackCloseSocket();
     });
-    rsStream.on('end', callbackCloseSocket);
+    rsStream.on('end', function(){
+      callbackCloseSocket();
+      callback();
+    });
     rsStream.pipe(stream);
   }catch(exception){
   console.log("Error : ",exception);

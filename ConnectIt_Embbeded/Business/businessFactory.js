@@ -104,14 +104,15 @@ function manageLocationToSend(err,result){
   }else{
     if(result != null){
       log.info('Location to send');
-      if(socketTools.pictureExist(actualPictureToSend.localPath)){
+      console.log('actualPictureToSend',actualPictureToSend.localPath);
+      if(socketTools.pictureExist(process.cwd()+'/output/'+actualPictureToSend.localPath)){
           sendFullData(actualPictureToSend,result);
       }else{
           saveProvisioningKO();
       }
     }else{
       log.info('No Location to send');
-      if(socketTools.pictureExist(actualPictureToSend.localPath)){
+      if(socketTools.pictureExist(process.cwd()+'/output/'+actualPictureToSend.localPath)){
           sendFullData(actualPictureToSend,null);
       }else{
           saveProvisioningKO();
@@ -146,9 +147,10 @@ function sendFullData(pictureInformation, locationInformation){
     setTimeout(getPictureToSend,provisioningDelay);
   }else{
     try{
-      socketTools.sendFullData(pictureInformation,locationInformation);
-      saveProvisioningOK();
-      deletePictureOfFS(pictureInformation);
+      socketTools.sendFullData(pictureInformation,locationInformation,function(){
+        saveProvisioningOK();
+        deletePictureOfFS(pictureInformation);
+      });
       // Re start the provisioning
       setTimeout(getPictureToSend,provisioningDelay);
     }catch(exception){
@@ -365,9 +367,7 @@ function StartCollectGoPro(heartOnYou){
 */
 function SavePictureOnBddCallBack(picturePath){
    try{
-     var pathArray = picturePath.split('/');
-     var path = '/output/'+pathArray[pathArray.length-1];
-     dataFactory.pictureFactory.insertPicture(currentDate,path);
+     dataFactory.pictureFactory.insertPicture(currentDate,picturePath);
    }catch(exception){
      log.alert('Error during picture database inserting',exception)
    }
@@ -380,10 +380,10 @@ function SavePictureOnBddCallBack(picturePath){
 function SaveFavoritePictureOnBddCallBack(picturePath){
    try{
 
-     var pathArray = picturePath.split('/');
-     var path = '/output/'+pathArray[pathArray.length-1];
+     //var pathArray = picturePath.split('/');
+     //var path = pathArray[pathArray.length-1];
 
-     dataFactory.pictureFactory.insertFavoritePicture(currentDate,path);
+     dataFactory.pictureFactory.insertFavoritePicture(currentDate,picturePath);
    }catch(exception){
      log.alert('Error during favorite picture database inserting',exception)
    }
