@@ -29,13 +29,14 @@ businessSocket.init = function(server){
 			  status: data.location._doc.status
 			};
 	 		console.log("I receive fulldata ->",data);
-			console.log("try to save ->",location);
+			console.log("try to save ->",data.dateOfPicture);
 	 		var filename = __dirname+'/output/'+ path.basename(data.name);
-			if(data.datetime!= null){
+
+			if(data.dateOfPicture!= null){
 				try{
 					//SAVE Pictures
-					businessImages.insertPicture(data.datetime, filename, 'normal');
-					businessLocations.insertLocation(data.datetime, location.longitude, location.latitude, location.altitude, location.speed);
+					businessImages.insertPicture(data.dateOfPicture, filename, 'normal');
+					businessLocations.insertLocation(data.dateOfPicture, location.longitude, location.latitude, location.altitude, location.speed);
 				}catch(e){
 					var datetime = Date.now();
 					//SAVE Pictures

@@ -104,7 +104,7 @@ function manageLocationToSend(err,result){
   }else{
     if(result != null){
       log.info('Location to send');
-      console.log('actualPictureToSend',actualPictureToSend.localPath);
+      console.log('actualPictureToSend',actualPictureToSend);
       if(socketTools.pictureExist(actualPictureToSend.localPath)){
           sendFullData(actualPictureToSend,result);
       }else{

@@ -99,9 +99,7 @@ socketFactory.sendFullData = function(pictureInformation, locationInformation,ca
 
     var pathArray = filename.split('/');
     var newName = pathArray[pathArray.length-1];
-
-
-    ss(socket).emit('fullData', stream, {name:newName,datetime:pictureInformation.datetime, mode: 'FullData',location :locationInformation});
+    ss(socket).emit('fullData', stream, {name:newName,dateOfPicture:pictureInformation.datetime.toString(), mode: 'FullData',location :locationInformation});
     var rsStream = fs.createReadStream(filename);
     rsStream.on('error',function(err){
       console.log("error on fulldata sending",err);
