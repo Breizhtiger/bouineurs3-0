@@ -20,22 +20,33 @@ businessSocket.init = function(server){
 	 	//socket fullData
 	 	ss(socket).on('fullData', function(stream, data) {
 			// un peu degueulasse, selon le temps on corrigera
-		var location = {
-			  datetime: data.location._doc.datetime,
-			  longitude: data.location._doc.longitude,
-			  latitude: data.location._doc.latitude,
-			  altitude : data.location._doc.altitude,
-			  speed : data.location._doc.speed,
-			  status: data.location._doc.status
-			};
-	 		console.log("I receive fulldata ->",data);
-			console.log("try to save ->",data.dateOfPicture);
+			var location = null;
+			if(data != null && data.location != null && data.location._doc != null){
+				location = {
+					 datetime: data.location._doc.datetime,
+					 longitude: data.location._doc.longitude,
+					 latitude: data.location._doc.latitude,
+					 altitude : data.location._doc.altitude,
+					 speed : data.location._doc.speed,
+					 status: data.location._doc.status
+				 };
+			}else{
+				location = {
+					 datetime: null,
+					 longitude: null,
+					 latitude: null,
+					 altitude : null,
+					 speed : null,
+					 status: null
+				 };
+			}
+
 	 		var filename = __dirname+'/output/'+ path.basename(data.name);
 
 			if(data.dateOfPicture!= null){
 				try{
 					//SAVE Pictures
-					businessImages.insertPicture(data.dateOfPicture, filename, 'normal');
+					businessImages.insertPicture(data.dateOfPicture, filename, data.typeOfPicture);
 					businessLocations.insertLocation(data.dateOfPicture, location.longitude, location.latitude, location.altitude, location.speed);
 				}catch(e){
 					var datetime = Date.now();

@@ -93,13 +93,19 @@ socketFactory.sendFullData = function(pictureInformation, locationInformation,ca
 
   var filename = pictureInformation.localPath;
   console.log("send ->"+filename);
-  //var filename = '/home/anthony/test.png';
   lockSocket = true;
   try{
-
     var pathArray = filename.split('/');
     var newName = pathArray[pathArray.length-1];
-    ss(socket).emit('fullData', stream, {name:newName,dateOfPicture:pictureInformation.datetime.toString(), mode: 'FullData',location :locationInformation});
+    ss(socket).emit('fullData', stream,
+      {
+        name:newName,
+        dateOfPicture:pictureInformation.datetime.toString(),
+        typeOfPicture:pictureInformation.type,
+        mode: 'FullData',
+        location :locationInformation
+      }
+    );
     var rsStream = fs.createReadStream(filename);
     rsStream.on('error',function(err){
       console.log("error on fulldata sending",err);
