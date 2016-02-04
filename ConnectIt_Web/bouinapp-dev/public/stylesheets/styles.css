@@ -300,7 +300,7 @@ a:focus {
 	height : 100%;
 	width : 100%;
 	cursor : wait;
-} 
+}
 
 .btn-circle {
     width: 70px;
@@ -999,4 +999,8 @@ body {
 
 .start{
 	font-size:20px;
+}
+
+#mapDay{
+  height: 500px;
 }
