@@ -1,6 +1,7 @@
 extends layout
 
 block content
+	<script src="/static/javascripts/jquery.js"></script>
 	nav(class='navbar navbar-custom navbar-fixed-top', role='navigation')
 		div(class='container', style='margin-right: 0;width: 100%')
 			div(class='navbar-header visible-xs')
@@ -57,8 +58,4 @@ block content
 						div(id='mapDay')
 							script(type='text/javascript', src='/static/javascripts/onlive.js')
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&callback=initMap" async defer></script>
-
-	script(type='text/javascript').
-		var a = JSON.parse(htmlDecode("<%= JSON.stringify(fullDateString) %>"));
-		console.log(a);
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&callback=initLocation" async defer></script>

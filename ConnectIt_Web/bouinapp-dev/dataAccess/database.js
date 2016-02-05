@@ -29,7 +29,7 @@ var pictures = mongoose.model('pictures',pictureShotSchema);
 
 */
 // mongoose.connect('mongodb://54.93.89.27/dev', function(err) {
-mongoose.connect('mongodb://52.59.249.149/dev', function(err) {
+mongoose.connect('mongodb://54.93.53.233/dev', function(err) {
 	if (err) {
 		console.log("Error connecting mongo ! Error : " + err);
 	}
