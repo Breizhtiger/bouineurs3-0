@@ -1047,3 +1047,7 @@ body {
 .start{
 	font-size:20px;
 }
+
+#mapDay{
+  height: 500px;
+}
