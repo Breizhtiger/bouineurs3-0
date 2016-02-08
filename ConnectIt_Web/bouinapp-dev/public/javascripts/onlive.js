@@ -25,7 +25,18 @@ function initMap(data){
     mapDay.fitBounds(bounds);
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
-      map: mapDay
+      map: mapDay,
+      icon: '/static/images/car.png'
+    });
+    
+    marker.addListener('click', function() {
+        alert('click marker' + marker.getPosition());
+        clickMarker(marker.getPosition()); 
     });
   }
+}
+
+// Au click d'un marker
+function clickMarker(position){
+    // to implement
 }
