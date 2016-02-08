@@ -21,22 +21,26 @@ function initMap(data){
   
   // Positionnement markers
   for (i = 0; i < data.length; i++) {
+    // Calcule de la zone à afficher
     bounds.extend(new google.maps.LatLng(data[i].latitude, data[i].longitude));
     mapDay.fitBounds(bounds);
+    
+    // Création du marker
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
       map: mapDay,
       icon: '/static/images/car.png'
     });
     
-    marker.addListener('click', function() {
-        alert('click marker' + marker.getPosition());
-        clickMarker(marker.getPosition()); 
+    // Création de l'infobulle
+    var contentString = "<img src='/static/images/magicTeam.jpg' width='300px' height='200px' />";
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    // Click sur un marker
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(mapDay, this);
     });
   }
-}
-
-// Au click d'un marker
-function clickMarker(position){
-    // to implement
 }
