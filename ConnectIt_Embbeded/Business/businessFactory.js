@@ -170,9 +170,7 @@ function sendFullData(pictureInformation, locationInformation){
 function deletePictureOfFS(pictureInformation){
    dataFactory.pictureFactory.getLastPicture(function(err,result){
      if(err){
-       console.log("Une erreur ",err)
-
-
+       console.log("Une erreur ",err);
      }else{
         if(result != null && result._id == pictureInformation._id){
             //on ne supprime pas la photos car c'est la dernière
@@ -180,12 +178,10 @@ function deletePictureOfFS(pictureInformation){
         }else{
           console.log("c'est pas la dernière photo, on peut la supprimer La derniere est "+result._id);
           //pas la dernière, on peut la supprimer
-          //fsTools.deletePicture(pictureInformation.localPath);
+          fsTools.deletePicture(pictureInformation.localPath);
         }
-       }
-
+      }
    });
-
 };
 
 dashboardBusiness.goProIsUp = function(){
@@ -359,8 +355,6 @@ function StartCollectGoPro(heartOnYou){
   }
 };
 
-
-
 /**
 * Callback to save picture instance on the database
 * @param picturePath : local picture path to save
@@ -379,10 +373,6 @@ function SavePictureOnBddCallBack(picturePath){
 */
 function SaveFavoritePictureOnBddCallBack(picturePath){
    try{
-
-     //var pathArray = picturePath.split('/');
-     //var path = pathArray[pathArray.length-1];
-
      dataFactory.pictureFactory.insertFavoritePicture(currentDate,picturePath);
    }catch(exception){
      log.alert('Error during favorite picture database inserting',exception)

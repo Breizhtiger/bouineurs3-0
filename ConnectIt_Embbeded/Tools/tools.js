@@ -47,14 +47,17 @@ loggerFactory.dashboardLogger = new (winston.Logger)({
 
 fsFactory.deletePicture = function(picturePath){
     console.log("Try to delete this file : "+picturePath);
-    fs.unlink(picturePath, function(err){
-      if(err){
-        console.log("errors on deleting",err);
-      }else{
-          console.log("File successfully delete");
-      }
-
-    });
+    try{
+      fs.unlink(picturePath, function(err){
+        if(err){
+          console.log("errors on deleting",err);
+        }else{
+            console.log("File successfully delete");
+        }
+      });
+    }catch(exception){
+      console.log("exception on deleting",exception);
+    }
 };
 
 
