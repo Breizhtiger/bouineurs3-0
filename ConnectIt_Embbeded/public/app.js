@@ -61,7 +61,7 @@ App.controller('mainController', ['$scope','$http',function($scope,$http) {
     $http.get("/picturesStatus").then(function(response){
          $scope.picturesStatus = response.data;
     },
-    function(response){        
+    function(response){
         console.log("KO -> ", response);
     });
 }]);
@@ -105,10 +105,8 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
     };
 
     $http.get("/lastPicture").then(function(response){
-      console.log("OK ->",response);
         $scope.picturePath = response.data.path;
         $scope.pictureType = response.data.type;
-        console.log("jxkxokzeokcoze",$scope.pictureType);
     },
     function(response){
         console.log("KO -> ", response);
@@ -117,7 +115,6 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
     $scope.LikeLastPictureAction = function(){
       $http.get("/likeLastPicture").then(
         function(response){
-            console.log("OK ->",response);
         },
         function(response){
             console.log("KO -> ", response);
@@ -126,7 +123,7 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
 
     $scope.TakePictureAction = function(){
       $http.get("/takePicture").then(function(response){
-        console.log("OK ->",response);
+
       },
       function(response){
           console.log("KO -> ", response);
@@ -135,7 +132,7 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
 
     $scope.HeartOnYouAction = function(){
       $http.get("/heartOnYou").then(function(response){
-        console.log("OK ->",response);
+
       },
       function(response){
           console.log("KO -> ", response);
@@ -151,8 +148,6 @@ App.controller('adminController', ['$scope','$http','$location', function($scope
     $scope.message = 'Bouineur 3.0';
     $scope.process = [];
     $http.get("/currentProcess").then(function(response){
-      console.log("OK truc->",response.data[0]);
-
       $scope.process = response.data;
     },
     function(response){
@@ -166,7 +161,7 @@ App.controller('adminController', ['$scope','$http','$location', function($scope
         data.action = action;
 
         $http.post('/actionsProcess', data).then(function(response){
-          console.log("OK actions->",response);
+        
         },
         function(response){
             console.log("KO actions-> ", response);

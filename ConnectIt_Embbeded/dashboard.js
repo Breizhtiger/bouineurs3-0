@@ -34,9 +34,13 @@ app.get('/lastPicture',function(req, res){
       if(err){
         console.log("Une erreur ",err);
       }else{
-        var pathArray = result.localPath.split('/');
-        var newPath = 'output/'+pathArray[pathArray.length-1];
-        res.send({path : newPath, type : result.type});
+        if(result != null && result.localPath != null ){
+          var pathArray = result.localPath.split('/');
+          var newPath = 'output/'+pathArray[pathArray.length-1];
+          res.send({path : newPath, type : result.type});
+        }else{
+        
+        }
       }
     });
 });
