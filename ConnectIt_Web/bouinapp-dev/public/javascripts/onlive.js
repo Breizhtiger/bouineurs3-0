@@ -1,6 +1,6 @@
 var day = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
 var fullDomain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-
+ 
 // Requête l'api pour récupérer les localisations
 function initLocation(){
   $(document).ready(function () {
@@ -14,15 +14,33 @@ function initLocation(){
 function initMap(data){
   // Init map
   mapDay = new google.maps.Map(document.getElementById('mapDay'), {
-    zoom: 5,
-    center: new google.maps.LatLng(data[60].latitude, data[60].longitude)
+    center: new google.maps.LatLng(data[data.length/2].latitude, data[data.length/2].longitude)
   });
-
+  
+  var bounds = new google.maps.LatLngBounds();
+  
   // Positionnement markers
   for (i = 0; i < data.length; i++) {
+    // Calcule de la zone à afficher
+    bounds.extend(new google.maps.LatLng(data[i].latitude, data[i].longitude));
+    mapDay.fitBounds(bounds);
+    
+    // Création du marker
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
-      map: mapDay
+      map: mapDay,
+      icon: '/static/images/car.png'
+    });
+    
+    // Création de l'infobulle
+    var contentString = "<img src='/static/images/magicTeam.jpg' width='300px' height='200px' />";
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    // Click sur un marker
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(mapDay, this);
     });
   }
 }
