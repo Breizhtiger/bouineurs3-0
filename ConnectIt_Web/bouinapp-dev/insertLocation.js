@@ -8,9 +8,6 @@ var altitude = "20";
 var speed = "30";
 
 for(i=0;i<10;i++){
-	setTimeout(function() {
-		console.log("OK apres timeout");
-		businessLocations.insertLocation(date, longitudeTab[i], latitudeTab[i], altitude, speed);
-	}, 10000);
+	businessLocations.insertLocation(date, longitudeTab[i], latitudeTab[i], altitude, speed);
 	console.log("OK!" );
 }

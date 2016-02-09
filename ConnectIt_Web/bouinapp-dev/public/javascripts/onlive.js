@@ -14,7 +14,11 @@ function initLocation(){
 function initMap(data){
   // Init map
   mapDay = new google.maps.Map(document.getElementById('mapDay'), {
-    center: new google.maps.LatLng(data[data.length/2].latitude, data[data.length/2].longitude)
+    center: function(){
+      if(data != null && data.length != 0){
+        return new google.maps.LatLng(data[data.length/2].latitude, data[data.length/2].longitude)
+      }
+      }
   });
   
   var bounds = new google.maps.LatLngBounds();

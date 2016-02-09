@@ -11,7 +11,7 @@ var businessSocket = {};
 businessSocket.init = function(server){
 	// Attach socket on server listen
 	io = io.listen(server);
-
+console.log(process.cwd());
 	// Start binding connection event
 	 io.sockets.on('connection', function (socket) {
 	 console.log('Un client est connecté ! ');
@@ -41,17 +41,22 @@ businessSocket.init = function(server){
 				 };
 			}
 
-			var outputDirectory = __dirname+'../public/daily/';
+			var outputDirectory = process.cwd()+'/public/daily/';
 
 			if(data.dateOfPicture != null){
+				console.log("Data :",data);
 				var ISOdate = data.dateOfPicture;
+				console.log(ISOdate);
 				var date = new Date(ISOdate);
+				console.log(date);
 			}
 			else{
 				var date = new Date.now();
 			}
 
-			folder = date.getDate()+(date.getMonth()+1)+'/';
+			console.log(date.getDate());
+			console.log((date.getMonth()+1));
+			folder = date.getDate()+''+(date.getMonth()+1)+'/photos/';
 			outputDirectory += folder;
 			console.log("Saving picture in directory : "+outputDirectory);
 	 		
