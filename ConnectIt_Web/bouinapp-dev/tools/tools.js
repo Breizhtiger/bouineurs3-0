@@ -49,4 +49,43 @@ tools.extractDayNumber = function (longDay){
 	}
 }
 
+tools.getFirstTimeOfTheDay = function (keyDay){
+	dayInformation = tools.getVariousInformationForADay(keyDay);
+	
+	if(!_.isNull(dayInformation)){
+		dayElements = dayInformation.dateString.split("/");
+		test = new Date(dayElements[2],parseInt(dayElements[1])-1, dayElements[0],0,0,0).toISOString();
+		return test;
+	}
+	else{
+		return null;
+	}
+}
+
+tools.getLastTimeOfTheDay = function (keyDay){
+	dayInformation = tools.getVariousInformationForADay(keyDay);
+	
+	if(!_.isNull(dayInformation)){
+		dayElements = dayInformation.dateString.split("/");
+		test = new Date(dayElements[2],parseInt(dayElements[1])-1, dayElements[0],23,59,59).toISOString();
+		return test;
+	}
+	else{
+		return null;
+	}
+}
+
+tools.isBeforeToday = function (dayInformation){
+	if(dayInformation != null){
+		var dayElements = dayInformation.dateString.split("/");
+		var queriedDate = new Date(dayElements[2],parseInt(dayElements[1])-1, dayElements[0]);
+		var currentDate = Date.now();
+
+		return (queriedDate.getTime() > currentDate);
+	}
+	else{
+		return true;
+	}
+}
+
 module.exports = tools;

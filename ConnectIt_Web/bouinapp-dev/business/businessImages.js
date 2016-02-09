@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var tools = require("../tools/tools")
 
 var businessImages = {};
 
@@ -79,6 +80,26 @@ businessImages.getImagesOfTheDay = function(day, callback){
 	});
 };
 
+/*
+	Get photos of the day
+	@param day : Desired day at ISO format
+	@param callback : Callback function to call after treatment
+*/
+businessImages.getImageByDateKey = function(key, callback){
+	var query = images.find(
+		{"datetime": key},
+		function(err, images){
+			if(err) return next(err);
+		}).limit(1);
+
+	var promise= query.exec();
+
+	promise.then(function(result){
+		callback(null, result);
+	}, function(error){
+		callback(error, result);
+	});
+};
 
 businessImages.insertPicture = function(date, path, type){
  var create = new images({"datetime": date, "localPath": path, "status": 'created', "type": type});
@@ -100,16 +121,5 @@ businessImages.countPictures = function(callback){
 			callback(error, result);
 	});
 };
-
-// businessImages.savePicture = function(image){
-// 	create.save(function (err) {
-// 		if (err) {
-// 			throw err;
-// 		}
-// 		else{
-// 			return true;
-// 		}
-// 	});
-// };
 
 module.exports = businessImages;

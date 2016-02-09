@@ -36,7 +36,7 @@ router.get('/highlights', function(req, res, next) {
 */
 router.get('/daily/:day', function(req, res, next) {
 	requestedDay = req.params.day;
-	
+	console.log(requestedDay);
 	var locations = businessLocations.getLocationByDay(requestedDay,
 		function(error, result){
 			if(error === null){

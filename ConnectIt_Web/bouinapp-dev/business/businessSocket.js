@@ -41,7 +41,21 @@ businessSocket.init = function(server){
 				 };
 			}
 
-	 		var filename = __dirname+'/output/'+ path.basename(data.name);
+			var outputDirectory = __dirname+'../public/daily/';
+
+			if(data.dateOfPicture != null){
+				var ISOdate = data.dateOfPicture;
+				var date = new Date(ISOdate);
+			}
+			else{
+				var date = new Date.now();
+			}
+
+			folder = date.getDate()+(date.getMonth()+1)+'/';
+			outputDirectory += folder;
+			console.log("Saving picture in directory : "+outputDirectory);
+	 		
+	 		var filename = outputDirectory + path.basename(data.name);
 
 			if(data.dateOfPicture!= null){
 				try{

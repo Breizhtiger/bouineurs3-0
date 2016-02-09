@@ -55,5 +55,27 @@ router.get('/daily/:day', function(req, res, next) {
 	);
 });
 
+/* 
+	GET images of given day
+	@param {string} Wanted day
+	@return images of wanted day
+*/
+router.get('/getByKey/:key', function(req, res, next) {
+
+
+	requestedkey = req.params.key;
+
+	var images = businessImages.getImageByDateKey(requestedkey,
+		function(error, result){
+			if(error === null){
+				res.status(200).json(images);
+			}
+			else{
+				res.send(500, {message: 'Internal server error'});
+			}
+		}
+	);
+});
+
 module.exports = router;
 
