@@ -1,8 +1,8 @@
 {
   "name": "connectitclient",
   "version": "1.0.0",
-  "description": "client of connect it project",
-  "main": "collect.js",
+  "description": "embedded services",
+  "main": "dashboard.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

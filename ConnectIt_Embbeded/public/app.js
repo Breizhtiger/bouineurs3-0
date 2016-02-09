@@ -67,7 +67,7 @@ App.controller('mainController', ['$scope','$http',function($scope,$http) {
 }]);
 
 // create the controller and inject Angular's $scope
-App.controller('boardController',['$scope','$http','$location', function($scope,$http,$location) {
+App.controller('boardController',['$scope','$http','$location','$route', function($scope,$http,$location,$route) {
     // create a message to display in our view
     $scope.message = 'Bouineurs 3.0';
 
@@ -142,8 +142,8 @@ App.controller('boardController',['$scope','$http','$location', function($scope,
 }]);
 
 // create the controller and inject Angular's $scope
-App.controller('adminController', ['$scope','$http','$location', function($scope,$http,$location) {
-
+App.controller('adminController', ['$scope','$http','$location','$route', function($scope,$http,$location,$route) {
+  
     // create a message to display in our view
     $scope.message = 'Bouineur 3.0';
     $scope.process = [];
@@ -161,7 +161,7 @@ App.controller('adminController', ['$scope','$http','$location', function($scope
         data.action = action;
 
         $http.post('/actionsProcess', data).then(function(response){
-        
+
         },
         function(response){
             console.log("KO actions-> ", response);
