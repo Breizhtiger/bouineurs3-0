@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var FileStreamRotator = require('file-stream-rotator');
 var database = require('./dataAccess/database');
+var log = require("./tools/logger");
 
 var index = require('./routes/index');
 var soprasteria = require('./routes/soprasteria');

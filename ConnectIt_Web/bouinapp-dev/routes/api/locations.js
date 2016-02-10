@@ -1,5 +1,6 @@
 var express = require('express');
 var businessLocations = require('../../business/businessLocations');
+var log = require("./../../tools/logger");
 var router = express.Router();
 
 /* 
@@ -23,6 +24,7 @@ router.get('/highlights', function(req, res, next) {
 				res.status(200).json(result);
 			}
 			else{
+				log.error("Error while trying to get highlights of images.");
 				res.send(500, {message: 'Internal server error'});
 			}
 		}

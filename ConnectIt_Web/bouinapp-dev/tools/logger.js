@@ -5,7 +5,7 @@ var logger = {};
 var logDirectory = process.cwd()+ '/log/applicative';
 
 // ensure log directory exists
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 logger = new (winston.Logger)({
     transports: [

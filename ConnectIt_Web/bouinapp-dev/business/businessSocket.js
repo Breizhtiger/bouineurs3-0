@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var businessImages = require('./businessImages');
 var businessLocations = require('./businessLocations');
+var tools = require("../tools/tools");
 var businessSocket = {};
 
 businessSocket.init = function(server){
@@ -54,10 +55,10 @@ console.log(process.cwd());
 				var date = new Date.now();
 			}
 
-			console.log(date.getDate());
-			console.log((date.getMonth()+1));
-			folder = date.getDate()+''+(date.getMonth()+1)+'/photos/';
+			folder = tools.addNotSignicativeZeros(date.getDate())+''+tools.addNotSignicativeZeros(date.getMonth()+1)+'/photos/';
 			outputDirectory += folder;
+			fs.existsSync(outputDirectory) || fs.mkdirSync(outputDirectory);
+			
 			console.log("Saving picture in directory : "+outputDirectory);
 	 		
 	 		var filename = outputDirectory + path.basename(data.name);

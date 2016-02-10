@@ -57,7 +57,7 @@ tools.getVariousInformationForADay = function(day){
 		return dayTable[tabIndex-1];
 	else
 		return null;
-}
+};
 
 
 tools.extractDayNumber = function (longDay){
@@ -69,7 +69,7 @@ tools.extractDayNumber = function (longDay){
 	else{
 		return -1;
 	}
-}
+};
 
 tools.getFirstTimeOfTheDay = function (keyDay){
 	dayInformation = tools.getVariousInformationForADay(keyDay);
@@ -82,7 +82,7 @@ tools.getFirstTimeOfTheDay = function (keyDay){
 	else{
 		return null;
 	}
-}
+};
 
 tools.getLastTimeOfTheDay = function (keyDay){
 	dayInformation = tools.getVariousInformationForADay(keyDay);
@@ -95,7 +95,7 @@ tools.getLastTimeOfTheDay = function (keyDay){
 	else{
 		return null;
 	}
-}
+};
 
 tools.isBeforeToday = function (dayInformation){
 	if(dayInformation != null){
@@ -108,6 +108,29 @@ tools.isBeforeToday = function (dayInformation){
 	else{
 		return true;
 	}
-}
+};
+
+/*
+*	Add a not significative zero before givent string
+*	@param givenString :Given string
+*	@return String with not signicative zeros
+*/
+tools.addNotSignicativeZeros = function(givenString){
+	if(givenString.length < 2){
+		return '0'+givenString;
+	}
+};
+
+tools.transformLocalPathToPublicPath = function(localPath){
+	if(!_.isNull(localPath) && localPath.length != 0){
+		tabPath = localPath.split("public");
+		if(!_.isNull(tabPath) && tabPath.length == 2){
+			return "/static"+tabPath[1];
+		}
+		else{
+			return localPath;
+		}
+	}
+};
 
 module.exports = tools;

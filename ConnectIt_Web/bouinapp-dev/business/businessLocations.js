@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var tools = require("../tools/tools")
+var tools = require("../tools/tools");
 
 var businessLocations = {};
 
@@ -43,7 +43,7 @@ businessLocations.getAllLocations = function(callback){
 	Get all photos (path) stored in database
 	@param day : Wanted day (format day1, day2, day3...)
 	@param callback : Callback function to call after treatment
-*/		
+*/
 businessLocations.getLocationByDay = function(day, callback){
 	var query = locations.find({
 								"datetime": {"$gte": tools.getFirstTimeOfTheDay(day), "$lt": tools.getLastTimeOfTheDay(day)},

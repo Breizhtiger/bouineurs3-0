@@ -1,7 +1,6 @@
 var express = require('express');
 var businessImages = require('../../business/businessImages');
-var tools = require("../../tools/tools");
-var log = require("../../tools/logger");
+var log = require("./../../tools/logger");
 var router = express.Router();
 
 
@@ -27,9 +26,9 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
-
-    log.info('OK inserted on database');
-
+	console.log("Test");
+	log.info('OK inserted on database');
+	console.log("Test2");
 	var images = businessImages.getHighlightsOfTheDay(
 		function(error, result){
 			if(error === null){
@@ -48,10 +47,12 @@ router.get('/highlights', function(req, res, next) {
 	@return images of wanted day
 */
 router.get('/daily/:day', function(req, res, next) {
-	var images = businessImages.getImagesOfTheDay(day,
+	requestedDay = req.params.day;
+
+	var images = businessImages.getImagesOfTheDay(requestedDay,
 		function(error, result){
 			if(error === null){
-				res.status(200).json(images);
+				res.status(200).json(result);
 			}
 			else{
 				res.send(500, {message: 'Internal server error'});
@@ -66,14 +67,12 @@ router.get('/daily/:day', function(req, res, next) {
 	@return images of wanted day
 */
 router.get('/getByKey/:key', function(req, res, next) {
-
-
 	requestedkey = req.params.key;
 
 	var images = businessImages.getImageByDateKey(requestedkey,
 		function(error, result){
 			if(error === null){
-				res.status(200).json(images);
+				res.status(200).json(result);
 			}
 			else{
 				res.send(500, {message: 'Internal server error'});
