@@ -116,8 +116,12 @@ tools.isBeforeToday = function (dayInformation){
 *	@return String with not signicative zeros
 */
 tools.addNotSignicativeZeros = function(givenString){
+	givenString = ''+givenString;
 	if(givenString.length < 2){
 		return '0'+givenString;
+	}
+	else{
+		return givenString;
 	}
 };
 
