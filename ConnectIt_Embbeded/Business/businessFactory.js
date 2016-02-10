@@ -19,8 +19,8 @@ var socketTools = toolsFactory.socketFactory;
 var fsTools = toolsFactory.fsFactory;
 
 
-var provisioningDelay = 60000;
-var collectDelay = 30000;
+var provisioningDelay = 120000;
+var collectDelay = 240000;
 var goProIp = '10.5.5.9';
 var goProPassword = 'Bouineur3.0';
 

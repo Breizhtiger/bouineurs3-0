@@ -12,8 +12,8 @@ var fsFactory = {};
 exports.loggerFactory = loggerFactory;
 exports.socketFactory = socketFactory;
 exports.fsFactory = fsFactory;
-var serverUrl = 'http://127.0.0.1:3000';
-//var serverUrl = 'http://52.59.249.149:80';
+//var serverUrl = 'http://127.0.0.1:3000';
+var serverUrl = 'http://54.93.53.233:3000';
 var socket = io.connect(serverUrl);
 
 var lockSocket = false;
