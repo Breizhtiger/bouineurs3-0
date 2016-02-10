@@ -36,8 +36,16 @@ function initMap(data){
         icon: '/static/images/car.png'
         });
         
+        var contentString ="";
+        
+        // Récupération de l'image
+        $.get(fullDomain+"/api/images/getByKey/"+data[i].datetime, function(dataImg) {
+                if(dataImg.length > 0){
+                    contentString = "<img src=\'" + fullDomain + localToPublic(dataImg[0].localPath) + "\' width='300px' height='200px'>";
+                }
+        }).fail(function() {document.getElementById('mapDay').innerHTML += "Erreur de l'API image :'(";});
+        
         // Création de l'infobulle
-        var contentString = "<img src='/static/images/magicTeam.jpg' width='300px' height='200px' />";
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
@@ -48,4 +56,17 @@ function initMap(data){
         });
     }
   }
+}
+
+// Retourne l'url public d'une image local
+function localToPublic(localPath){
+    if(localPath != null && localPath.length != 0){
+        tabPath = localPath.split("public");
+        if(tabPath != null && tabPath.length == 2){
+            return "/static"+tabPath[1];
+        }
+        else{
+            return localPath;
+        }
+    }
 }
