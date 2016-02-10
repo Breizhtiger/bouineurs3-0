@@ -45,11 +45,8 @@ console.log(process.cwd());
 			var outputDirectory = process.cwd()+'/public/daily/';
 
 			if(data.dateOfPicture != null){
-				console.log("Data :",data);
 				var ISOdate = data.dateOfPicture;
-				console.log(ISOdate);
 				var date = new Date(ISOdate);
-				console.log(date);
 			}
 			else{
 				var date = new Date.now();
@@ -57,7 +54,6 @@ console.log(process.cwd());
 
 			folder = tools.addNotSignicativeZeros(date.getDate())+''+tools.addNotSignicativeZeros(date.getMonth()+1)+'/photos/';
 			outputDirectory += folder;
-			fs.existsSync(outputDirectory) || fs.mkdirSync(outputDirectory);
 			
 			console.log("Saving picture in directory : "+outputDirectory);
 	 		

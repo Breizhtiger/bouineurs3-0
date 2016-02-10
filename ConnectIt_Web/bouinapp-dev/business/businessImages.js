@@ -41,8 +41,11 @@ businessImages.getAllImages = function(callback){
 businessImages.getHighlightsOfTheDay = function(callback){
 	var fromDate = new Date().setHours(0,0,0);
 	var tillDate = new Date().setHours(23,59,59);
-	var query = images.find(
-		{"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()}, "type":"heart"},
+	var query = images.find({
+						"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()},
+						"type":"heart",
+						"publicPath" : {$exists:true, $ne : null}
+						},
 		function(err, images){
 			if(err) return next(err);
 		}).limit(5);
@@ -108,7 +111,7 @@ businessImages.getImageByDateKey = function(key, callback){
 
 businessImages.insertPicture = function(date, path, type){
 	var publicPath = tools.transformLocalPathToPublicPath(path);
-	var create = new images({"datetime": date, "localPath": path, "publicPath": transformLocalPathToPublicPath , "status": 'created', "type": type});
+	var create = new images({"datetime": date, "localPath": path, "publicPath": publicPath, "status": 'created', "type": type});
 	create.save(function (err) {
 		if (err) { console.log("ERREUR");throw err; }
 		console.log('Pictures '+path+' inserted on database');

@@ -41,7 +41,7 @@ function loadSliderImages(){
 	var carouselindicators = $("#carouselindicators").clone();
 	var carouselinner = $("#carouselinner").clone();
 
-	$.get( "http://localhost:3000/api/images/highlights", function() {
+	$.get( "http://localhost:3000/api/images/highlights", function(data) {
 		$(carouselindicators).empty();
 		$(carouselinner).empty();
 
@@ -49,7 +49,7 @@ function loadSliderImages(){
 			indicatorWidth = (100/data.length) - 1;
 
 			data.forEach( function(image, index){
-				addOneImageToSlider(carouselindicators, carouselinner, image.datetime, null, image.localPath, index, indicatorWidth);
+				addOneImageToSlider(carouselindicators, carouselinner, image.datetime, null, image.publicPath, index, indicatorWidth);
 			});
 
 			// Replace old carousel with new elements
