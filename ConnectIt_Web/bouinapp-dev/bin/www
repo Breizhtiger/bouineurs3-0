@@ -10,6 +10,7 @@ var http = require('http');
 var fs = require('fs');
 var ss = require('socket.io-stream');
 var businessSocket = require('../business/businessSocket');
+var log = require("../tools/logger");
 
 /**
  * Get port from environment and store in Express.
@@ -17,9 +18,11 @@ var businessSocket = require('../business/businessSocket');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
 /**
  * Create HTTP server
  */
+log.info("Creation serveur http sur port", port);
 var server = http.createServer(app);
 
 /**

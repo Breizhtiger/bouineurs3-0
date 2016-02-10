@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-console.log(app.get('env'));
+log.info("Lancement de l'application web en mode : "+app.get('env'));
 
 // error handlers
 
@@ -72,7 +72,7 @@ console.log(app.get('env'));
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    console.log("Error :\n Status: "+ err.status + "\n Stack trace : " + err.message);
+    log.error("Error :\n Status: ", err.status + "\n Stack trace : ", err.message);
     res.render('error', {
       message: err.message,
       error: err

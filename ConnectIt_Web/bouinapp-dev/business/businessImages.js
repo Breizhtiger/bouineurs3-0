@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var tools = require("../tools/tools");
+var log = require("../tools/logger");
 
 var businessImages = {};
 
@@ -53,10 +54,8 @@ businessImages.getHighlightsOfTheDay = function(callback){
 	var promise= query.exec();
 
 	promise.then(function(result){
-		console.log("OK !");
 		callback(null, result);
 	}, function(error){
-		console.log("KO");
 		callback(error, result);
 	});
 };
@@ -114,7 +113,7 @@ businessImages.insertPicture = function(date, path, type){
 	var create = new images({"datetime": date, "localPath": path, "publicPath": publicPath, "status": 'created', "type": type});
 	create.save(function (err) {
 		if (err) { console.log("ERREUR");throw err; }
-		console.log('Pictures '+path+' inserted on database');
+		log.info('Pictures '+path+' inserted on database');
 	});
 };
 

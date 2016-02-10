@@ -4,27 +4,17 @@ var log = require("./../../tools/logger");
 var router = express.Router();
 
 /* 
-	GET all images.
+	GET all locations
 	@return all images in database
 */
 router.get('/', function(req, res, next) {
-	var toto = businessLocations.getOne();
-	toto = "nutnutnut";
-  res.send('respond with a resource : ' + toto);
-});
-
-/*
-	GET "highlights of the day" images
-	@return highlights images of the day
-*/
-router.get('/highlights', function(req, res, next) {
-	var locations = businessLocations.getLocationByDay( day,
+	var locations = businessLocations.getAllLocations(
 		function(error, result){
 			if(error === null){
 				res.status(200).json(result);
 			}
 			else{
-				log.error("Error while trying to get highlights of images.");
+				log.error("Error while trying to get all locations.");
 				res.send(500, {message: 'Internal server error'});
 			}
 		}
@@ -38,13 +28,13 @@ router.get('/highlights', function(req, res, next) {
 */
 router.get('/daily/:day', function(req, res, next) {
 	requestedDay = req.params.day;
-	console.log(requestedDay);
 	var locations = businessLocations.getLocationByDay(requestedDay,
 		function(error, result){
 			if(error === null){
 				res.status(200).json(result);
 			}
 			else{
+				log.error("Error while trying to get location for day  :"+ requestedDay);
 				res.send(500, {message: 'Internal server error'});
 			}
 		}

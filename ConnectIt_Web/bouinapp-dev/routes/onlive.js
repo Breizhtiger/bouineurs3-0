@@ -11,7 +11,19 @@ router.get('/', function(req, res, next) {
 router.get('/:day', function(req, res, next) {
 	requestedDay = req.params.day;
 	dayInformation= tools.getVariousInformationForADay(requestedDay);
-	res.render('onlive', dayInformation);
+
+	// If datas could exists for requested day
+	if(!tools.isBeforeToday(dayInformation)){
+		res.render('onlive', dayInformation);
+	}
+	else{
+		if(dayInformation != null){
+			res.render('onliveNotYet', dayInformation);
+		}
+		else{
+			res.render('onliveNotYet', {fullDateString:"----"});
+		}
+	}
 });
 
 /* GET onlive - timelaps by day page. */

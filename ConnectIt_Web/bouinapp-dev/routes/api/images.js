@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 				res.status(200).json(images);
 			}
 			else{
+				log.error("Error while trying to get all images.");
 				res.send(500, {message: 'Internal server error'});
 			}
 		}
@@ -26,15 +27,13 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
-	console.log("Test");
-	log.info('OK inserted on database');
-	console.log("Test2");
 	var images = businessImages.getHighlightsOfTheDay(
 		function(error, result){
 			if(error === null){
 				res.status(200).json(result);
 			}
 			else{
+				log.error("Error while trying to get highlights of the day.");
 				res.send(500, {message: 'Internal server error'});
 			}
 		}
@@ -55,6 +54,7 @@ router.get('/daily/:day', function(req, res, next) {
 				res.status(200).json(result);
 			}
 			else{
+				log.error("Error while trying to get images of the day:"+requestedDay);
 				res.send(500, {message: 'Internal server error'});
 			}
 		}
@@ -75,6 +75,7 @@ router.get('/getByKey/:key', function(req, res, next) {
 				res.status(200).json(result);
 			}
 			else{
+				log.error("Error while trying to get image by key:"+requestedkey);
 				res.send(500, {message: 'Internal server error'});
 			}
 		}

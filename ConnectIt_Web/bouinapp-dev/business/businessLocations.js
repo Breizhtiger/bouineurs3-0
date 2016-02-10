@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var tools = require("../tools/tools");
+var log = require("../tools/logger");
 
 var businessLocations = {};
 
