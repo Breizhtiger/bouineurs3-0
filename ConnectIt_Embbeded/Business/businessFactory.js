@@ -126,7 +126,23 @@ function manageLocationToSend(err,result){
 */
 function getPictureToSend(){
    log.info("First action of the provisioning");
-   dataFactory.pictureFactory.getPictureToSend(managePictureToSend);
+   //todo : tester connexion
+   var requestToTest = "http://google.com";
+   //test de la connexion vers le monde
+   try{
+     request(requestToTest, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+             log.info("Connection on the world is OK");
+             dataFactory.pictureFactory.getPictureToSend(managePictureToSend);
+          }else{
+              log.info("Connection on the world is KO");
+              setTimeout(getPictureToSend,provisioningDelay);
+          }
+     });
+   }catch(exception){
+     log.info("Connection on the world is KO");
+     setTimeout(getPictureToSend,provisioningDelay);
+   }
 };
 
 /*
