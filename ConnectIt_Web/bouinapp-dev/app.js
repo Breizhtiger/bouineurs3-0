@@ -19,7 +19,7 @@ var apiLocation = require('./routes/api/locations');
 var apiSupervision = require('./routes/api/supervision');
 
 var app = express();
-var logDirectory = __dirname + '/log/access'
+var logDirectory = __dirname + '/log/access';
 
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)

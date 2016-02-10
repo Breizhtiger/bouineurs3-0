@@ -1,5 +1,7 @@
 var express = require('express');
 var businessImages = require('../../business/businessImages');
+var tools = require("../../tools/tools");
+var log = require("../../tools/logger");
 var router = express.Router();
 
 
@@ -25,6 +27,9 @@ router.get('/', function(req, res, next) {
 	@return highlights images of the day
 */
 router.get('/highlights', function(req, res, next) {
+
+    log.info('OK inserted on database');
+
 	var images = businessImages.getHighlightsOfTheDay(
 		function(error, result){
 			if(error === null){

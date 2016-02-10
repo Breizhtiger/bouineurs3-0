@@ -21,7 +21,11 @@ var locations = mongoose.model('locations',locationSchema);
 	@param callback : Callback function to call after treatment
 */		
 businessLocations.getAllLocations = function(callback){
-	var query = locations.find({},
+	var query = locations.find({
+								"datetime": {"$gte": tools.getFirstTimeOfTheDay(day), "$lt": tools.getLastTimeOfTheDay(day)},
+								"longitude":{$exists:true, $ne : null},
+								"latitude":{$exists:true, $ne : null}
+								},
 		function(err, images){
 			if(err) return next(err);
 		});
@@ -41,7 +45,11 @@ businessLocations.getAllLocations = function(callback){
 	@param callback : Callback function to call after treatment
 */		
 businessLocations.getLocationByDay = function(day, callback){
-	var query = locations.find({"datetime": {"$gte": tools.getFirstTimeOfTheDay(day), "$lt": tools.getLastTimeOfTheDay(day)}},
+	var query = locations.find({
+								"datetime": {"$gte": tools.getFirstTimeOfTheDay(day), "$lt": tools.getLastTimeOfTheDay(day)},
+								"longitude":{$exists:true, $ne : null},
+								"latitude":{$exists:true, $ne : null}
+								},
 		function(err, locations){
 			if(err) return next(err);
 		});

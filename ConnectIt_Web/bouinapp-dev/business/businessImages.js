@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var tools = require("../tools/tools")
+var tools = require("../tools/tools");
 
 var businessImages = {};
 
