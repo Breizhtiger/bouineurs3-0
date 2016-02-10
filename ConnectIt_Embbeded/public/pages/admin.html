@@ -24,8 +24,8 @@
           <td>{{printUptime(p.pm2_env.pm_uptime)}}</td>
             <td>
               <!--<a class="btn btn-primary" ng-click="actionsOnProcess(p.name,'KILL')">Kill</a>-->
-              <a class="btn btn-danger" ng-click="actionsOnProcess(p.name,'STOP')">Stop</a>
-              <a class="btn btn-warning" ng-click="actionsOnProcess(p.name,'RESTART')">Restart</a>
+              <a class="btn btn-danger" ng-click="actionsOnProcess(p.name,'STOP')">Stop ({{p.keyStringStop}})</a>
+              <a class="btn btn-warning" ng-click="actionsOnProcess(p.name,'RESTART')">Restart ({{p.keyStringRestart}})</a>
             </td>
         </tr>
       </tbody>

@@ -10,7 +10,6 @@ $routeProvider
                     templateUrl : '/static/pages/board.html',
                     controller  : 'boardController'
                 })
-
                 // route for the home page
                 .when('/#', {
                     templateUrl : '/static/pages/board.html',
@@ -79,6 +78,7 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
     };
 
     function ManageKeyAction(key){
+      console.log('-> '+key,String.fromCharCode(key));
         switch(key){
           case 49:
           //Go To dashboard
@@ -99,22 +99,27 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
           case 53 :
             $scope.LikeLastPictureAction();
             break;
-
         }
-
     };
 
-    $http.get("/lastPicture").then(function(response){
-        $scope.picturePath = response.data.path;
-        $scope.pictureType = response.data.type;
-    },
-    function(response){
-        console.log("KO -> ", response);
-    });
+
+
+    function LoadPictures(){
+      $http.get("/lastPicture").then(function(response){
+          $scope.picturePath = response.data.path;
+          $scope.pictureType = response.data.type;
+      },
+      function(response){
+          console.log("KO -> ", response);
+      });
+    };
+
+
 
     $scope.LikeLastPictureAction = function(){
       $http.get("/likeLastPicture").then(
         function(response){
+          LoadPictures();
         },
         function(response){
             console.log("KO -> ", response);
@@ -123,7 +128,7 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
 
     $scope.TakePictureAction = function(){
       $http.get("/takePicture").then(function(response){
-
+        LoadPictures();
       },
       function(response){
           console.log("KO -> ", response);
@@ -132,27 +137,43 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
 
     $scope.HeartOnYouAction = function(){
       $http.get("/heartOnYou").then(function(response){
-
+        LoadPictures();
       },
       function(response){
           console.log("KO -> ", response);
       });
     };
-
+    LoadPictures();
 }]);
 
 // create the controller and inject Angular's $scope
 App.controller('adminController', ['$scope','$http','$location','$route', function($scope,$http,$location,$route) {
-  
+    var iKey = 97;
     // create a message to display in our view
     $scope.message = 'Bouineur 3.0';
     $scope.process = [];
-    $http.get("/currentProcess").then(function(response){
-      $scope.process = response.data;
-    },
-    function(response){
-        console.log("KO truc-> ", response);
-    });
+
+
+    function LoadProcess(){
+      $http.get("/currentProcess").then(function(response){
+        $scope.process = response.data;
+        angular.forEach($scope.process, function(value, key) {
+          value.keyCodeStop = iKey;
+          value.keyStringStop =  String.fromCharCode(value.keyCodeStop);
+          iKey = iKey +1;
+
+          value.keyCodeRestart = iKey;
+          value.keyStringRestart =  String.fromCharCode(value.keyCodeRestart);
+          iKey = iKey +1;
+          console.log('-> ',value);
+        });
+        iKey = 97;
+      },
+      function(response){
+          console.log("KO truc-> ", response);
+      });
+    }
+
 
 
     $scope.actionsOnProcess = function(processName,action){
@@ -166,7 +187,21 @@ App.controller('adminController', ['$scope','$http','$location','$route', functi
         function(response){
             console.log("KO actions-> ", response);
         });
-};
+      };
+
+
+      function actionsWithKey(processName,action){
+          var data = {};
+          data.processName = processName;
+          data.action = action;
+
+          $http.post('/actionsProcess', data).then(function(response){
+
+          },
+          function(response){
+              console.log("KO actions-> ", response);
+          });
+        };
     $scope.printUptime = function(time){
       var current = new Date();
        var time = new Date(time);
@@ -194,10 +229,31 @@ App.controller('adminController', ['$scope','$http','$location','$route', functi
           //Go To Admin
           $location.path("/admin");
           break;
+          default:
+            SpecialKey(key);
       }
     };
 
+    function SpecialKey(sKeyCode){
+      angular.forEach($scope.process, function(value, key) {
+        if(value.keyCodeRestart != null && value.keyCodeRestart == sKeyCode){
+          //ok c'est un restart
+          console.log(' Event on '+value.name+ '  : RESTART');
+          $scope.actionsOnProcess(value.name,'RESTART');
+        }else{
+          if(value.keyCodeStop != null && value.keyCodeStop == sKeyCode){
+            //ok c'est un stop
+            console.log(' Event on '+value.name+ '  : STOP');
+            $scope.actionsOnProcess(value.name,'STOP');
+          }else{
 
+          }
+        }
 
+      });
+      setTimeout(function(){ LoadProcess(); }, 1000);
+    };
+
+LoadProcess();
 
 }]);
