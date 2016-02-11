@@ -39,7 +39,7 @@ app.get('/lastPicture',function(req, res){
           var newPath = 'output/'+pathArray[pathArray.length-1];
           res.send({path : newPath, type : result.type});
         }else{
-        
+
         }
       }
     });
@@ -59,7 +59,14 @@ app.get('/picturesStatus',function(req, res){
             console.log("Une erreur ",err);
           }else{
             nbSended = result;
-            res.send({created : nbCreated, sended : nbSended});
+              dataFactory.pictureFactory.countByStatus('SendAndDelete',function(err,result){
+              if(err){
+                console.log("Une erreur ",err);
+              }else{
+                nbSended = nbSended + result;
+                res.send({created : nbCreated, sended : nbSended});
+              }
+            });
           }
         });
       }

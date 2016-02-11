@@ -73,6 +73,12 @@ pictureFactory.getPictureToSend = function(callback){
 };
 
 
+
+pictureFactory.getAllSendPicture = function(callback){
+  pictures.find({"status":"Send"}).sort({datetime : 'desc' }).exec(callback);
+};
+
+
 pictureFactory.getLastPicture = function(callback){
   pictures.findOne().sort({ datetime : 'desc' }).exec(callback);
 };
@@ -88,7 +94,7 @@ pictureFactory.likeLastPicture = function(){
             if(err){
                 log.alert('Errors during picture data updating : ',err);
             }else{
-              log.info('Picture status successfully update with '+newStatus);
+              log.info('Picture status successfully update with <3');
             }
           });
         }

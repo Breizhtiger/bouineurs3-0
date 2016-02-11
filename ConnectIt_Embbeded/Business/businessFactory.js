@@ -21,6 +21,8 @@ var fsTools = toolsFactory.fsFactory;
 
 var provisioningDelay = 120000;
 var collectDelay = 240000;
+//var collectDelay = 10000;
+//var provisioningDelay = 10000;
 var goProIp = '10.5.5.9';
 var goProPassword = 'Bouineur3.0';
 
@@ -44,8 +46,12 @@ provisioningBusiness.startProvisioning = function(){
 };
 
 function startProvisioningLoop(){
-    log.info("Loop for the Provisioning Started")
-    getPictureToSend();
+    log.info("Loop for the Provisioning Started");
+
+    cleanPictureOfFS(function(){
+          getPictureToSend();
+    });
+
 };
 
 /*
@@ -188,17 +194,61 @@ function deletePictureOfFS(pictureInformation){
      if(err){
        console.log("Une erreur ",err);
      }else{
-        if(result != null && result._id == pictureInformation._id){
+      console.log("result : ",result.datetime);
+      console.log("picture : ",pictureInformation.datetime)
+        if((result != null && result != undefined) && result.datetime.toString() == pictureInformation.datetime.toString()){
             //on ne supprime pas la photos car c'est la dernière
-            console.log("c'est la dernière photo, on la supprime pas . La derniere est "+result._id);
+            log.info("c'est la dernière photo, on ne la supprime pas . La derniere est "+result.locaPath);
         }else{
-          console.log("c'est pas la dernière photo, on peut la supprimer La derniere est "+result._id);
+          log.info("c'est pas la dernière photo, on peut la supprimer. La derniere est "+result.localPath);
           //pas la dernière, on peut la supprimer
           fsTools.deletePicture(pictureInformation.localPath);
+          dataFactory.pictureFactory.updateStatusPictureByDatetime(result.datetime,"SendAndDelete");
+          dataFactory.locationFactory.updateStatusLocationByDatetime(result.datetime,"SendAndDelete");
         }
       }
    });
 };
+
+function cleanPictureOfFS(callBack){
+   dataFactory.pictureFactory.getLastPicture(function(err,result){
+     if(err){
+       console.log("Une erreur ",err);
+     }else{
+      console.log("result : ",result.datetime);
+        if(result != null && result != undefined){
+            var lastPicture = result;
+            dataFactory.pictureFactory.getAllSendPicture(function(err,result){
+              if(err){
+                console.log("oups",err);
+              }else{
+                var tab = result;
+                for (var i = 0; i < tab.length; i++) {
+                  if(tab[i].datetime.toString() != lastPicture.datetime.toString()){
+                      console.log("to clean ",tab[i].localPath);
+                      try{
+                        fsTools.deletePicture(tab[i].localPath);
+                        dataFactory.pictureFactory.updateStatusPictureByDatetime(tab[i].datetime,"SendAndDelete");
+                        dataFactory.locationFactory.updateStatusLocationByDatetime(tab[i].datetime,"SendAndDelete");
+                      }catch(ex){
+
+                      }
+
+                  }
+                }
+                callBack();
+              }
+            });
+        }else{
+
+        }
+      }
+   });
+};
+
+
+
+
 
 dashboardBusiness.goProIsUp = function(){
     return collectGoProBusiness.isUp(goProIp,goProPassword)
