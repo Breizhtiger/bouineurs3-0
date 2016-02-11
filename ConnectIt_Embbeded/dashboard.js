@@ -77,21 +77,20 @@ app.get('/picturesStatus',function(req, res){
 //API:GET Return the last picture
 app.get('/takePicture',function(req, res){
       dashboardBusiness.takeSimplePicture(false);
-      res.send("OK");
+      res.status(200).send('OK');
 });
 
 //API:GET Return the last picture
 app.get('/heartOnYou',function(req, res){
       dashboardBusiness.takeSimplePicture(true);
-      res.send("OK");
+    res.status(200).send('OK');
 });
 
 
 //API:GET Return the last picture
 app.get('/likeLastPicture',function(req, res){
       dataFactory.pictureFactory.likeLastPicture();
-      res.send("OK");
-
+      res.status(200).send('OK');
 });
 
 app.get('/currentProcess',function(req,res){

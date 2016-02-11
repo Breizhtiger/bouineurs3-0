@@ -69,7 +69,7 @@ App.controller('mainController', ['$scope','$http',function($scope,$http) {
 App.controller('boardController',['$scope','$http','$location','$route', function($scope,$http,$location,$route) {
     // create a message to display in our view
     $scope.message = 'Bouineurs 3.0';
-
+    $scope.onloading = false;
     $scope.keyCode = "";
     $scope.keyPressed = function(e) {
       $scope.keyCode = e.which;
@@ -104,22 +104,38 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
 
 
 
-    function LoadPictures(){
-      $http.get("/lastPicture").then(function(response){
-          $scope.picturePath = response.data.path;
-          $scope.pictureType = response.data.type;
-      },
-      function(response){
-          console.log("KO -> ", response);
-      });
-    };
+    function LoadPictures(timer){
+      if(timer != null && timer != undefined){
+        $scope.onloading =true;
+        setTimeout(function(){
+          $http.get("/lastPicture").then(function(response){
+              $scope.onloading =false;
+              $scope.picturePath = response.data.path;
+              $scope.pictureType = response.data.type;
+          },
+          function(response){
+              console.log("KO -> ", response);
+          });
+        },timer);
+      }else{
+        $http.get("/lastPicture").then(function(response){
+            $scope.onloading =false;
+            $scope.picturePath = response.data.path;
+            $scope.pictureType = response.data.type;
+        },
+        function(response){
+            console.log("KO -> ", response);
+        });
+      }
 
+
+    };
 
 
     $scope.LikeLastPictureAction = function(){
       $http.get("/likeLastPicture").then(
         function(response){
-          LoadPictures();
+          LoadPictures(1000);
         },
         function(response){
             console.log("KO -> ", response);
@@ -128,7 +144,7 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
 
     $scope.TakePictureAction = function(){
       $http.get("/takePicture").then(function(response){
-        LoadPictures();
+          LoadPictures(5000);
       },
       function(response){
           console.log("KO -> ", response);
@@ -137,7 +153,7 @@ App.controller('boardController',['$scope','$http','$location','$route', functio
 
     $scope.HeartOnYouAction = function(){
       $http.get("/heartOnYou").then(function(response){
-        LoadPictures();
+          LoadPictures(5000);
       },
       function(response){
           console.log("KO -> ", response);

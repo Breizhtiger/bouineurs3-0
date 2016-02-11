@@ -16,5 +16,6 @@
   <shortcut></shortcut>
 </p>
 <a href="" ng-class="{'thumbnail':pictureType !== 'heart','fav-thumbnail':pictureType == 'heart'}">
-  <img src="{{picturePath}}" style="height:400px !important;" alt"last pictures" />
+  <img ng-hide="onloading" src="{{picturePath}}" style="height:400px !important;" alt="last pictures" />
+  <div ng-show="onloading" ><center><img src="/static/img/loading.gif" style="height:400px !important;" alt="last pictures" /></center></div>
 </a>
