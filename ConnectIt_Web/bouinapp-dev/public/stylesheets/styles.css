@@ -634,19 +634,6 @@ a.e-sociaux:hover{
 
 
 @media(max-width:991px) {
-	.onlive-section {
-		width: 100%;
-		padding: 70px 0;
-		color: #fff;
-		background: url(/static/images/onlive.png) no-repeat center center fixed;
-	     -webkit-background-size: cover;
-		 -moz-background-size: cover;
-		 background-size: cover;
-		 -o-background-size: cover;
-		background-color: #000;
-
-	}
-
 	#map {
 		width: 100%;
 		height: 200px;
@@ -654,18 +641,6 @@ a.e-sociaux:hover{
 	}
 }
 @media(min-width:992px) {
-    .onlive-section {
-        padding: 100px 0;
-		width: 100%;
-		color: #fff;
-		background: url(/static/images/onlive.png) no-repeat center center scroll;
-		background-color: #000;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		background-size: cover;
-		-o-background-size: cover;
-    }
-
     #map {
         height: 400px;
         margin-top: 250px;
@@ -972,8 +947,7 @@ ul#encart-sociaux li{
 	-moz-background-size: cover;
 	background-size: cover;
 	-o-background-size: cover;
-	padding-top:5%;
-	padding-bottom:5%;
+	padding-bottom:100px;
 }
 
 #onlive .texte-onlive{
@@ -983,8 +957,81 @@ ul#encart-sociaux li{
 }
 
 #onlive-page{
-	padding-top: 100px;	
+	background: url(/static/images/onlive-bg.png) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	padding-top: 100px;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+ul.onlive-alternative{
+	magin:0;
+	padding:0;
+	list-style: none;
+}
+
+ul.onlive-alternative > li{
+	margin:0;
+	padding:0;
+}
+
+ul.onlive-alternative > li.content{
+	background:#4a6f9e;
+	height:70px;
+}
+
+ul.onlive-alternative > li.empty{
+	height:35px;
+}
+
+ul.onlive-alternative > li.content.active{
+	background:#1c4477;
+}
+
+li.content a{
+	height: 70px;
+	width: 100%;
+	display: block;
+	color:white;
+}
+
+li.content.active a{
+	color:#8FC27A;
+}
+
+li.content a:hover, a:active, a:focus{
+	color:#8FC27A;
+}
+
+li.content.active a:hover, a:active, a:focus{
+	color:white;
+}
+
+.icon-trace{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
+
+.icon-timelaps{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
+
+.icon-photos{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
+
 /* Countdown */
 
 body {

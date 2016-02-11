@@ -28,6 +28,7 @@ var server = http.createServer(app);
 /**
  * Launch inizialisation of socket
  */
+log.info("Lancement de l'initialisation de la socket");
 businessSocket.init(server);
 
 /**
