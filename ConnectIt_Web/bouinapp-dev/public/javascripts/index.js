@@ -78,7 +78,7 @@ function addOneImageToSlider(carouselindicators, carouselinner, title, desc, src
 	var indicatorsChild = '<li data-target="#carousel" data-slide-to="' +itemNumber + '" style="width:'+indicatorWidth+'% !important"></li>';
 
 	// Build inner child
-	var innerChild = '<div id="carousel' +itemNumber+ '" class="item"><a href="#"><img style="max-height:350px;" src="'+srcImage+'"></a>';
+	var innerChild = '<div id="carousel' +itemNumber+ '" class="item"><a href="#"><img style="max-height:450px;" src="'+srcImage+'"></a>';
 	innerChild += '<div class="container">';
 	innerChild += '<div class="carousel-caption">';
 
@@ -89,12 +89,13 @@ function addOneImageToSlider(carouselindicators, carouselinner, title, desc, src
 		var day = date.getUTCDate();
 		var month = date.getUTCMonth()+1;
 		var year = date.getUTCFullYear();
-		var hours = date.getUTCHours();
+		var hours = date.getUTCHours()+1;
 		var minutes = "0" + date.getUTCMinutes();
 		var seconds = "0" + date.getUTCSeconds();
 		var formattedTime = day + '/0' + month + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-		
-		innerChild += '<h1>' + formattedTime + '</h1>';
+
+		innerChild += '<h3>Photo du jour !</h3>';
+		innerChild += '<h4>' + formattedTime + '</h4>';
 	}
 
 	if(desc !== null && desc !== ""){
@@ -103,5 +104,6 @@ function addOneImageToSlider(carouselindicators, carouselinner, title, desc, src
 
 	// Add children to indicators and inner
 	$(carouselindicators).append(indicatorsChild);
+
 	$(carouselinner).append(innerChild);
 };

@@ -29,6 +29,14 @@ h6 {
     letter-spacing: 1px;
 }
 
+.carousel-caption{
+	padding-bottom: 0;
+}
+
+.carousel-caption h3, .carousel-caption h4{
+	margin-bottom: 0px;
+}
+
 p {
     margin: 0 0 25px;
     font-size: 18px;
@@ -282,7 +290,7 @@ a:focus {
 	width: 15%;
 	height: 5px;
 	border-radius: 0px;
-	margin:0px;
+	margin:0 2px 0 2px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
 .carouselindicators li.active{

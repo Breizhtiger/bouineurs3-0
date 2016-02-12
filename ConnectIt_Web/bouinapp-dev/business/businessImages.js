@@ -40,7 +40,10 @@ businessImages.getAllImages = function(callback){
 	@param callback : Callback function to call after treatment
 */
 businessImages.getHighlightsOfTheDay = function(callback){
-	var fromDate = new Date().setHours(0,0,0);
+
+	var fromDate = new Date();
+	fromDate.setDate(fromDate.getDate()-1);
+	fromDate.setHours(0,0,0);
 	var tillDate = new Date().setHours(23,59,59);
 	var query = images.find({
 						"datetime": {"$gte": new Date(fromDate).toISOString(), "$lt": new Date(tillDate).toISOString()},
@@ -49,7 +52,7 @@ businessImages.getHighlightsOfTheDay = function(callback){
 						},
 		function(err, images){
 			if(err) return next(err);
-		}).limit(5);
+		}).sort('-datetime').limit(10);
 
 	var promise= query.exec();
 
