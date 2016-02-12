@@ -52,7 +52,7 @@ businessImages.getHighlightsOfTheDay = function(callback){
 						},
 		function(err, images){
 			if(err) return next(err);
-		}).sort('-datetime').limit(10);
+		}).sort('-datetime').limit(15);
 
 	var promise= query.exec();
 

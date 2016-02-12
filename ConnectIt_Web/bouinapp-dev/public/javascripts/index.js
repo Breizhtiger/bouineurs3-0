@@ -58,6 +58,7 @@ function loadSliderImages(){
 			$("#carousel0").addClass('active');
 
 			// Set current postion to first image
+			$("#carousel").css("width","600px");
 			$("#carousel").carousel(0);
 		}
 		
