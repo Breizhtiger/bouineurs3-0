@@ -300,23 +300,23 @@
 						  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Je choisis mon étape <span class="caret"></span>
 						  </button>
-						  <ul class="dropdown-menu">
-							<li><a href="onlive/day1">16 Février - Jour 1</a></li>
-							<li><a href="onlive/day2">17 Février - Jour 2</a></li>		
-							<li><a href="onlive/day3">18 Février - Jour 3</a></li>		
-							<li><a href="onlive/day4">19 Février - Jour 4</a></li>		
-							<li><a href="onlive/day5">20 Février - Jour 5</a></li>		
-							<li><a href="onlive/day6">21 Février - Jour 6</a></li>		
-							<li><a href="onlive/day7">22 Février - Jour 7</a></li>		
-							<li><a href="onlive/day8">23 Février - Jour 8</a></li>		
-							<li><a href="onlive/day9">24 Février - Jour 9</a></li>		
-							<li><a href="onlive/day10">25 Février - Jour 10</a></li>		
-							<li><a href="onlive/day11">26 Février - Jour 11</a></li>		
-							<li><a href="onlive/day12">27 Février - Jour 12</a></li>		
-							<li><a href="onlive/day13">28 Février - Jour 13</a></li>		
-							<li><a href="onlive/day14">29 Février - Jour 14</a></li>		
-							<li><a href="onlive/day15">01 Mars - Jour 15</a></li>		
-							<li><a href="onlive/day16">02 Mars - Jour 16</a></li>		
+						  <ul id="dateList" class="dropdown-menu">
+							<li data-date="2016-02-16"><a href="onlive/day1">16 Février - Jour 1</a></li>
+							<li data-date="2016-02-17"><a href="onlive/day2">17 Février - Jour 2</a></li>		
+							<li data-date="2016-02-18"><a href="onlive/day3">18 Février - Jour 3</a></li>		
+							<li data-date="2016-02-19"><a href="onlive/day4">19 Février - Jour 4</a></li>		
+							<li data-date="2016-02-20"><a href="onlive/day5">20 Février - Jour 5</a></li>		
+							<li data-date="2016-02-21"><a href="onlive/day6">21 Février - Jour 6</a></li>		
+							<li data-date="2016-02-22"><a href="onlive/day7">22 Février - Jour 7</a></li>		
+							<li data-date="2016-02-23"><a href="onlive/day8">23 Février - Jour 8</a></li>		
+							<li data-date="2016-02-24"><a href="onlive/day9">24 Février - Jour 9</a></li>		
+							<li data-date="2016-02-25"><a href="onlive/day10">25 Février - Jour 10</a></li>		
+							<li data-date="2016-02-26"><a href="onlive/day11">26 Février - Jour 11</a></li>		
+							<li data-date="2016-02-27"><a href="onlive/day12">27 Février - Jour 12</a></li>		
+							<li data-date="2016-02-28"><a href="onlive/day13">28 Février - Jour 13</a></li>		
+							<li data-date="2016-02-29"><a href="onlive/day14">29 Février - Jour 14</a></li>		
+							<li data-date="2016-03-01"><a href="onlive/day15">01 Mars - Jour 15</a></li>		
+							<li data-date="2016-03-02"><a href="onlive/day16">02 Mars - Jour 16</a></li>		
 						  </ul>
 						</div>
 					</div>
@@ -437,7 +437,7 @@
 		</div>
 	</footer>
 
-	<!-- jQuery -->
+	<!-- jQuery -->	
 	<script type="text/javascript" src="/static/javascripts/jquery.js"></script>
 
 	<!-- Plugin JavaScript -->
@@ -527,6 +527,18 @@
 			var hauteurOnLive = ($(window).height()) - ($('.navbar').height()) - 120;
 			$('.colonneOnLive').height(hauteurOnLive);
 		}
+	</script>
+	<script>
+		$(document).ready(function(){
+			var now = new Date();
+			console.log(now);
+			$("#dateList").find("li").each(function(){
+				var li = $(this);
+				if(new Date(li.attr("data-date")) > now) {
+					li.addClass("disabled");
+				}
+			});
+		});
 	</script>
 	<script>
 	$(function() {
