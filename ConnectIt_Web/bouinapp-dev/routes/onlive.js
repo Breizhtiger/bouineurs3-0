@@ -14,7 +14,7 @@ router.get('/:day', function(req, res, next) {
 
 	// If datas could exists for requested day
 	if(!tools.isBeforeToday(dayInformation)){
-		res.render('onlive', dayInformation);
+		res.render('onliveMaps', dayInformation);
 	}
 	else{
 		if(dayInformation != null){

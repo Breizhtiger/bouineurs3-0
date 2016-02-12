@@ -73,7 +73,7 @@ businessImages.getImagesOfTheDay = function(day, callback){
 			if(err){
 				console.log(err);
 			}
-		});
+		}).lean();
 
 	var promise= query.exec();
 

@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* 
-	GET daily images. 
+	GET daily locations. 
 	@param {string} Wanted day
 	@return 
 */
@@ -40,5 +40,26 @@ router.get('/daily/:day', function(req, res, next) {
 		}
 	);
 });
+
+/* 
+	GET daily locations. 
+	@param {string} Wanted day
+	@return 
+*/
+router.get('/dailyWithPhoto/:day', function(req, res, next) {
+	requestedDay = req.params.day;
+	var locations = businessLocations.getLocationWithPhotoByDay(requestedDay,
+		function(error, result){
+			if(error === null){
+				res.status(200).json(result);
+			}
+			else{
+				log.error("Error while trying to get location for day  :"+ requestedDay);
+				res.send(500, {message: 'Internal server error'});
+			}
+		}
+	);
+});
+
 
 module.exports = router;

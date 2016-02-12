@@ -61,5 +61,9 @@ block content
 										img(class='icon-photos', src='/static/images/photo.png')
 									span(style='font-size:1.7em; display: inline-block; vertical-align: middle; margin:15px 0 0 0px') PHOTOS
 					div(class='col-md-9 col-lg-9')
-						p TIMELAPS
-						video(controls,src="/static/daily/day1/videos/test.avi	") Ici la description alternative
+						video(controls)
+							source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.mp4")
+							source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.avi")
+							p Votre navigateur ne supporte pas la video... :/
+						script(type='text/javascript', src='/static/javascripts/jquery.js')
+						script(type='text/javascript', src='/static/javascripts/timelaps.js')
