@@ -60,10 +60,19 @@ block content
 									span(style='display: inline-block; vertical-align: middle; margin:5px 0 0 15px; float:left')
 										img(class='icon-photos', src='/static/images/photo.png')
 									span(style='font-size:1.7em; display: inline-block; vertical-align: middle; margin:15px 0 0 0px') PHOTOS
-					div(class='col-md-9 col-lg-9')
-						video(controls)
-							source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.mp4")
-							source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.avi")
-							p Votre navigateur ne supporte pas la video... :/
+					div(class='col-md-9 col-lg-9', style='height:100%')
+						div(id="loader-global")
+						div(id="notAvailable",style="display:none")
+							h3 Pas de video disponible pour le moment !
+							p Plusieurs raisons possibles:
+							ul
+								li L'étape du jour n'a pas encore commencé... Pas de panique ça arrive ! :)
+								li Problème technique partiel : l'équipe 3.0 travaille à la rétablissement du service !
+								li Le système 3.0 rencontre un probleme majeur...
+						div(id="content",style="display:none")
+							video(controls)
+								source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.mp4")
+								source(src="http://localhost:3000/static/daily/#{daymonth}/videos/video.avi")
+								p Votre navigateur ne supporte pas la video... :/
 						script(type='text/javascript', src='/static/javascripts/jquery.js')
 						script(type='text/javascript', src='/static/javascripts/timelaps.js')

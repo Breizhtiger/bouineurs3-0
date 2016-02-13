@@ -61,7 +61,15 @@ block content
 									span(style='display: inline-block; vertical-align: middle; margin:5px 0 0 15px; float:left')
 										img(class='icon-photos', src='/static/images/photo.png')
 									span(style='font-size:1.7em; display: inline-block; vertical-align: middle; margin:15px 0 0 0px') PHOTOS
-					div(class='col-md-9 col-lg-9')
+					div(class='col-md-9 col-lg-9', style='height:100%')
 						script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&callback=initLocation', async, defer)
-						div(id='mapDay')
+						div(id="loader-global")
+						div(id="notAvailable",style="display:none")
+							h3 Tracé non disponible pour le moment !
+							p Plusieurs raisons possibles:
+							ul
+								li L'étape du jour n'a pas encore commencé... Pas de panique ça arrive ! :)
+								li Problème technique partiel : l'équipe 3.0 travaille à la rétablissement du service !
+								li Le système 3.0 rencontre un probleme majeur...
+						div(id='mapDay', style='display:none')
 							script(type='text/javascript', src='/static/javascripts/onlive.js')

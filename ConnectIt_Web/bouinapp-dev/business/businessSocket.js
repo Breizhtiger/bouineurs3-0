@@ -63,6 +63,8 @@ businessSocket.init = function(server){
 			
 			log.info("Sauvegarde de l'image dans le dossier : "+outputDirectory);
 	 		
+	 		tools.checkDirectorySync(outputDirectory);
+	 		
 	 		var filename = outputDirectory + path.basename(data.name);
 			log.info("Nom fichier complet : "+filename);
 

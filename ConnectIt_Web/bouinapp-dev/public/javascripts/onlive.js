@@ -3,16 +3,22 @@ var fullDomain = location.protocol+'//'+location.hostname+(location.port ? ':'+l
  
 // Requête l'api pour récupérer les localisations
 function initLocation(){
-  $(document).ready(function () {
-    $.get(fullDomain+"/api/locations/dailyWithPhoto/"+day, function(data) {
-        if(data.length > 0){ 
-          initMap(data);
-        }
-        else{
-            document.getElementById('mapDay').innerHTML += "<h2>Pas de données disponibles...</h2>";
-        }
-    }).fail(function() {document.getElementById('mapDay').innerHTML += "<h2>Oups... quelque chose s'est mal passée...</h2>";});
-  });
+    $(document).ready(function () {
+        $.get(fullDomain+"/api/locations/dailyWithPhoto/"+day, function(data) {
+            if(data.length > 0){
+                initMap(data);
+                $('#mapDay').show();
+                $('#loader-global').hide();
+            }
+            else{
+                $('#notAvailable').show();
+                $('#loader-global').hide();
+            }
+        }).fail(function() {
+            $('#notAvailable').show();
+            $('#loader-global').hide();
+        });
+    });
 }
 
 // Initialisation de la google map avec les markers
@@ -43,11 +49,10 @@ function initMap(data){
                 if(this.publicPath == 'undefined' || this.publicPath == null){
                     this.publicPath = 'static/images/empty.png';
                 }
-                var content = "<img src=\'" + fullDomain + this.publicPath + "\' width='300px' height='200px'>"
+                var content = "<img src=\'" + fullDomain + this.publicPath + "\' width='500px' height='375px'>"
                 infowindow.setContent(content);
                 infowindow.open(mapDay, this);
             });
-
         }
     }
 }

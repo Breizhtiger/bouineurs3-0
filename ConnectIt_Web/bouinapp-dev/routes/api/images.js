@@ -82,5 +82,26 @@ router.get('/getByKey/:key', function(req, res, next) {
 	);
 });
 
+/* 
+	Check if video of given day exists or not
+	@param {string} Wanted day
+	@return true if video exists
+*/
+router.get('/checkExistenceVideoOfTheDay/:day', function(req, res, next) {
+	requestedDay = req.params.day;
+
+	var images = businessImages.checkExistenceVideoOfTheDay(requestedDay,
+		function(error, result){
+			if(error === null){
+				res.status(200).json(result);
+			}
+			else{
+				log.error("Error while trying to check existence video of the day for day : "+requestedDay);
+				res.send(500, {message: 'Internal server error'});
+			}
+		}
+	);
+});
+
 module.exports = router;
 

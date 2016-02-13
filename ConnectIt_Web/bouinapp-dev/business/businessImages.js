@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var tools = require("../tools/tools");
 var log = require("../tools/logger");
+var fs = require('fs');
 
 var businessImages = {};
 
@@ -52,7 +53,7 @@ businessImages.getHighlightsOfTheDay = function(callback){
 						},
 		function(err, images){
 			if(err) return next(err);
-		}).sort('-datetime').limit(15);
+		}).sort('-datetime').limit(10);
 
 	var promise= query.exec();
 
@@ -131,6 +132,64 @@ businessImages.countPictures = function(callback){
 		else
 			callback(error, result);
 	});
+};
+
+/*
+	Check existence of timelaps video for given day
+	@param day : Wanted day (format day1, day2, day3...)
+	@param callback : Callback function to call after treatment
+*/
+businessImages.checkExistenceVideoOfTheDay = function(day, callback){
+	log.info("Start checking existence of video");
+	var response = {};
+	var informationAboutTheDay = tools.getVariousInformationForADay(day);
+	var wantedDirectoryDateName = "";
+
+	if(informationAboutTheDay != null){
+		var wantedDirectoryDateName = informationAboutTheDay.daymonth;
+	}
+	else{
+		log.info("Wanted given day doesn't exists");
+		response.directory = "KO";
+		response.video = "KO";
+		callback(null, response);
+	}
+
+	if(wantedDirectoryDateName != null && wantedDirectoryDateName != ""){
+		var wantedDirectory = process.cwd()+'/public/daily/'+wantedDirectoryDateName+'/videos';
+
+		fs.access(wantedDirectory, fs.F_OK, (err) => {
+			log.info(err ? wantedDirectory +' is not accessible' : wantedDirectory + ' can be access');
+			if(!err){
+				response.directory = "OK";
+			}
+			else{
+				response.directory = "KO";
+				response.video = "KO";
+				callback(null, response);
+			}
+
+			var fileName = wantedDirectory+'/video.mp4';
+
+			fs.access(fileName, fs.F_OK, (err) => {
+				log.info(err ? fileName +' is not accessible' : fileName + ' can be access');
+				if(!err){
+					response.video = "OK";
+					callback(null, response);
+				}
+				else{
+					response.video = "KO";
+					callback(null, response);
+				}
+			});
+		});
+	}
+	else{
+		log.info("Wanted given day information are incomplete. No daymonth attribute.");
+		response.directory = "KO";
+		response.video = "KO";
+		callback(null, response);
+	}
 };
 
 module.exports = businessImages;

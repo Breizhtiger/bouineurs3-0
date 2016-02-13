@@ -1,4 +1,5 @@
 var _ = require("underscore");
+var log = require("./logger");
 
 var tools = {};
 
@@ -136,5 +137,29 @@ tools.transformLocalPathToPublicPath = function(localPath){
 		}
 	}
 };
+
+//function will check if a directory exists, and create it if it doesn't
+tools.checkDirectory = function(directory, callback){  
+	fs.stat(directory, function(err, stats) {
+		//Check if error defined and the error code is "not exists"
+		if (err && err.errno === 34) {
+			//Create the directory, call the callback.
+			fs.mkdir(directory, callback);
+		} else {
+			//just in case there was a different error:
+			callback(err)
+		}
+	});
+}
+
+tools.checkDirectorySync = function(directory){
+	try {
+		log.info("Ckecking existence of directory :"+directory);
+		fs.statSync(directory);
+	} catch(e) {
+		log.info("Directory doesn't exists. Creating :"+directory);
+		fs.mkdirSync(directory);
+	}
+}
 
 module.exports = tools;
