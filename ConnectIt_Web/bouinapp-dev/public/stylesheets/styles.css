@@ -689,6 +689,11 @@ a.e-sociaux:hover{
 	background: url(/static/images/iconCarte.png) no-repeat center center scroll;
 }
 
+.listStyle {
+	width: 100%;
+	text-align: center;
+}
+
 #sponsors {
 	background: #2c578e;
 	width: 100%;
