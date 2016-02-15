@@ -70,7 +70,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<!-- Carousel -->
-						<div id="carousel" class="carousel slide" style="display:none">
+						<div id="carousel" class="carousel slide" style="margin:auto;display:none;margin-top:100px;">
 							<!-- Indicators -->
 							<ol id="carouselindicators" class="carouselindicators">
 								<li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -86,7 +86,6 @@
 									 <a href="#"><img src="/static/images/slider/slider1.jpg"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3></h3> -->
 											</div>
 										</div>
 								</div>
@@ -94,8 +93,6 @@
 									<a href="#"><img src="/static/images/slider/slider2.png"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3>White</h3> -->
-												<!-- <p>Hum, bwa.</p> -->
 											</div>
 										</div>
 								</div>
@@ -103,8 +100,6 @@
 									<a href="#"><img src="/static/images/slider/slider3.png"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3>Le Mans Styles</h3> -->
-												<!-- <p>Hum, ok.</p> -->
 											</div>
 										</div>
 								</div>
@@ -112,8 +107,6 @@
 									<a href="#"><img src="/static/images/slider/slider4.png"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3>Le Mans Styles</h3> -->
-												<!-- <p>Hum, ok.</p> -->
 											</div>
 										</div>
 								</div>
@@ -121,8 +114,6 @@
 									<a href="#"><img src="/static/images/slider/slider5.png"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3>Le Mans Styles</h3> -->
-												<!-- <p>Hum, ok.</p> -->
 											</div>
 										</div>
 								</div>
@@ -130,8 +121,6 @@
 									<a href="#"><img src="/static/images/slider/slider6.png"></a>
 										<div class="container">
 											<div class="carousel-caption">
-												<!-- <h3>Le Mans Styles</h3> -->
-												<!-- <p>Hum, ok.</p> -->
 											</div>
 										</div>
 								</div>
@@ -145,7 +134,7 @@
 									<span class="glyphicon glyphicon-chevron-right"></span>
 								</a>
 						</div>
-						<div id="carouselLoader" class="loader">
+						<div id="carouselLoader" class="carouselLoader">
 							&nbsp;
 						</div>
 					</div>
@@ -256,7 +245,7 @@
 											- Crochets d'attelage. <br />
 											- Système de couplage deux batteries. <br />
 											- Snorkel. <br />
-											- Sièges sports baccés. <br />
+											- Sièges sports baquets. <br />
 											- Système haut parleurs intégré.<br />
 											- Feux longue portée. <br />
 											- Coffre aménagé.<br />
@@ -289,17 +278,49 @@
 
 	<!-- Onlive Section -->
 	<section id="onlive" class="content-section text-center">
-		<div class="onlive-section colonneOnLive">
-			<div class="container">
-				<div class="col-lg-8 col-lg-offset-2">
-				   <h2>On Live !</h2>
-				   <div class="row" style="margin-top:10%">				   	
-						<h4>Vivez la course avec nous ! (A VENIR)</h4>
-						<h2 class="start">Départ 4L Trophy:</h2>
-						<div class="col-md-12 col-lg-12	 col-xs-12 countDown countDownTrophy"></div>
-                	</div>
+		<div class="row">
+				<div class="container menuOnlive">
+					<h2>On Live !</h2>
+					<div class ="col-lg-3 col-md-3">
+						<img src="/static/images/onlive-height.jpg">
+					</div>
+					<div class="col-lg-9 col-md-9">
+						<div class="texte-onlive">
+							Retrouvez l'étape du jour !<br />
+
+							<ul style="padding-top:15px; list-style:none;">
+								<li syke="padding-bottom:4px"> - Itinéraire du jour</li>
+								<li> - Photos et vidéos exclusives</li>
+							</ul>
+
+							Prenez place à bord de la voiture... comme si vous y étiez !
+						</div>		
+						<!-- Large button group -->
+						<div class="btn-group" style="margin-top:40px;">
+						  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Je choisis mon étape <span class="caret"></span>
+						  </button>
+						  <ul id="dateList" class="dropdown-menu listStyle">
+							<li data-date="2016-02-16"><a href="onlive/day1">16 Février - Jour 1</a></li>
+							<li data-date="2016-02-17"><a href="onlive/day2">17 Février - Jour 2</a></li>		
+							<li data-date="2016-02-18"><a href="onlive/day3">18 Février - Jour 3</a></li>		
+							<li data-date="2016-02-19"><a href="onlive/day4">19 Février - Jour 4</a></li>		
+							<li data-date="2016-02-20"><a href="onlive/day5">20 Février - Jour 5</a></li>		
+							<li data-date="2016-02-21"><a href="onlive/day6">21 Février - Jour 6</a></li>		
+							<li data-date="2016-02-22"><a href="onlive/day7">22 Février - Jour 7</a></li>		
+							<li data-date="2016-02-23"><a href="onlive/day8">23 Février - Jour 8</a></li>		
+							<li data-date="2016-02-24"><a href="onlive/day9">24 Février - Jour 9</a></li>		
+							<li data-date="2016-02-25"><a href="onlive/day10">25 Février - Jour 10</a></li>		
+							<li data-date="2016-02-26"><a href="onlive/day11">26 Février - Jour 11</a></li>		
+							<li data-date="2016-02-27"><a href="onlive/day12">27 Février - Jour 12</a></li>		
+							<li data-date="2016-02-28"><a href="onlive/day13">28 Février - Jour 13</a></li>		
+							<li data-date="2016-02-29"><a href="onlive/day14">29 Février - Jour 14</a></li>		
+							<li data-date="2016-03-01"><a href="onlive/day15">01 Mars - Jour 15</a></li>		
+							<li data-date="2016-03-02"><a href="onlive/day16">02 Mars - Jour 16</a></li>		
+						  </ul>
+						</div>
+					</div>
 				</div>
-			</div>
 		</div>
 	</section>
 
@@ -416,7 +437,7 @@
 		</div>
 	</footer>
 
-	<!-- jQuery -->
+	<!-- jQuery -->	
 	<script type="text/javascript" src="/static/javascripts/jquery.js"></script>
 
 	<!-- Plugin JavaScript -->
@@ -424,9 +445,6 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script type="text/javascript" src="/static/javascripts/bootstrap.min.js"></script>
-
-	<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
 	<!-- Custom JavaScript -->
 	<script type="text/javascript" src="/static/javascripts/index.js"></script>
@@ -511,6 +529,17 @@
 		}
 	</script>
 	<script>
+		$(document).ready(function(){
+			var now = new Date();
+			$("#dateList").find("li").each(function(){
+				var li = $(this);
+				if(new Date(li.attr("data-date")) > now) {
+					li.addClass("disabled");
+				}
+			});
+		});
+	</script>
+	<script>
 	$(function() {
 		 $('.countDownTrophy').countdown({
 			  date:  new Date("February 16, 2016 12:00:00"),
@@ -519,12 +548,6 @@
           }
 		 });
 	  });
-	</script>
-	
-	<script>
-		$(window).load(function() {
-			$(".loader").fadeOut("1000");
-		});
 	</script>
 
 	<script>

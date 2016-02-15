@@ -1,49 +1,539 @@
-	 <!-- Intro Header -->
-    <header id="home" class="intro">
-        <div class="intro-body">
-            <div class="container full-height">
-                <div class="row">
-                	<div class="col-md-12">
-                  	<h1>BOUINEURS 3.0</h1>
-                  </div>
-                </div>
-					<div class="row" style="margin-top:10%">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container" style="margin-right: 0; width: 100%;">
+			<div class="navbar-header visible-xs">
+				<div class="mini-logobouineur"></div>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="navbar visible-xs visible-sm navbar-custom-phone">
+				<div class="dropdown-custom">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+							Menu
+						</a>
+						<ul class="dropdown-menu">
+							<li class="hidden">
+								<a href="#page-top"></a>
+							</li>
+							<li>
+								<a class="page-scroll" href="#home">Home</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>
+								Le Projet
+								<li><a class="page-scroll" href="#quatreL">Le 4L Trophy</a></li>
+								<li><a class="page-scroll" href="#equipage">L'équipage</a></li>
+								<li><a class="page-scroll" href="#voiture">La voiture</a></li>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>
+								<a class="page-scroll" href="#onlive">On Live&iexcl;</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>
+								<a class="page-scroll" href="#sponsors">Sponsors</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+
+			<div class="navbar-right hidden-xs hidden-sm col-md-10 col-lg-10">
+				<ul class="nav navbar-nav navbar-bar-custom">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden">
+						<a href="#page-top"></a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#home">Home</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#projet" id="id-projet">Le Projet</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#onlive">On Live&iexcl;</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#sponsors">Sponsors</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Intro Header -->
+	<header id="home" class="intro">
+		<div class="intro-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<!-- Carousel -->
+						<div id="carousel" class="carousel slide" style="display:none">
+							<!-- Indicators -->
+							<ol id="carouselindicators" class="carouselindicators">
+								<li data-target="#carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#carousel" data-slide-to="1"></li></a>
+								<li data-target="#carousel" data-slide-to="2"></li></a>
+								<li data-target="#carousel" data-slide-to="3"></li></a>
+								<li data-target="#carousel" data-slide-to="4"></li></a>
+								<li data-target="#carousel" data-slide-to="5"></li></a>
+							</ol>
+							<!-- Wrapper for slides -->
+							<div id="carouselinner" class="carouselinner">
+								<div id="carousel1" class="item active">
+									 <a href="#"><img src="/static/images/slider/slider1.jpg"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3></h3> -->
+											</div>
+										</div>
+								</div>
+								<div id="carousel2" class="item">
+									<a href="#"><img src="/static/images/slider/slider2.png"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3>White</h3> -->
+												<!-- <p>Hum, bwa.</p> -->
+											</div>
+										</div>
+								</div>
+								<div id="carousel3" class="item">
+									<a href="#"><img src="/static/images/slider/slider3.png"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3>Le Mans Styles</h3> -->
+												<!-- <p>Hum, ok.</p> -->
+											</div>
+										</div>
+								</div>
+								<div id="carousel4" class="item">
+									<a href="#"><img src="/static/images/slider/slider4.png"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3>Le Mans Styles</h3> -->
+												<!-- <p>Hum, ok.</p> -->
+											</div>
+										</div>
+								</div>
+								<div id="carousel5" class="item">
+									<a href="#"><img src="/static/images/slider/slider5.png"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3>Le Mans Styles</h3> -->
+												<!-- <p>Hum, ok.</p> -->
+											</div>
+										</div>
+								</div>
+								<div id="carousel6" class="item">
+									<a href="#"><img src="/static/images/slider/slider6.png"></a>
+										<div class="container">
+											<div class="carousel-caption">
+												<!-- <h3>Le Mans Styles</h3> -->
+												<!-- <p>Hum, ok.</p> -->
+											</div>
+										</div>
+								</div>
+							</div>
+
+							<!-- Controls -->
+								<a class="left carousel-control" href="#carousel" data-slide="prev">
+									<span class="glyphicon glyphicon-chevron-left"></span>
+								</a>
+								<a class="right carousel-control" href="#carousel" data-slide="next">
+									<span class="glyphicon glyphicon-chevron-right"></span>
+								</a>
+						</div>
+						<div id="carouselLoader" class="loader">
+							&nbsp;
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Projet Section -->
+	 <section id="projet" class="projet container content-section text-center">
+			<div class="container container-project col-md-12">
+				<div class="row">
+					<div id="menu-projet" class="menu-projet colonne box hidden-xs hidden-sm col-md-3 col-lg-3">
+						<li id="current-onload" type="button" title="quatreL" class="titre btn-menu-projet">
+						  <span class="">Le 4L Trophy</span>
+						</li>
+						<li type="button" title="equipage" class="titre btn-menu-projet">
+						  <span class="">L'équipage</span>
+						</li>
+						<li type="button" title="voiture" class="titre btn-menu-projet">
+						  <span class="">La voiture</span>
+						</li>
+					</div>
+					<div class="content-project box col-xs-12 col-sm-12 col-md-9 col-lg-9">
+						<div id="quatreL" title="quatreL" class="colonne contenu collapse in">
+							<span class="visible-xs visible-sm"><h2>Le projet</h2>
+							<h1>Le 4 L Trophy</h1></span>
+							<img alt="4LTrophy-cover" class="trophy-cover hidden-xs" src="/static/images/projet/4LTrophy.jpg" />
+							<span class="description"><p>Créé en 1996 par des étudiantes de l'ESC Rennes, le 4L Trophy a su s'imposer comme l'évènement sportif et humanitaire le plus important d'Europe.
+								Tous les ans, de plus en plus d'étudiants participent à cette aventure à travers le désert marocain.</p>
+								</br>
+								<p>Le rallye raid 4L Trophy a pour objectif de venir en aide aux enfants défavorisés du Maroc via l'apport de fournitures scolaires et sportives.
+								En plus du côté humanitaire, cette aventure est également un incroyable challenge sportif. Durant 15 jours, nous allons traverser la France puis l'Espagne pour enfin rallier le Maroc où nous serons parfois livrés à nous même au beau milieu du désert. </p>
+								</br>
+								<p>Cette année encore, la 19e édition du rallye se déroulera du 18 au 28 février 2016.</p>
+								<a href="http://www.4ltrophy.com/" class="trophy-website"> Site officiel 4L Trophy </a>
+							</span>
+						</div>
+						<div id="equipage" title="equipage" class="colonne contenu collapse in">
+							<span class="visible-xs visible-sm"><h2>L'équipage</h2></span>
+							<h3> Equipage n°1258</h3>
+							<table class="description desc-Flo">
+								<tr class="hidden-md hidden-lg">
+									<td width="264px" align="center"><img alt="Florian Leloup" src="/static/images/id-Flo.jpg"></td>
+								</tr>
+								<tr>
+									<td width="264px" class="hidden-xs hidden-sm"><img alt="Florian Leloup"  src="/static/images/id-Flo.jpg"></td>
+									<td width="100%" class="cell-Flo"><h3>Florian LELOUP - 24 ans - Pilote</h3></br></br><p>Originaire du Mans, j'occupe actuellement un poste d'ingénieur en informatique sur Rennes. Sportif, désireux d'apprendre, la soif d'aventure est déterminante dans ce projet !</p></td>
+								</tr>
+							</table>
+							<table class="description">
+								<tr class="hidden-md hidden-lg">
+									<td width="264px" align="center"><img alt="Adrien Lambert" src="/static/images/id-Ad.jpg"></td>
+								</tr><br /><br />
+								<tr>
+									<td width="100%" class="cell-Adrien"><h3 style="text-align:right;">Adrien LAMBERT - 24 ans - Copilote</h3></br></br><p>Je suis actuellement infographiste à Paris. J'aime beaucoup la musique, le cinéma et globalement créer de mes mains. Le 4L Trophy est un évènement que je suis depuis longtemps. Etant originaire du Mans, le sport automobile et la conduite me passionnent. </p>
+								</td>
+									<td width="264px" class="hidden-xs hidden-sm"><img alt="Adrien Lambert"  src="/static/images/id-Ad.jpg"></td>
+								</tr>
+							</table>
+						</div>
+						<div id="voiture" title="voiture" class="container-fluid colonne contenu collapse in">
+							<span class="visible-xs visible-sm"><h2>La voiture</h2></span>
+							
+							<a id="currentVoiture-onload" class="col-md-1 chevronVoiture titreVoiture-left btn-menu-projet btn-menu-projet-custom left" style="display:none">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+
+							<div id="DescriptionVoiture1" title="DescriptionVoiture-1" class="activeVoiture contenuVoiture collapse in col-md-10 voiture-history">
+								<h3>Un peu d'histoire...</h3>
+								<p>
+									La Renault 4L produite de 1961 à 1992 est une voiture mythique du panorama automobile français. Ce fut la première application de la traction sur une voiture de tourisme de la marque Renault. Très apprécié du public et fortement exploitée pour des usages "d'entreprises" elle reste aujourd'hui la deuxième voiture française la plus vendue de tous les temps. (Annecdote: c'était l'une des seules voitures de l'époque qui permettait de conduire avec le képi sur la tête ! )<br />
+								</p>
+								<p>
+								Existante sous plusieurs formes (berline, commercial) au rallye 4L Trophy, toutes sont autorisées ! Nous avons fait le choix du modèle fourgonette motivé par deux raisons : plus de places à l'intérieur, et plus de visibilité pour nos sponsors!<br />
+								</p>
+								<p>
+								C'est donc à bord de ce bolide de 1987 que nous allons avaler plus de 8000 km sur des routes aux allures... diverses : autoroute, piste, sable et peut-être même routes enneigées! A suivre...
+								</p>
+							</div>
+							<div id="DescriptionVoiture2" title="DescriptionVoiture-2" class="contenuVoiture collapse in col-md-10">
+								<h3>Carte d'identité</h3>
+								<table>
+									<tr>
+										<td class="voiture-label">Modèle:</td>
+										<td class="voiture-desc">Renault 4 F4 Fourgon.</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Type:</td>
+										<td class="voiture-desc">Essence</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Puissance:</td>
+										<td class="voiture-desc">34cv</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">Année:</td>
+										<td class="voiture-desc">1987</td>
+									</tr>
+									<tr>
+										<td class="voiture-label">P.T.A.C:</td>
+										<td class="voiture-desc">1 800kg</td>
+									</tr>
+									<tr>
+										<td class="voiture-label" style="vertical-align:top">Spécificités:</td>
+										<td class="voiture-desc">
+											- Plaques de protections moteur et réservoir. <br />
+											- Crochets d'attelage. <br />
+											- Système de couplage deux batteries. <br />
+											- Snorkel. <br />
+											- Sièges sports baccés. <br />
+											- Système haut parleurs intégré.<br />
+											- Feux longue portée. <br />
+											- Coffre aménagé.<br />
+											- 3 roues de secours.....
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div id="DescriptionVoiture3" title="DescriptionVoiture-3" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-face" class="projet-voiture hidden-xs" src="/static/images/projet/voiture1.png" />
+							</div>
+							<div id="DescriptionVoiture4" title="DescriptionVoiture-4" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture2.png" />
+							</div>
+							<div id="DescriptionVoiture5" title="DescriptionVoiture-5" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture3.png" />
+							</div>
+							<div id="DescriptionVoiture6" title="DescriptionVoiture-6" class="contenuVoiture collapse in col-md-10">
+								<img alt="voiture-arriere" class="projet-voiture hidden-xs" src="/static/images/projet/voiture4.png" />
+							</div>
+
+							<a  class="col-md-1 chevronVoiture titreVoiture-right btn-menu-projet btn-menu-projet-custom right">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</div>
+						</div>
+				 </div>
+			</div>
+		 </section>
+
+	<!-- Onlive Section -->
+	<section id="onlive" class="content-section text-center">
+		<div class="onlive-section colonneOnLive">
+			<div class="container">
+				<div class="col-lg-8 col-lg-offset-2">
+				   <h2>On Live !</h2>
+				   <div class="row" style="margin-top:10%">				   	
+						<h4>Vivez la course avec nous ! (A VENIR)</h4>
 						<h2 class="start">Départ 4L Trophy:</h2>
 						<div class="col-md-12 col-lg-12	 col-xs-12 countDown countDownTrophy"></div>
+                	</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sponsors Section -->
+	<section id="sponsors" class="colonneSponsors container content-section text-center">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				</br>
+				<h2>Nos partenaires majoritaires :</h2>
+							
+				<div id="tableSponsor">
+					<a href="http://www.soprasteria.com/fr"><img alt="SopraSteria" src="/static/images/sponsors/SopraSteria.jpg"></a>
+					<p>Sopra Steria</p>
+					<a href="https://www.facebook.com/soprasteria/"><div class="facebookSponsor reseauxInline"></div></a>
+					<a href="https://twitter.com/SopraSteria_fr"><div class="twitterSponsor reseauxInline"></div></a>
+				</div>
+				<div id="tableSponsor">
+					<a href="http://www.bullit-studio.fr/"><img alt="BullitStudio" src="/static/images/sponsors/bullitStudio.jpg"></a>
+					<p>Bullit Studio</p>
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor">
+					<a href="http://www.papeaparc.fr/"><img alt="PapéaParc" src="/static/images/sponsors/papéaParc.png"></a> 
+					<p>Papéa Parc</p>
+					<a href="https://www.facebook.com/papea.parc"><div class="facebookSponsor reseauxInline"></div></a>
+					<a href="https://twitter.com/PapeaParc"><div class="twitterSponsor reseauxInline"></div></a>
+				</div>
+				<div id="tableSponsor">
+					<a href="http://www.commune-it.com/"><img alt="Commune IT" src="/static/images/sponsors/commune-it.png" valign="middle"></a>
+					<p>Commune-it</p>
+					<a href="https://www.facebook.com/Commune-it-100710720049016"><div class="facebookSponsor reseauxInline"></div></a>
+					<a href="https://twitter.com/Commune_it"><div class="twitterSponsor reseauxInline"></div></a>
+				</div>
+				<div id="tableSponsor">
+					<a href="https://www.facebook.com/librairielintrepide"><img alt="L'intrepide" src="/static/images/sponsors/LIntrepide.jpg"></a> </td>
+					<td><p>L'intrépide</p>
+					<a href="https://www.facebook.com/librairielintrepide"><div class="facebookSponsor reseauxInline"></div></a>
+				</div>
+	
+				</br>
+				</br>
+				<h2>Ils nous aident :</h2>
+				
+				<div id="tableSponsor2"> <!--<div id="tableSponsor2" class="col-md-3 col-lg-3"> -->
+					<a href="http://www.auffret-plessix.com"><img alt="Auffret Plessix" src="/static/images/sponsors/auffretPlessix.png"></a>
+					<p>Auffret Plessix</p>					
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://www.annuairedelasarthe.com/sites/CHEVREFEUILLE/page/Le-magasin.html"><img alt="Chevrefeuille" src="/static/images/sponsors/chevrefeuille.jpg"></a>
+					<p>Chèvrefeuille</p>
+					<a href="https://www.facebook.com/Chèvrefeuille-572016942845715"><div class="facebookSponsor reseauxInline"></div></a>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://www.glinche-automobiles.com/"><img alt="Glinches automobile" src="/static/images/sponsors/glinche.png"></a>
+					<p>Glinche Automobiles</p>
+					<a href="https://www.facebook.com/glinche.automobiles"><div class="facebookSponsor reseauxInline"></div></a>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://www.ad-auto.fr/garage/garage-ad-expert-sarl-garage-picault/"><img alt="Garage Picault" src="/static/images/sponsors/garagePicault.png"></a>
+					<p>Garage Picault - Trangé</p>
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor2" >
+					<a href="http://www.trajectoire-signaletique.com/"><img  alt="Trajectoire signaletique" src="/static/images/sponsors/trajectoireSignaletique.png"></a>
+					<p>Trajectoire signalétique</p>
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://www.lyreco.com/webshop/P01/welcome?lc=FRFR"><img alt="Lyreco" src="/static/images/sponsors/logo-lyreco.jpg"></a>
+					<p>Lyreco</p>					
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://stjoseph-lemans.fr/"><img alt="Collège Saint-Joseph" src="/static/images/sponsors/saint-joseph.png"></a> 
+					<p>Ecole / Collège Saint Joseph</p>
+					<div id="pasDeSociaux"></div>
+				</div>
+				<div id="tableSponsor2">
+					<a href="http://www.centre-surdite-audioprothesiste-gardereau.fr/"><img alt="Centre surdité" src="/static/images/sponsors/centreSurdite.png"></a>
+					<p>Centre de Surdité du Roussillon</p>					
+					<div id="pasDeSociaux"></div>
+				</div>
+
+				<h2>VOUS !</h2>
+
+				<div style="color:#8FC27A;margin-top:10px; margin-bottom:30px;font-style:normal; font-size:1.1em">
+		             ANDRÉE - MANON - ELODY - ANASTASIA - PAUL - PAULINE - BASILE - STEVEN - KEVIN - SONIA - JULIEN - DIDIER - JEAN BAPTISTE - JÉRÔME - PATRICK - ROBIN - THOMAS - MARION - YANN - MARIE - MATHILDE - MONIKA - LUCIE - GISÈLE - FERNANDO - GUIGUI - SOHA - EMMANUELLE - ISABELLE - THIERRY - CHRISTINE - ALAIN - ANTHONY - FLORENCE - VICTOR - CHARLÈNE - ANTOINE - LUCIE - THOMAS - JEAN LUC - AMIT - FOUAD - SYLVIE - JEAN PAUL - MÉLANIE - DIDIER - FRANÇOISE - LUTINE - ROBERT - LORRAINE - BONAFOUINE - MARTINE - VINCENT - LYDIE - CHRIS - NDAMOU - CATHY - ETIENNE - CHARLENE - VINCENT
+		             NICOLAS - SYLVIE - PHILIPPE - DOMINIQUE - PATRICE - PAULE - JOEL - NANCY - JEANNINE - ANDRE 
                 </div>
-            </div>
-        </div>
-    </header>
+				<h2>ET TOUS LES AUTRES...</h2>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="container-fluid">
+			<div class="col-md-offset-1 col-xs-12 col-md-5 email">
+				<span class="big-arobase">@</span>
+				<span><a href="mailto:bouineurs3.0@outlook.fr">bouineurs3.0@outlook.fr</a></span>
+			</div>
+			<div class="col-xs-12 col-md-5 sociaux">
+				<!-- <div id="encart-sociaux" class="encart-sociaux col-md-12"> -->
+					<li class="sociaux"><a class="e-sociaux logoFb" href="https://www.facebook.com/bouineurs3.0"></a></li>
+					<li class="sociaux"><a class="e-sociaux logoTwit" href="https://twitter.com/bouineurs3_0"></a></li>
+					<li class="sociaux"><a class="e-sociaux logoInsta" href="https://instagram.com/bouineurs3.0"></a></li>
+				<!-- </div> -->
+			</div>
+		</div>
+		<div class="container-fluid text-center copyright">
+			<p>Copyright &copy; <a href="/bouineursMagicTeam" class="footer-hidden-link"> Bouineurs Magic Team 3.0</a></p>
+		</div>
+	</footer>
 
 	<!-- jQuery -->
-	<script src="/static/javascripts/jquery.js"></script>
+	<script type="text/javascript" src="/static/javascripts/jquery.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="/static/javascripts/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="/static/javascripts/jquery.easing.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="/static/javascripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/javascripts/bootstrap.min.js"></script>
 
-	<script src="/static/javascripts/jquery.countdown.js"></script>
+	<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
+	<!-- Custom JavaScript -->
+	<script type="text/javascript" src="/static/javascripts/index.js"></script>
+
+	<!-- Countdown -->
+	<script type="text/javascript" src="/static/javascripts/jquery.countdown.js"></script>
+
+	<script>
+		if (window.matchMedia("(min-width: 992px)").matches) {
+			$(document).ready(function(){
+				$(".contenu").hide();
+				$(".contenu[title='quatreL']").show();
+				$("#current-onload").toggleClass('current');
+			});
+
+			// Catch events
+
+			// Events on menu
+			$(".titre").click(function(){
+				$(".contenu").hide();
+				$(".contenu[title="+this.title+"]").show();
+				$('*').removeClass("current");
+				$(this).toggleClass("current");
+
+				if(this.title == "voiture"){
+					$(".contenuVoiture").hide();
+					$(".contenuVoiture.activeVoiture").show();
+				}
+			});
+			
+			// Event on left arrow "voiture" tab
+			$(".titreVoiture-left").click(function(){
+				$(".contenuVoiture").hide();
+				$(".contenuVoiture.activeVoiture").attr("title");
+				var activeVoitureTitle = $(".contenuVoiture.activeVoiture").attr("title");
+				var res = activeVoitureTitle.split("-");
+				var N = res[1];
+				var Nmoins1 = parseInt(N)-1;
+
+
+				$(".contenuVoiture.activeVoiture").hide();
+				$(".contenuVoiture.activeVoiture").removeClass("activeVoiture");
+
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nmoins1+'"]').show();
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nmoins1+'"]').addClass("activeVoiture");
+				
+				if (N == 2) {
+					$(".titreVoiture-left").hide();
+				}
+
+				$(".titreVoiture-right").show();
+			});
+
+			// Event on right arrow "voiture" tab
+			$(".titreVoiture-right").click(function(){
+				$(".contenuVoiture").hide();
+				$(".contenuVoiture.activeVoiture").attr("title");
+				var activeVoitureTitle = $(".contenuVoiture.activeVoiture").attr("title");
+				var res = activeVoitureTitle.split("-");
+				var N = res[1];
+				var Nplus1 = parseInt(N)+1;
+
+				$(".contenuVoiture.activeVoiture").hide();
+				$(".contenuVoiture.activeVoiture").removeClass("activeVoiture");
+
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').show();
+				$('.contenuVoiture[title="DescriptionVoiture-'+Nplus1+'"]').addClass("activeVoiture");
+
+				if (N == 5) {
+					$(".titreVoiture-right").hide();
+				}
+
+				$(".titreVoiture-left").show();
+			});
+
+			// var hauteurProjet = ($(window).height()) - ($('.navbar').height()) - 120;
+			// var maxCol = Math.max($('#menu-projet').height(),$('#quatreL').height(),$('#equipage').height(),$('#voiture').height(),hauteurProjet);
+			// $('.colonne').height(maxCol);
+
+			var hauteurOnLive = ($(window).height()) - ($('.navbar').height()) - 120;
+			$('.colonneOnLive').height(hauteurOnLive);
+		}
+	</script>
 	<script>
 	$(function() {
 		 $('.countDownTrophy').countdown({
 			  date:  new Date("February 16, 2016 12:00:00"),
 			 	render: function(data) {
-            $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>jours</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>heures</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+            $(this.el).html("<div class='col-xs-12'>" + this.leadingZeros(data.days, 3) + " <span>jours</span></div><div class='col-xs-12'>" + this.leadingZeros(data.hours, 2) + " <span>heures</span></div><div class='col-xs-12'>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div class='col-xs-12'>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
           }
 		 });
 	  });
-  $.get("localhost/toto");
+	</script>
+	
+	<script>
+		$(window).load(function() {
+			$(".loader").fadeOut("1000");
+		});
 	</script>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-72553434-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+	  ga('create', 'UA-72553434-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+

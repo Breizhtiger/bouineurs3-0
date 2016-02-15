@@ -17,6 +17,14 @@ html {
     height: 100%;
 }
 
+#dateList{
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#dateList li{
+	height: 30px;
+}
+
 h1,
 h2,
 h3,
@@ -27,6 +35,28 @@ h6 {
     text-transform: uppercase;
     font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     letter-spacing: 1px;
+}
+
+#loader-global{
+	z-index: 9999;
+	background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
+	height : 100%;
+	width : 100%;
+	cursor : wait;
+}
+
+#notAvailable{
+	padding: 20px;
+	background: black;
+	opacity: 0.7;
+}
+
+.carousel-caption{
+	padding-bottom: 0;
+}
+
+.carousel-caption h3, .carousel-caption h4{
+	margin-bottom: 0px;
 }
 
 p {
@@ -282,7 +312,7 @@ a:focus {
 	width: 15%;
 	height: 5px;
 	border-radius: 0px;
-	margin:0px;
+	margin:0 2px 0 2px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
 .carouselindicators li.active{
@@ -294,7 +324,7 @@ a:focus {
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
-.loader {
+.carouselLoader {
 	z-index: 9999;
 	background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
 	height : 100%;
@@ -634,19 +664,6 @@ a.e-sociaux:hover{
 
 
 @media(max-width:991px) {
-	.onlive-section {
-		width: 100%;
-		padding: 70px 0;
-		color: #fff;
-		background: url(/static/images/onlive.png) no-repeat center center fixed;
-	     -webkit-background-size: cover;
-		 -moz-background-size: cover;
-		 background-size: cover;
-		 -o-background-size: cover;
-		background-color: #000;
-
-	}
-
 	#map {
 		width: 100%;
 		height: 200px;
@@ -654,18 +671,6 @@ a.e-sociaux:hover{
 	}
 }
 @media(min-width:992px) {
-    .onlive-section {
-        padding: 100px 0;
-		width: 100%;
-		color: #fff;
-		background: url(/static/images/onlive.png) no-repeat center center scroll;
-		background-color: #000;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		background-size: cover;
-		-o-background-size: cover;
-    }
-
     #map {
         height: 400px;
         margin-top: 250px;
@@ -673,6 +678,43 @@ a.e-sociaux:hover{
     }
 }
 
+.blockOnlive {
+	width: 100%;	
+	float: left;	
+	margin-bottom: 50px;
+}
+
+.blockImg, .blockLien, .blockIcon{
+	height: 120px;
+	vertical-align: middle;
+}
+
+.blockImg img{
+	width:100%;
+}
+
+.blockImg-maps{
+	display: inline-block;
+	height: 120px;
+	width: 1%;
+	background: url(/static/images/maps.png) no-repeat center center scroll;
+	vertical-align: middle;
+}
+
+.iconMap {
+	background: url(/static/images/iconMap.png) no-repeat center center scroll;
+}
+.iconPhoto {
+	background: url(/static/images/iconPhoto.png) no-repeat center center scroll;
+}
+.iconCarte {
+	background: url(/static/images/iconCarte.png) no-repeat center center scroll;
+}
+
+.listStyle {
+	width: 100%;
+	text-align: center;
+}
 
 #sponsors {
 	background: #2c578e;
@@ -753,27 +795,27 @@ a.e-sociaux:hover{
 }
 
 .btn {
-    border-radius: 0;
+    border-radius: 10px;
     text-transform: uppercase;
     font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
+    font-weight: bold;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
 .btn-default {
-    border: 1px solid #42dca3;
-    color: #42dca3;
+    border: 1px solid #8FC27A;
+    color: #8FC27A;
     background-color: transparent;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #42dca3;
+    border: 1px solid #8FC27A;
     outline: 0;
-    color: #000;
-    background-color: #42dca3;
+    color: #fff;
+    background-color: #8FC27A;
 }
 
 ul.banner-social-buttons {
@@ -903,7 +945,7 @@ body {
     overflow: hidden;
 }
 
-.content{
+#soprasteria .content, #error .content{
     background: rgba(0,0,0, .4);
 }
 
@@ -933,6 +975,97 @@ ul#encart-sociaux li{
 	padding:20px;
 }
 
+/* ON LIVE page */
+#onlive{
+	background: url(/static/images/onlive-bg-index.png) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	padding-bottom:100px;
+}
+
+#onlive .texte-onlive{
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1.5em;
+	color: #fff;
+}
+
+#onlive-page{
+	background: url(/static/images/onlive-bg.png) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	padding-top: 100px;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+ul.onlive-alternative{
+	magin:0;
+	padding:0;
+	list-style: none;
+}
+
+ul.onlive-alternative > li{
+	margin:0;
+	padding:0;
+}
+
+ul.onlive-alternative > li.content{
+	background:#4a6f9e;
+	height:70px;
+}
+
+ul.onlive-alternative > li.empty{
+	height:35px;
+}
+
+ul.onlive-alternative > li.content.active{
+	background:#1c4477;
+}
+
+li.content a{
+	height: 70px;
+	width: 100%;
+	display: block;
+	color:white;
+}
+
+li.content.active a{
+	color:#8FC27A;
+}
+
+li.content a:hover, a:active, a:focus{
+	color:#8FC27A;
+}
+
+li.content.active a:hover, a:active, a:focus{
+	color:white;
+}
+
+.icon-trace{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
+
+.icon-timelaps{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
+
+.icon-photos{
+	width:50px;
+	vertical-align: middle;
+	float:left;
+}
 
 /* Countdown */
 
@@ -995,4 +1128,8 @@ body {
 
 .start{
 	font-size:20px;
+}
+
+#mapDay{
+  height: 500px;
 }

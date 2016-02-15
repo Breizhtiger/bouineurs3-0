@@ -44,7 +44,7 @@ p {
 }
 
 a {
-    color: #8FC27A; 
+    color: #8FC27A;
    /* -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;*/
@@ -58,18 +58,18 @@ a:focus {
 
 .bande1{
 	display: initial;
-	position: fixed; 
+	position: fixed;
 	z-index: 4;
-	left: 55px; 
+	left: 55px;
 	width: 25px;
 	height: 100%;
 	background:#1da149;
 }
 .bande2{
 	display: initial;
-	position: fixed; 
+	position: fixed;
 	z-index: 4;
-	left: 100px; 
+	left: 100px;
 	width: 18px;
 	height: 100%;
 	background:#1da149;
@@ -78,13 +78,13 @@ a:focus {
 	-o-box-shadow: 5px 0px 40px 0px #343434;
 	box-shadow: 5px 0px 40px 0px #343434;
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=90, Strength=40);
-}	
+}
 
 .logobouineur{
 	display: initial;
-	position: fixed; 
+	position: fixed;
 	z-index: 4;
-	left: 30px; 
+	left: 30px;
 	top: 30px;
 	height: 110px;
 	width: 110px;
@@ -94,7 +94,7 @@ a:focus {
 }
 .blue-band-left {
 	display: initial;
-	position: fixed; 
+	position: fixed;
 	z-index: 3;
 	background: #2c578e;
 	height: 100%;
@@ -106,9 +106,9 @@ a:focus {
 }
 
 .mini-logobouineur{
-	position: fixed; 
+	position: fixed;
 	z-index: 4;
-	right: 10px; 
+	right: 10px;
 	top: 10px;
 	height: 74px;
 	width: 74px;
@@ -124,6 +124,7 @@ a:focus {
     border-bottom: 3px solid rgba(255,255,255,1);
     text-transform: uppercase;
     font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #2C578E;
 }
 
 .navbar-custom .navbar-brand {
@@ -147,15 +148,15 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #1da149;	
+    color: #1da149;
 }
 
 .navbar-custom .nav li a {
     /*-webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;*/
-	padding: 7px 0 15px 0;	
-    color: #fff;	
+	padding: 7px 0 15px 0;
+    color: #fff;
 	font-weight: bold;
 	font-style: italic;
 	border-bottom: 15px solid transparent;
@@ -163,10 +164,10 @@ a:focus {
 
 .navbar-custom .nav li a:hover ,
 .navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:active {	
-	color: #1da149;	
+.navbar-custom .nav li a:active {
+	color: #1da149;
     outline: 0;
-    background-color: transparent;	
+    background-color: transparent;
 	border-bottom: 15px solid transparent;
 }
 
@@ -177,12 +178,12 @@ a:focus {
 }
 
 .navbar-custom .nav li.active a {
-	color: #fff;		
-	border-bottom: 15px solid #FFFFFF ; 
+	color: #fff;
+	border-bottom: 15px solid #FFFFFF ;
 }
 
 .navbar-custom .nav li.active a:hover {
-	color: #fff;		
+	color: #fff;
 	border-bottom: none;
 }
 
@@ -202,20 +203,13 @@ a:focus {
     .navbar-custom {
         padding: 30px 0 0 0;
         /*border-bottom: 0;*/
-        letter-spacing: 1px;				
-		font-size: 30px;
-        background: 0 0;
+        letter-spacing: 1px;
+		    font-size: 30px;
        /* -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;*/
-		
-    }
 
-    /*.navbar-custom.top-nav-collapse {
-        padding: 0;
-        border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #000;
-    }*/
+    }
 }
 
 .navbar-custom-phone {
@@ -235,16 +229,16 @@ a:focus {
 .intro {
     display: table;
     width: 100%;
-    height: auto;
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(/static/images/intro-bg.jpg) no-repeat bottom center scroll;
+    background: url(/static/images/intro-bg.jpg) no-repeat top center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    height: 100%;
 }
 
 .intro .intro-body {
@@ -263,7 +257,7 @@ a:focus {
 @media(min-width:992px) {
     .intro {
         height: 100%;
-        padding: 0 0 0 118px;	
+        padding: 0 0 0 118px;
     }
 
     .intro .intro-body .brand-heading {
@@ -276,27 +270,37 @@ a:focus {
 		padding-left: 118px;
     }
 }
-.carousel-indicators {
+.carouselindicators {
 	width: 100%;
 	bottom: -30px;
+	z-index:1;
 }
 
-.carousel-indicators li{ 
+.carouselindicators li{
 	list-style-type: square;
 	border: 0px;
-	width: 32%;
+	width: 15%;
 	height: 5px;
 	border-radius: 0px;
+	margin:0px;
 	background-color: rgba(255, 255, 255, 0.3);
 }
-.carousel-indicators li.active{ 
+.carouselindicators li.active{
 	list-style-type: square;
 	border: 0;
-	width: 32%;
+	width: 15%;
 	height: 5px;
-	border-radius: 0px;	
+	border-radius: 0px;
 	background-color: rgba(255, 255, 255, 0.9);
 }
+
+.loader {
+	z-index: 9999;
+	background : url('/static/images/icon-loader.gif') 50% 50% no-repeat;
+	height : 100%;
+	width : 100%;
+	cursor : wait;
+} 
 
 .btn-circle {
     width: 70px;
@@ -338,7 +342,7 @@ a:focus {
     -moz-animation-timing-function: linear;
 }
 
-@-webkit-keyframes pulse {    
+@-webkit-keyframes pulse {
     0% {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -355,7 +359,7 @@ a:focus {
     }
 }
 
-@-moz-keyframes pulse {    
+@-moz-keyframes pulse {
     0% {
         -moz-transform: scale(1);
         transform: scale(1);
@@ -375,7 +379,7 @@ a:focus {
 .projet {
 	/* height: 100%; */
 	width: 100%;
-	padding-right: 0 0 0 150px;	
+	padding-right: 0 0 0 150px;
 	background: #2c578e;
 	color: #000000;
     -webkit-background-size: cover;
@@ -396,7 +400,7 @@ a:focus {
 }
 
 #projet .row {
-	background: #2c578e;	
+	background: #2c578e;
 	/*height: 100%;*/
 }
 
@@ -423,10 +427,49 @@ a:focus {
 	color: #2c578e;
 }
 
+.btn-menu-projet-custom {
+	border: none;
+	font-weight: bold;
+    font-size: 30px;
+	font-style: italic;
+    font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #2c578e;
+	background: #ffffff;
+	padding:0;
+}
+
+.btn-menu-projet-custom:hover {
+	border: none;
+	font-weight: bold;
+    font-size: 30px;
+	font-style: italic;
+    font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #fff;
+	background: #2c578e;
+	cursor: pointer;
+	padding: 0;
+}
+
+#voiture{
+	position: relative;
+}
 .menu-projet li {
 	list-style-type: none;
 }
 
+.projet-voiture{
+	width:100%;
+}
+
+.trophy-cover{
+	width:95%;
+	margin: 0 0 15px 0;
+}
+
+.trophy-website, .trophy-website:hover{
+	font-size:1.2em;
+	color:#6E925F;
+}
 .current {
 	display: block;
 	background: #fff;
@@ -437,8 +480,8 @@ a:focus {
 }
 
 .contenu {
-	display: none;	
-	padding: 60px 20px;
+	display: none;
+	padding: 30px 20px;
 }
 
 .content-project {
@@ -469,6 +512,40 @@ a:focus {
 	padding: 0 20px 0 0;
 }
 
+.chevronVoiture.left {
+	width: 50px;
+	float:left;
+}
+
+.chevronVoiture.right {
+	width: 50px;
+	float: right;
+}
+
+.contenuVoiture {
+	float: left;
+}
+
+.voiture-label{
+	height: 50px;
+	width:170px;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.voiture-desc{
+	text-align: left;
+    font-style: normal;
+    font-size: 1em;
+}
+
+.voiture-history p{
+	text-align: justify;
+}
+
 .encart-sociaux {
 	background: #ffffff;
 		-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
@@ -492,26 +569,26 @@ a:focus {
 
 li.sociaux{
 	list-style: none;
-	margin: 60px 0 30px 0;
-	
+	margin: 20px 0 30px 0;
+
 }
 
 a.logoFb {
-	width: 34px;	
+	width: 34px;
 	height: 34px;
 	background-image: url(/static/images/sprite-reseaux-tmini.png);
 	background-position: 0 0;
 	transition: none;
-	display: block;		
-	margin: 0 10px;	
+	display: block;
+	margin: 0 10px;
 }
 a.logoTwit {
 	width: 40px;
 	height: 34px;
-	background-image: url(/static/images/sprite-reseaux-tmini.png);	
+	background-image: url(/static/images/sprite-reseaux-tmini.png);
 	background-position: -34px 0;
 	transition: none;
-	display: block;		
+	display: block;
 	margin: 0 10px;
 }
 a.logoInsta{
@@ -520,43 +597,40 @@ a.logoInsta{
 	background-image: url(/static/images/sprite-reseaux-tmini.png);
 	background-position: -74px 0;
 	transition: none;
-	display: block;			
+	display: block;
 	margin: 0 10px;
 }
 
-a.e-sociaux:hover{ 
+a.e-sociaux:hover{
 	background-position-y: -34px;
 }
 
 .sociaux {
-	display:inline-block;	
+	display:inline-block;
 }
 
 /* .content-section {
-    padding-top: 90px;	
+    padding-top: 90px;
 	padding-left: 100px;
 } */
 
 @media(min-width:992px) {
     .content-section {
-        padding-top: 90px;		
+        padding-top: 90px;
 		padding-left: 118px;
-		/* height: 100%; */
     }
 }
 
 @media(max-width:991px) {
 	#projet  .content-section {
-        padding-top: 60px;		
+        padding-top: 60px;
 		padding-left: 0;
-		/* height: 100%; */
 	}
 	.content-section {
-        padding-top: 60px;		
+        padding-top: 60px;
 		padding-left: 0;
-		/* height: 100%; */
-    } 
-} 
+    }
+}
 
 
 @media(max-width:991px) {
@@ -564,12 +638,13 @@ a.e-sociaux:hover{
 		width: 100%;
 		padding: 70px 0;
 		color: #fff;
-		background: url(/static/images/downloads-bg.jpg) no-repeat center center scroll;
+		background: url(/static/images/onlive.png) no-repeat center center fixed;
+	     -webkit-background-size: cover;
+		 -moz-background-size: cover;
+		 background-size: cover;
+		 -o-background-size: cover;
 		background-color: #000;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		background-size: cover;
-		-o-background-size: cover; 
+
 	}
 
 	#map {
@@ -580,37 +655,41 @@ a.e-sociaux:hover{
 }
 @media(min-width:992px) {
     .onlive-section {
-        padding: 100px 0;	
+        padding: 100px 0;
 		width: 100%;
 		color: #fff;
-		background: url(/static/images/downloads-bg.jpg) no-repeat center center scroll;
+		background: url(/static/images/onlive.png) no-repeat center center scroll;
 		background-color: #000;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		background-size: cover;
-		-o-background-size: cover; 
+		-o-background-size: cover;
     }
 
     #map {
         height: 400px;
-        margin-top: 250px;		
+        margin-top: 250px;
 		padding-left: 118px;
     }
-}  
+}
 
 
 #sponsors {
 	background: #2c578e;
 	width: 100%;
 	font-style: italic;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #sponsors p {
+	font-size:1.4em;
 	margin: 0;
+	margin-bottom:5px;
 }
 
 #tableSponsor {
 	display: inline-block;
+	vertical-align: top;
 	margin: 20px 20px;
 }
 
@@ -619,9 +698,16 @@ a.e-sociaux:hover{
 	margin: 10px;
 }
 
+#pasDeSociaux {
+	display: block;
+	width: 220px;
+	height: 43px;
+}
+
 #tableSponsor2 {
-	display: inline-block;	
-	margin: 0 20px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 5px;
 }
 
 #tableSponsor2 img{
@@ -713,13 +799,58 @@ ul.banner-social-buttons {
 }
 
 footer {
-	background: #2c578e;
-    padding: 50px 0;
-	border-top: 1px solid #fff;
+	padding: 40px 0 10px 0px;
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	background: #ffffff;
+	-moz-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	-webkit-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	-o-box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	box-shadow: inset 0px 5px 20px 0px #c0c0c0;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#c0c0c0, Direction=180, Strength=20);
+	color: #2c578e;
+}
+
+@media(min-width:992px) {
+    footer {
+    	padding: 40px 0 10px 118px;
+    }
 }
 
 footer p {
     margin: 0;
+}
+
+footer .email, footer .sociaux{
+	height:80px;
+	text-align: center;
+}
+
+footer .email > span, footer .sociaux > span{
+	font-size: 1.2em;
+}
+
+.email a, .email a:hover{
+	color: #2c578e;
+}
+
+footer .email{
+	vertical-align: middle;
+	margin-bottom: 15px;
+}
+
+footer .big-arobase{
+	font-size: 3em !important;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+footer .copyright{
+	height: 40px;
+	margin-bottom:30px;
+}
+
+.footer-hidden-link, .footer-hidden-link:hover{
+	color: #2c578e;
 }
 
 ::-moz-selection {
@@ -760,7 +891,6 @@ body {
 #soprasteria.intro {
     display: table;
     width: 100%;
-    height: auto;
     padding: 100px 0;
     text-align: center;
     color: #fff;
@@ -840,7 +970,6 @@ body {
 }
 .countDown div {
   display: inline-block;
-  margin-left: 40px;
   font-size: 35px;
   font-weight: 100;
   line-height: 1;

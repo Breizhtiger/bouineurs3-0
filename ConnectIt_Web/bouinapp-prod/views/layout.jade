@@ -13,7 +13,7 @@ html
 		meta(name='google-site-verification', content='gucwyo6cMPPtr2TsAnQvhYJc_sjcS84HjXKZn10eeoA')
 		meta(name='language' content='fr')
 
-		title Bouineurs - 4L Trophy
+		title Bouineurs 3.0 - 4L Trophy
 		link(href='/static/stylesheets/bootstrap.min.css', rel='stylesheet')
 		link(href='/static/stylesheets/styles.css', rel='stylesheet')
 		link(href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic', rel='stylesheet', type='text/css')
@@ -21,9 +21,11 @@ html
 
 	body(id='page-top', data-spy='scroll', data-target='.navbar-fixed-top')
 		include ../public/javascripts/apiFacebook.js
+		include ../public/javascripts/tools.js
 		div(class='bande1 hidden-xs hidden-sm')
 		div(class='bande2 hidden-xs hidden-sm')
 		div(class='logobouineur hidden-xs hidden-sm')
+			a(href="/", style="width: 100%;height: 100%;display: block;")
 		div(class='blue-band-left hidden-xs hidden-sm col-md-2 col-mg-4')
 
 		block content

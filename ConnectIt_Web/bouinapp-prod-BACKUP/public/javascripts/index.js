@@ -29,187 +29,84 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
-// Google Maps Scripts
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
+init();
 
 function init() {
 
-  var myLatLng = {lat: -25.363, lng: 131.044};
+  loadSliderImages();
 
-  // Create a map object and specify the DOM element for display.
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    scrollwheel: false,
-    zoom: 4
-  });
-
-  //http://localhost:80/users/positions
-  $.get( "http://localhost/users/positions", function( data ) {
-      for(var i=0;i < data.length;i++){
-        var marker = new google.maps.Marker({
-          map: map,
-          position: data[i],
-          title: 'Hello World indice :'+i
-        });
-      }
-    });
-
-  $.get( "http://localhost:3000/users/positions", function( data ) {
-      for(var i=0;i < data.length;i++){
-        var marker = new google.maps.Marker({
-          map: map,
-          position: data[i],
-          title: 'Hello World indice :'+i
-        });
-      }
-    });
-
-  // Create a marker and set its position.
-  var marker = new google.maps.Marker({
-    map: map,
-    position: myLatLng,
-    title: 'Hello World!'
-  });
-//    // Basic options for a simple Google Map
-//    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-//    var mapOptions = {
-//        // How zoomed in you want the map to start at (always required)
-//        zoom: 15,
-//
-//        // The latitude and longitude to center the map (always required)
-//        center: new google.maps.LatLng(40.6700, -73.9400), // New York
-//
-//        // Disables the default Google Maps UI components
-//        disableDefaultUI: true,
-//        scrollwheel: false,
-//        draggable: false,
-//
-//        // How you would like to style the map.
-//        // This is where you would paste any style found on Snazzy Maps.
-//        styles: [{
-//            "featureType": "water",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 17
-//            }]
-//        }, {
-//            "featureType": "landscape",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 20
-//            }]
-//        }, {
-//            "featureType": "road.highway",
-//            "elementType": "geometry.fill",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 17
-//            }]
-//        }, {
-//            "featureType": "road.highway",
-//            "elementType": "geometry.stroke",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 29
-//            }, {
-//                "weight": 0.2
-//            }]
-//        }, {
-//            "featureType": "road.arterial",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 18
-//            }]
-//        }, {
-//            "featureType": "road.local",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 16
-//            }]
-//        }, {
-//            "featureType": "poi",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 21
-//            }]
-//        }, {
-//            "elementType": "labels.text.stroke",
-//            "stylers": [{
-//                "visibility": "on"
-//            }, {
-//                "color": "#000000"
-//            }, {
-//                "lightness": 16
-//            }]
-//        }, {
-//            "elementType": "labels.text.fill",
-//            "stylers": [{
-//                "saturation": 36
-//            }, {
-//                "color": "#000000"
-//            }, {
-//                "lightness": 40
-//            }]
-//        }, {
-//            "elementType": "labels.icon",
-//            "stylers": [{
-//                "visibility": "off"
-//            }]
-//        }, {
-//            "featureType": "transit",
-//            "elementType": "geometry",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 19
-//            }]
-//        }, {
-//            "featureType": "administrative",
-//            "elementType": "geometry.fill",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 20
-//            }]
-//        }, {
-//            "featureType": "administrative",
-//            "elementType": "geometry.stroke",
-//            "stylers": [{
-//                "color": "#000000"
-//            }, {
-//                "lightness": 17
-//            }, {
-//                "weight": 1.2
-//            }]
-//        }]
-//    };
-//
-//    // Get the HTML DOM element that will contain your map
-//    // We are using a div with id="map" seen below in the <body>
-//    var mapElement = document.getElementById('map');
-//
-//    // Create the Google Map using out element and options defined above
-//    var map = new google.maps.Map(mapElement, mapOptions);
-//
-//    // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
-//    var image = 'img/map-marker.png';
-//    var myLatLng = new google.maps.LatLng(40.6700, -73.9400);
-//    var beachMarker = new google.maps.Marker({
-//        position: myLatLng,
-//        map: map,
-//        icon: image
-//    });
 }
+
+function loadSliderImages(){  
+  // Cloning currents objects
+  var images = [];
+  var carouselindicators = $("#carouselindicators").clone();
+  var carouselinner = $("#carouselinner").clone();
+
+  // Call api images
+  $.get( "http://www.bouineurs3-0.fr/api/images/highlights", function( data ) {
+
+    $(carouselindicators).empty();
+    $(carouselinner).empty();
+
+    if(data !== null && data.length !== 0){
+      indicatorWidth = (100/data.length) - 1;
+
+      data.forEach( function(image, index){
+        addOneImageToSlider(carouselindicators, carouselinner, image.datetime, null, image.localPath, index, indicatorWidth);
+      });
+
+      // Replace old carousel with new elements
+      $("#carouselinner").replaceWith(carouselinner);
+      $("#carouselindicators").replaceWith(carouselindicators);
+      $("#carousel0").addClass('active');
+
+      // Set current postion to first image
+      $("#carousel").carousel(0);
+
+      
+    }
+    
+    // Reveal and start slider
+    $('#carouselLoader').hide();
+    $('#carousel').show();
+    $('#carousel').carousel('cycle');
+  })
+  .error(function (){
+      $('#carouselLoader').hide();
+      $('#carousel').show();
+  });
+}
+
+function addOneImageToSlider(carouselindicators, carouselinner, title, desc, srcImage, itemNumber, indicatorWidth){
+  // Build indicator child
+  var indicatorsChild = '<li data-target="#carousel" data-slide-to="' +itemNumber + '" style="width:'+indicatorWidth+'% !important"></li>';
+
+  // Build inner child
+  var innerChild = '<div id="carousel' +itemNumber+ '" class="item"><a href="#"><img style="max-height:350px;" src="'+srcImage+'"></a>';
+  innerChild += '<div class="container">';
+  innerChild += '<div class="carousel-caption">';
+
+  if(title !== null && title !== ""){
+    // Original date (unix timestamp)
+    var date = new Date(title);
+    // Date conversion
+    var day = date.getUTCDate();
+    var month = date.getUTCMonth()+1;
+    var year = date.getUTCFullYear();
+    var hours = date.getUTCHours();
+    var minutes = "0" + date.getUTCMinutes();
+    var seconds = "0" + date.getUTCSeconds();
+    var formattedTime = day + '/0' + month + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    
+    innerChild += '<h1>' + formattedTime + '</h1>';
+  }
+
+  if(desc !== null && desc !== ""){
+    innerChild += '<p>' + desc + '</^p>';
+  }
+
+  // Add children to indicators and inner
+  $(carouselindicators).append(indicatorsChild);
+  $(carouselinner).append(innerChild);
+};
