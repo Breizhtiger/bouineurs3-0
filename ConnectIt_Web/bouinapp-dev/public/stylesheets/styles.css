@@ -17,6 +17,14 @@ html {
     height: 100%;
 }
 
+#dateList{
+	font-family: "SansSerifExbFLF", Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#dateList li{
+	height: 30px;
+}
+
 h1,
 h2,
 h3,

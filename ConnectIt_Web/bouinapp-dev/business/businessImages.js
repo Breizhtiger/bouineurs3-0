@@ -158,7 +158,7 @@ businessImages.checkExistenceVideoOfTheDay = function(day, callback){
 	if(wantedDirectoryDateName != null && wantedDirectoryDateName != ""){
 		var wantedDirectory = process.cwd()+'/public/daily/'+wantedDirectoryDateName+'/videos';
 
-		fs.access(wantedDirectory, fs.F_OK, (err) => {
+		fs.access(wantedDirectory, fs.F_OK, function(err) {
 			log.info(err ? wantedDirectory +' is not accessible' : wantedDirectory + ' can be access');
 			if(!err){
 				response.directory = "OK";
@@ -171,7 +171,7 @@ businessImages.checkExistenceVideoOfTheDay = function(day, callback){
 
 			var fileName = wantedDirectory+'/video.mp4';
 
-			fs.access(fileName, fs.F_OK, (err) => {
+			fs.access(fileName, fs.F_OK, function(err) {
 				log.info(err ? fileName +' is not accessible' : fileName + ' can be access');
 				if(!err){
 					response.video = "OK";

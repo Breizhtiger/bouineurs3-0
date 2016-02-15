@@ -38,7 +38,45 @@ block content
 	header(id='onlive-page',class='intro')
 		div(class'intro-body')
 			div(class='container')
-				h3 #{fullDateString}
+				div(class='row')
+					h3(class='col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2', style=" margin-top: 15px;	") #{fullDateString}
+					div(class="cold-md-2 col-lg-2 btn-group")
+							button(class="btn btn-default btn-lg dropdown-toggle",type="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false", style="margin-left:-45px;")
+								span #{fullDateString}
+								span(class="caret", style='margin-left:10px')
+							ul(class="dropdown-menu listStyle", id="dateList")
+								li(data-date="2016-02-16")
+									a(href="/onlive/timelaps/day1") 16 Février - Jour 1
+								li(data-date="2016-02-17")
+									a(href="/onlive/timelaps/day2") 17 Février - Jour 2
+								li(data-date="2016-02-18")
+									a(href="/onlive/timelaps/day3") 18 Février - Jour 3
+								li(data-date="2016-02-19")
+									a(href="/onlive/timelaps/day4") 19 Février - Jour 4
+								li(data-date="2016-02-20")
+									a(href="/onlive/timelaps/day5") 20 Février - Jour 5
+								li(data-date="2016-02-21")
+									a(href="/onlive/timelaps/day6") 21 Février - Jour 6
+								li(data-date="2016-02-22")
+									a(href="/onlive/timelaps/day7") 22 Février - Jour 7
+								li(data-date="2016-02-23")
+									a(href="/onlive/timelaps/day8") 23 Février - Jour 8
+								li(data-date="2016-02-24")
+									a(href="/onlive/timelaps/day9") 24 Février - Jour 9
+								li(data-date="2016-02-25")
+									a(href="/onlive/timelaps/day10") 25 Février - Jour 10
+								li(data-date="2016-02-26")
+									a(href="/onlive/timelaps/day11") 26 Février - Jour 11
+								li(data-date="2016-02-27")
+									a(href="/onlive/timelaps/day12") 27 Février - Jour 12
+								li(data-date="2016-02-28")
+									a(href="/onlive/timelaps/day13") 28 Février - Jour 13
+								li(data-date="2016-02-29")
+									a(href="/onlive/timelaps/day14") 29 Février - Jour 14
+								li(data-date="2016-03-01")
+									a(href="/onlive/timelaps/day15") 01 Mars - Jour 15
+								li(data-date="2016-03-02")
+									a(href="/onlive/timelaps/day16") 02 Mars - Jour 16
 				div(class='row' style='height:120px')
 					div(class='col-md-3 col-lg-3 nopadding')
 						ul(class='onlive-alternative')
@@ -54,12 +92,6 @@ block content
 										img(class='icon-timelaps', src='/static/images/video.png')
 									span(style='font-size:1.7em; display: inline-block; vertical-align: middle; margin:15px 0 0 0px') TIMELAPS									
 									span(style='height:100%; display: inline-block; vertical-align: middle; background:black;	 width: 10px; float: right;')
-							li(class='empty') 
-							li(class='content')
-								a(href='/onlive/photos/#{key}')
-									span(style='display: inline-block; vertical-align: middle; margin:5px 0 0 15px; float:left')
-										img(class='icon-photos', src='/static/images/photo.png')
-									span(style='font-size:1.7em; display: inline-block; vertical-align: middle; margin:15px 0 0 0px') PHOTOS
 					div(class='col-md-9 col-lg-9', style='height:100%')
 						div(id="loader-global")
 						div(id="notAvailable",style="display:none")
@@ -76,3 +108,4 @@ block content
 								p Votre navigateur ne supporte pas la video... :/
 						script(type='text/javascript', src='/static/javascripts/jquery.js')
 						script(type='text/javascript', src='/static/javascripts/timelaps.js')
+						script(type="text/javascript",src="/static/javascripts/bootstrap.min.js")
