@@ -2,6 +2,9 @@ extends layout
 
 block content
 	script(src='/static/javascripts/jquery.js')
+	script(type='text/javascript', src='/static/javascripts/onlive.js')
+	script(type='text/javascript', src='/static/javascripts/dateAble.js')
+	script(type='text/javascript',src='/static/javascripts/bootstrap.min.js')
 	nav(class='navbar navbar-custom navbar-fixed-top', role='navigation')
 			div(class='container', style='margin-right: 0;width: 100%')
 				div(class='navbar-header visible-xs')
@@ -104,6 +107,4 @@ block content
 								li Problème technique partiel : l'équipe 3.0 travaille à la rétablissement du service !
 								li Le système 3.0 rencontre un probleme majeur...
 						div(id='mapDay', style='display:none')
-							script(type='text/javascript', src='/static/javascripts/onlive.js')
-						script(type='text/javascript', src='/static/javascripts/dateAble.js')
-							script(type="text/javascript",src="/static/javascripts/bootstrap.min.js")
+							
