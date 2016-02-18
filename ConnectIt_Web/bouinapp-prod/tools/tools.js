@@ -1,5 +1,6 @@
 var _ = require("underscore");
 var log = require("./logger");
+var fs = require("fs");
 
 var tools = {};
 
